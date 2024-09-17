@@ -1,7 +1,7 @@
 \documentclass[a4paper,oneside,11pt,leqno]{article}
 
-\usepackage[latin1]{inputenc}
 \usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
 
 \usepackage{amsfonts}
 \usepackage{amsmath}
@@ -22,6 +22,7 @@
 \newcommand{\red}{\textcolor{red}}
 \newcommand{\blue}{\textcolor{blue}}
 
+\newtheorem{theorem}{Teorema}
 
 \textwidth = 16truecm 
 \textheight = 24truecm
@@ -33,9 +34,9 @@
 %\thispagestyle{empty}
 
 
-\begin{center}{\bf FUNDAMENTOS DE AN\'ALISIS MATEM\'ATICO-FAM}  \\
-Departamento de Matem\'aticas\\
-Universidad Aut\'onoma de Madrid\\
+\begin{center}{\bf FUNDAMENTOS DE ANÁLISIS MATEMÁTICO-FAM}  \\
+Departamento de Matemáticas\\
+Universidad Autónoma de Madrid\\
 \end{center}
 \hfill \red{\it A entregar el jueves, 19 de septiembre}
 
@@ -43,32 +44,46 @@ Universidad Aut\'onoma de Madrid\\
 \vskip 6pt \hrule
 
 \vskip 3mm
-\noindent{{\bf Entrega 0}: Redacta un breve ensayo en el que describas tus conocimientos previos en An\'alisis Matem\'atico y tus expectativas tras elegir esta asignatura del M\'aster. Adem\'as, a modo de ejercicio sencillo, me gustar\'ia que enunciaras un resultado de los que hayas visto en otros cursos de An\'alisis, que te haya impactado, ya sea por su dificultad, por su belleza o por cualquier otro motivo.} \footnote{Tama\~no esperado de este ensayo: entre 1 y $1\frac 12$ pg.}
+\noindent{{\bf Entrega 0}: Redacta un breve ensayo en el que describas tus conocimientos previos en Análisis Matemático y tus expectativas tras elegir esta asignatura del Máster. Además, a modo de ejercicio sencillo, me gustaría que enunciaras un resultado de los que hayas visto en otros cursos de Análisis, que te haya impactado, ya sea por su dificultad, por su belleza o por cualquier otro motivo.} \footnote{Tamaño esperado de este ensayo: entre 1 y $1\frac 12$ pg.}
 \vskip 3mm \hrule
 
 \vskip 5mm
 
-\noindent{\bf  Nombre}:
-
-\vskip 5mm
-
-\noindent{\bf  Esquema sugerido}:
-
+\noindent{\bf  Nombre}: Gonzalo Ortega
 
 \vskip 5mm
 
 \begin{enumerate}
 
-\item[1.-] {  Mi experiencia previa en An\'alisis Matem\'atico}: 
+\item[1.-] {  Mi experiencia previa en Análisis Matem\'atico}: 
 
-\item[2.-] { Mis expectativas}: 
+Vengo de realizar el doble grado de Matemáticas  e Ingeniería del Software en la Universidad Rey Juan Carlos, donde el número de créditos de asignaturas estrictamente de Matemáticas es inferior a los existentes en otras universidades, como podrían ser la Complutense o la Autónoma. Tuvimos una asignatura de Cálculo en variable real en primero y luego otras dos de Análisis Vectorial donde acabamos viendo las formas diferenciables y el Teorema del Cambio de Variable para aprender a integrar en variedades.
 
-\item[2.-] { Mi resultado favorito en An\'alisis}: 
+Por último tuvimos una asignatura de Variable Compleja en la cual revisitamos todos los resultados vistos en la asignatura de cálculo en $ \mathbb{R} $, esta vez en $ \mathbb{C} $, llegando a ver el Teorema de la relación entre holomorfía y analiticidad. Dimos también alguna demostración chula, como la del Teorema Fundamental del Álgebra utilizando los números complejos y, para la última parte de la asignatura, cada uno tuvimos que presentar un tema en formato de video, donde yo expuse el Teorema de los residuos.
 
-\item[3.-] { Bibliograf\'ia (opcional)}: \\
+A diferencia del análisis real o complejo, de análisis funcional no vimos nada en todo el grado, por ello tengo ganas de poder estudiarlo en esta asignatura.
 
+\item[2.-] { Mis expectativas}:
+
+Tras acabar el grado, las Matemáticas que habíamos visto se me supieron a poco y con el fin de poder profundizar más en ellas me apunté en un máster como este. A la hora de elegir asignaturas, más que por elección directa, mi principal criterio fue el descarte de las asignaturas que me atraían menos, como es el caso de las EDPs o la Estadística, acabando así en el itinerario de Matemáticas menos aplicadas. No por que haya acabado en esta asignatura por descarte, y que tenga relativamente poca idea de en que va a consistir el temario leyendo el programa, significa que no tenga ganas de estudiar los diferentes temas de la asignatura. Más aun ahora que las primeras clases que ha habido me han gustado bastante.
+
+\item[2.-] { Mi resultado favorito en Análisis}:
+
+Podría decir que mi resultado favorito (aunque supongo que es poco original) en Análisis es el Teorema de Stokes:
+\begin{theorem}
+    Si $ M $ es una variedad k-dimensional orientada compacta con frontera y $ \omega $ es una (k-1)-forma en $ M $, entonces
+    $$
+        \int_{M} d \omega = \int_{\partial M} \omega.
+    $$
+\end{theorem}
+La principal razón por la que me gusta es que tras llegar a él, enunciamos varios teoremas en clase como el Teorema de Green o el Teorema de la divergencia, los cuales al parecer eran muy importantes (pese a que yo nunca había oído hablar de ellos) y quedaban relegados a casos particulares del Teorema de Stokes, siendo ese momento uno de los primeros momentos en los que vi lo bonito que es el poder de generalización de las Matemáticas.
+
+\item[3.-] { Bibliografía}:
+
+El libro de Análisis que más me ha gustado leer es \textit{Calculus on Manifolds}, de Michael Spivak, el cual usamos como referencia en la asignatura de Análisis Vectorial II y donde leí por primera vez acerca de teoría de la medida, formas diferenciables y del Teorema de Stokes. También me gustó el primer capítulo de \textit{Advanced Calculus} de Harold M. Edwards, donde se introducían las formas diferenciales dándoles una interpretación más física, ayudando bastante a entenderlas.
 
 \end{enumerate}
 
+P.D. He visto que en la plantilla de \LaTeX \ se importaba \texttt{latin1}, lo que hacía que para escribir caracteres especiales como tildes o la letra \textit{ñ}, se tuviera que escribir \texttt{\textbackslash{}'} o \texttt{ \textbackslash{}\~} precediendo a cada respectiva letra. No sé si se hacía por alguna otra razón que desconozco, pero si no, si se importa \texttt{utf8} en lugar de \texttt{latin1} se pueden escribir en el código directamente las letras tildadas o la letra \textit{ñ}.
 \end{document}
 
