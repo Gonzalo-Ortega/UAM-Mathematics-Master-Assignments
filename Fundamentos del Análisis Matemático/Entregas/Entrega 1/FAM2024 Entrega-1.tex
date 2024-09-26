@@ -13,6 +13,8 @@
 \usepackage{epstopdf}
 \usepackage{esint}
 
+\usepackage{amsthm}
+
 \usepackage{mathtools} %for \stackrel
 
 %%%%%%%%%%%%%%%%%%
@@ -24,7 +26,7 @@
 %%%%%%%%%%%%%%%%%%
 
 \usepackage[spanish]{babel}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 
 %%%%%%%%%%%%%%%%%%
 
@@ -47,12 +49,12 @@
 \hrule\hrule
 \vspace{1mm}
 
-\noindent {\bf Fundamentos de An\'alisis Matem\'atico, MMA 2023-24.
+\noindent {\bf Fundamentos de Análisis Matemático, MMA 2023-24.
 \hfill{Entrega 1}}
 
 \vspace{1mm}
 
- \noindent {\bf Nombre y APELLIDOS}: 
+ \noindent {\bf Nombre y apellidos}: Gonzalo Ortega Carpintero
 \vspace{2mm}
 
 \hrule\hrule
@@ -61,15 +63,15 @@
 
 \
 
-{\bf 1)} Se dice que la funci\'on $f:\mathbb R^N \to \mathbb R$ es H\"older de orden $\alpha>0$ si existe una constante $C$ de forma que
+{\bf 1.} Se dice que la función $f:\mathbb R^N \to \mathbb R$ es H\"older de orden $\alpha>0$ si existe una constante $C$ de forma que
 $$
 |f(x)-f(y)|\le C|x-y|^\alpha, \; \forall x,y \in \mathbb R^N. 
 $$
-Probar que si $f$ es H\"older de orden $\alpha$, con $\alpha>N$, entonces $f$ es constante. 
+Probar que si $f$ es H\"older de orden $\alpha$, con $\alpha>1$, entonces $f$ es constante. 
 
 \vskip 5mm
 
- {\bf 2.}  En $\mathbb R^N$, si el conjunto $A$ no es medible Lebesgue, y  $s<N$, probar que  $\mathcal{H}^s_*(A)=\infty$.
+ {\bf 2.}  En $\mathbb R^N$, si el conjunto $A$ no es medible Lebesgue, y  $s<N$, probar que  $\mathcal{H}^s(A)=\infty$.
  
 \vskip 5mm
 
@@ -78,10 +80,10 @@ Probar que si $f$ es H\"older de orden $\alpha$, con $\alpha>N$, entonces $f$ es
  $$
  m^*(E)=\inf\left\{\sum_{j\ge 1} \mbox{vol}(B_j): \{B_j\}_j \mbox{ cubrimiento por bolas de } A\right\}. 
  $$
-  \vskip -3mm
+ \vskip -2mm
   Definimos por otro lado la clase
   $$
-  \mathcal{B}=\{A\subset \mathbb R: \forall \epsilon>0, \; \exists \mathcal{O},  \mbox{ abierto, tal que }\; A\subset \mathcal{O} \mbox{ y } \; m^*(\mathcal{O}\setminus A)<\epsilon\}. 
+  \mathcal{B}=\{A\subset \mathbb R^N: \forall \epsilon>0, \; \exists \mathcal{O},  \mbox{ abierto, tal que }\; A\subset \mathcal{O} \mbox{ y } \; m^*(\mathcal{O}\setminus A)<\epsilon\}. 
   $$
 Probar: 
 \begin{itemize}
@@ -95,9 +97,76 @@ Probar:
 
 \noindent {\bf SOL.:} 
  
- \end{document}
+\vskip 5mm
+{\bf 1.}
+\begin{proof}
+  Dados $x, y \in \mathbb{R}^N $ cualesquiera consideramos el segmento $ \left[xy\right] \subset \mathbb{R}^N $. Podemos dividir dicho segmento en $ n $ subsegmentos de la forma  $ \left[x_{i-1} x_i\right] $ con $ i \in \left[1, n\right] $ y $ x_0 = x $, $ x_n = y$, que cumplan
+$$
+  |x_i - x_{i-1}| = \frac{|x-y|}{n}.
+$$
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\quad 
+Para cada subsegmento se tiene que verificar la propiedad de ser Hölder, luego
+\begin{align*}
+  |f(y) - f(x)| &= \left|\sum_{i=1}^n (f(x_i) - f(x_{i-1}))\right| \leq \sum_{i=1}^n \left|(f(x_i) - f(x_{i-1}))\right| \\
+  & \leq \sum_{i=1}^n C |x_i - x_{i-1}|^\alpha = n C \frac{|x-y|^\alpha}{n^\alpha} = C \frac{|x-y|^\alpha}{n^{\alpha-1}} \underset{\underset{\alpha>1}{n\to\infty}}{\longrightarrow} 0.
+\end{align*}
+Por tanto  $ \forall x, y \in \mathbb{R}^N, f(x) = f(y) $, teniendo que ser $ f $ una función constante.
+\end{proof}
 
-,
+\newpage
+{\bf 2.}
+\begin{proof}
+  Supongamos que la medida de Hausdorff es finita $ \mathcal H^s < \infty$, $ s<N $.
+  Si desarrollamos ahora tenemos que
+  \begin{align*}
+    \mathcal H^N(A) &= \lim_{\delta \to 0^+} \operatorname{inf} \left\{\sum_j (\operatorname{diam} E_j)^N: A \subset \bigcup_{j=1}^\infty E_j, \; \operatorname{diam} E_j \leq \delta, \; \forall j \right\} \\
+    &= \lim_{\delta \to 0^+} \operatorname{inf} \left\{\sum_j (\operatorname{diam} E_j)^{s+\epsilon}: A \subset \bigcup_{j=1}^\infty E_j, \; \operatorname{diam} E_j \leq \delta, \; \forall j \; \epsilon > 0 \right\} \\
+    &\leq \lim_{\delta \to 0^+} C \delta^\epsilon *
+    \lim_{\delta \to 0^+} \operatorname{inf} \left\{\sum_j (\operatorname{diam} E_j)^s: A \subset \bigcup_{j=1}^\infty E_j, \; \operatorname{diam} E_j \leq \delta, \; \forall j \; \right\}\\
+    &= \lim_{\delta \to 0^+} C \delta^\epsilon * \mathcal H^s(A) = 0
+  \end{align*}
+
+  para alguna constante $ C $. Pero sabemos de clase que $ \mathcal H^N(A) = C_n m^*(A) $ con $ C_n \in \mathbb R^N $ constante y $ m^*(A) $ la medida de Lebesgue en $ \mathbb R^N $. Por tanto se tendría $ m^*(A) = 0 $ y $ A $ sería medible Lebesgue, entrando en contradicción. Por tanto, tiene que ser $ \mathcal H^s = \infty$.
+\end{proof}
+
+\vskip 10mm
+{\bf 3.}
+\begin{proof}
+  Para probar que $ \mathcal B $ es una $ \sigma $-álgebra, basta comprobar que coincide con la $ \sigma $-álgebra $ \mathcal A $ obtenida por el teorema de Caratheodory.
+
+  \vskip 5mm
+  Para ello, empezamos tomando $ A \in \mathcal A $, por lo que 
+  $
+    \forall E \in \mathbb R^N, m^*(E \cap A) + m^*(E \cup A^c).
+  $
+  Definimos
+  $
+    \mathcal O_\epsilon = \left\{ x \in \mathbb R^N: d(x, A) < \epsilon\right\},
+  $
+  conjunto abierto que satisface $ A \subset \mathcal O_\epsilon $. Se tiene entonces que
+  $$
+    m^*(\mathcal O_\epsilon) = m^*(\mathcal O_\epsilon \cap A) + m^*(\mathcal O_\epsilon \cup A^c) = m^*(A) + m^*(\mathcal O_\epsilon \setminus A).
+  $$
+  Despejando obtenemos $m^*(\mathcal O_\epsilon \setminus A) = m^*(\mathcal O_\epsilon) - m^*(A) \underset{\epsilon \to 0}{=} 0 $. Luego $ A \in \mathcal B $. 
+
+  \vskip 5mm
+    Tomando ahora $ B \in \mathcal B $, se tiene entonces que 
+    $
+      \forall \epsilon>0, \; \exists \mathcal{O},  \mbox{ abierto, tal que }\; B\subset \mathcal{O} \mbox{ y } \; m^*(\mathcal{O}\setminus B)<\epsilon,
+    $
+    y tomando un conjunto $ E \in \mathbb R^n $ cualquiera y usando que la medida de Lebesgue es una medida exterior tenemos
+    \begin{align*}
+      m^*(E \cap B) + m^*(E \cap B^c) &= m^*(E \cap B) + m^*((E \cap \mathcal O^c) \cup (E \cap (\mathcal O \setminus B)) \\
+      &\leq m^*(E \cap \mathcal O) + m^*(E \cap \mathcal O^c) + m^*(E \cap (\mathcal O \setminus B)) \\
+      &\leq m^*(E \cap \mathcal O) + m^*(E \cap \mathcal O^c) + \epsilon \leq m^*(E) + \epsilon,
+    \end{align*}
+  puesto que al ser $ \mathcal O $ abierto, $m^*(E \cap \mathcal O) + m^*(E \cap \mathcal O^c) = m^*((E \cap \mathcal O) \cup (E \cap \mathcal O^c))$. Como $ \epsilon $ puede ser tan pequeño como se quiera se tiene entonces la condición suficiente para que ser medible Lebesgue
+  $
+    m^*(E) = m^*(E \cap B) + m^*(E \cap B^c),
+  $
+  y por tanto $ B \in \mathcal A $.
+
+  \vskip 5mm
+
+\end{proof}
+\end{document}
