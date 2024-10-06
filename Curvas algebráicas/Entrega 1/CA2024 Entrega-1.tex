@@ -1,0 +1,98 @@
+%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,draft]{article}
+
+%%%%%%%%%%%%%%%%%%
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\usepackage{esint}
+
+\usepackage{amsthm}
+
+\usepackage{mathtools} %for \stackrel
+
+%%%%%%%%%%%%%%%%%%
+
+\usepackage{color}
+\newcommand{\red}{\textcolor{red}}
+\newcommand{\blue}{\textcolor{blue}}
+
+%%%%%%%%%%%%%%%%%%
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+%%%%%%%%%%%%%%%%%%
+
+\addtolength{\topmargin}{-3.5cm} \addtolength{\oddsidemargin}{-2cm}
+\addtolength{\textheight}{+5cm} \addtolength{\textwidth}{+4cm}
+
+
+\parindent=0mm
+\parskip 0mm
+
+\thispagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\hrule\hrule
+\vspace{1mm}
+
+\noindent {\bf Algebraic curves, MMA 2023-24.
+\hfill{Sheet 1}}
+
+\vspace{1mm}
+
+ \noindent {\bf Name}: Gonzalo Ortega Carpintero
+\vspace{2mm}
+
+\hrule\hrule
+
+
+{\bf Exercise 9. (Gathmann 2.7)}
+\begin{proof}
+  
+
+\end{proof}
+
+\vskip 10mm
+{\bf Exercise 10. (Gathmann 2.8)}
+Let f, g $ \in K[x,y] $ be two polynomials that vanish at the origin.
+\vskip 2mm
+(a) If $ f, g $ have no common factor, then the family $\{ f^n: n \in \mathbb Z_{\leq 0}\}$ is linearly independent in $K[V(g)]_{(0,0)}$.
+\begin{proof}
+  We have that $K[V(g)]_{(0,0)} = \frac{D[x,y]_{(0,0)}}{<g>} $.
+  Suppose that there are some $ a_i \neq 0 \in K, i \leq n $ such that
+  $$
+    \sum_i a_i f^i = 0.
+  $$
+  That is
+  $
+    \sum_i a_i f^i \in <g>,
+  $ so for some $ h \neq 0 $ in $ D[x,y]_{(0,0)} $,
+  $
+    \sum_i a_i f^i = hg
+  $, and taking common factor we have
+  $$
+    \sum_i a_i f^i = f^k (a_k + \sum_i a_i f^{i-k}) = hg.
+  $$
+  As $ f $ and $ g $ have no common factor there has to be $ h' $ such as that
+  $$
+    (a_k + \sum_i a_i f^{i-k}) = h'g,
+  $$
+  but evaluating in $ (0, 0) $ we have
+  $$
+    (a_k + \sum_i a_i f^{i-k}(0, 0)) = h'(0,0) g(0,0) \Rightarrow (a_k + \sum_i a_i 0) = h'(0,0) 0 \Rightarrow a_k = 0,
+  $$
+  making a contradiction with $ a_i \neq 0 $ and proving that $\{ f^n: n \in \mathbb Z_{\leq 0}\}$ is linearly independent.
+\end{proof}
+\end{document}
