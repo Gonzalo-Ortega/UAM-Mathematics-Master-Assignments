@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%
 
-\documentclass[11pt,a4paper,draft]{article}
+\documentclass[11pt,a4paper]{article}
 
 %%%%%%%%%%%%%%%%%%
 
@@ -12,7 +12,7 @@
 \usepackage{epsfig}
 \usepackage{epstopdf}
 \usepackage{esint}
-
+\usepackage{hyperref}
 \usepackage{amsthm}
 
 \usepackage{mathtools} %for \stackrel
@@ -47,7 +47,7 @@
 \hrule\hrule
 \vspace{1mm}
 
-\noindent {\bf Algebraic curves, MMA 2023-24.
+\noindent {\bf Algebraic curves, 2024-25.
 \hfill{Sheet 1}}
 
 \vspace{1mm}
@@ -57,28 +57,70 @@
 
 \hrule\hrule
 
-
-{\bf Exercise 9. (Gathmann 2.7)}
+\subsubsection*{\bf Exercise 4. Jacobian criterion (Gathmann 2.24)}
 \begin{proof}
-  
+  Let f be a reduced polynomial and $ P = (a,b) \in V(f) $ a smooth point. We have that
+  \begin{gather*}
+    (a, b) \text{ is a smooth point } \Leftrightarrow g(x,y) = f(x+a, x+b) \text{ is smooth in } (0,0) \Leftrightarrow \\
+    g_1(x,y) \neq 0 \Leftrightarrow c_1x + c_2y \neq 0 \Leftrightarrow c_1 \neq 0 \text{ or } c_2 \neq 0 \Leftrightarrow \\
+    \frac{\partial g}{\partial x} = c_1 + \dots \neq 0 \text{ or } \frac{\partial g}{\partial y} = c_2 + \dots \neq 0 \Leftrightarrow \\
+    \left(\frac{\partial g}{\partial x}, \frac{\partial g}{\partial y}\right)\Bigg|_{(x,y)=(0,0)} \neq (0,0) \Leftrightarrow \left(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}\right)\Bigg|_{(x,y)=(a,b)} \neq (0,0).
+  \end{gather*}
+\end{proof}
+
+\subsubsection*{\bf Exercise 9. (Gathmann 2.7)}
+Let $ f, g \in K[x,y] $ be two reduced polynomials without a common factor, that vanish at $ (0,0) $.
+
+\subsubsection*{\bf (a)}
+\begin{proof} 
+  Because of Gathmann 1.12, exists $ h(x) \neq 0 \in <f, g>$. We have that $ h = af + bg $ with $ a,b \in \frac{K[x,y]_{(0,0)}}{<f,g>} $ so evaluating at $ 0 $ we have $ h(0) = 0 $ as $ f(0,0) = g (0,0) = 0 $ and can asume that $ h $ has no constant coefficient. We can then factor out some $x^{n_1} $ so that
+  $$
+    h(x) = x^{n_1} t(x), \text{ with } t(x) = c_1 + c2_x + \dots + c_m x^{m-n_1}.
+  $$
+  As $ t(x)$ is a unit, we can divide by it having
+  $$
+    x^{n_1} = \frac{h(x)}{t(x)} \in <f, g>_{K[x, y]_{(0,0)}}.
+  $$
+  That is to say $ x^{n_1} = 0 $. Analogously $ y^{n_2} = 0 $, and taking $ n= \operatorname{max}(n_1, n_2) $ we have $ x^n = y^n = 0 $.
 
 \end{proof}
 
-\vskip 10mm
-{\bf Exercise 10. (Gathmann 2.8)}
-Let f, g $ \in K[x,y] $ be two polynomials that vanish at the origin.
-\vskip 2mm
-(a) If $ f, g $ have no common factor, then the family $\{ f^n: n \in \mathbb Z_{\leq 0}\}$ is linearly independent in $K[V(g)]_{(0,0)}$.
+\subsubsection*{\bf (b)}
 \begin{proof}
-  We have that $K[V(g)]_{(0,0)} = \frac{D[x,y]_{(0,0)}}{<g>} $.
+  Lets recall the property of power series that says that
+$$
+  \frac{1}{1-z} = \sum_{i=0}^{\infty} z^i, \text{ for } |z| <1.
+$$
+Let now $ \frac{f}{g} \in K[x,y]_{(0,0)} $. As $ K $ is a field, we can rewrite $ g = 1 - h $ for some $ h $, and as we are in the local ring around $ (0,0) $, $|h| < 1 $. Thus
+$$
+\frac{f}{g} = f \frac{1}{1-h} = f \sum_{i=0}^{\infty} h^i,
+$$
+but because of {\bf (a)}, for some $ n$ all terms of degree grater or equal to $ n $ go to $ 0 $, so the previous sum is actually finite and every element of $\frac{K[x,y]_{(0,0)}}{<f,g>} $ has a polynomial representative.
+\end{proof}
+
+\subsubsection*{\bf (c)}
+\begin{proof}
+  Because of {\bf (b)}, as every element of $\frac{K[x,y]_{(0,0)}}{<f,g>} $ has a polynomial representative there are no infinite term elements in the local ring, therefore
+  $$
+    \operatorname{dim}_K \frac{K[x,y]_{(0,0)}}{<f,g>} < \infty.
+  $$
+\end{proof}
+
+\subsubsection*{\bf Exercise 10. (Gathmann 2.8)}
+Let $ f, g \in K[x,y] $ be two polynomials that vanish at the origin.
+
+\subsubsection*{\bf (a)}
+\begin{proof}
+  Let $ f, g $ have no common factor.
+  We have that $K[V(g)]_{(0,0)} = \frac{K[x,y]_{(0,0)}}{<g>} $.
   Suppose that there are some $ a_i \neq 0 \in K, i \leq n $ such that
-  $$
+  $
     \sum_i a_i f^i = 0.
-  $$
+  $
   That is
   $
     \sum_i a_i f^i \in <g>,
-  $ so for some $ h \neq 0 $ in $ D[x,y]_{(0,0)} $,
+  $ so for some $ h \neq 0 $ in $ K[x,y]_{(0,0)} $,
   $
     \sum_i a_i f^i = hg
   $, and taking common factor we have
@@ -91,8 +133,31 @@ Let f, g $ \in K[x,y] $ be two polynomials that vanish at the origin.
   $$
   but evaluating in $ (0, 0) $ we have
   $$
-    (a_k + \sum_i a_i f^{i-k}(0, 0)) = h'(0,0) g(0,0) \Rightarrow (a_k + \sum_i a_i 0) = h'(0,0) 0 \Rightarrow a_k = 0,
+    (a_k + \sum_i a_i f^{i-k}(0, 0)) = h'(0,0) g(0,0) \Rightarrow (a_k + \sum_i a_i \cdot 0) = h'(0,0) \cdot 0 \Rightarrow a_k = 0,
   $$
-  making a contradiction with $ a_i \neq 0 $ and proving that $\{ f^n: n \in \mathbb Z_{\leq 0}\}$ is linearly independent.
+  contradicting with $ a_i \neq 0 $ and proving that $\{ f^n: n \in \mathbb Z_{\leq 0}\}$ is linearly independent.
 \end{proof}
+
+\subsubsection*{\bf (b)} 
+\begin{proof}
+  Let $f, g $ have a common factor $ h $ that vanishes at the origin. We can write $ f = f' h^a $ and $ g = g' h^b $. We have
+  $$
+  \operatorname{dim}_K \frac{K[x,y]_{(0,0)}}{<f, g>} = \operatorname{dim}_K \frac{K[x,y]_{(0,0)}}{<f' h^a, g' h^b>} \geq \operatorname{dim}_K \frac{K[x,y]_{(0,0)}}{<h>},
+  $$
+  and because of {\bf (a)}, as $ h $ and $ f' $ have no common factors (the same argument could be given taking $ g'$), the infinite family $\{ f'^n: n \in \mathbb Z_{\leq 0}\}$ is linearly independent in $\frac{K[x,y]_{(0,0)}}{<h>} $, so $ \operatorname{dim}_K \frac{K[x,y]_{(0,0)}}{<h>} = \infty $, as polynomials of the form $ f'^n $ are linearly independent spanning an infinite-dimensional vector space. Thus
+  $$
+  \operatorname{dim}_K \frac{K[x,y]_{(0,0)}}{<f, g>} = \infty.
+  $$
+\end{proof}
+
+
+\begin{thebibliography}{9}
+
+  \bibitem{gath}
+  Andreas Gathmann,
+  \textit{Plane Algebraic Curves},
+  Class Notes RPTU Kaiserslautern 2023.
+  
+\end{thebibliography}
+
 \end{document}
