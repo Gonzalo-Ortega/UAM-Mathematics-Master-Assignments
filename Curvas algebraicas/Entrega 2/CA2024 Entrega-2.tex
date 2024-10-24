@@ -83,7 +83,10 @@
 
 \subsection*{Exercise 4}
 \begin{proof}
-  Let $ I < K[x_0, x_1, x_2] $ be a homogeneous ideal. Let $ K[x_0, x_1, x_2] \ I $ be finite dimensional. If $ V(I) \neq \empty \subset \mathbb P^2 $ then $ \exists p \in \mathbb P^2 $ such that $ \forall f \in I $, $ f(p) = 0 $.
+  Let $ I < K[x_0, x_1, x_2] $ be a homogeneous ideal. Let $ K[x_0, x_1, x_2] / I $ be finite dimensional. If $ V(I) \neq \emptyset \subset \mathbb P^2 $ then $ \exists p = [p_0: p_1: p_2] \in \mathbb P^2 $ such that $ \forall f \in I $, $ f(p) = 0 $. Without loos of generality we can asume $ p = [1: p_1: p_2] $ (the argument will follow analogously choosing any other coordinate to be different from $ 0 $). Thus $ \forall n \in \mathbb N, x_0^n \notin I $. 
+
+  \vspace{1mm}
+  Therefor we have an infinite family $ \{ x_0^n + I \}_{n \in \mathbb N} $ of elements of $ K[x_0, x_1, x_2] / I $. If the family elements were linearly dependent it would exist $ n_i \in \mathbb N $, and a family of indices $ J \subset \mathbb N $ such that $ x_0^{n_i} = \sum_{j \in J} a_j (x_0^{n_j} + I) $. Let $ g = x_0^{n_i} - \sum_{j \in J} a_j (x_0^{n_j} + I) \in I $. Because of the equivalences of the homogeneous ideal definition seen in class, we have $ g_i \in I $ for each homogeneous part $ g_i $ of $ g $. In particular $ x_0^{n_i} \in I $ forming a contradiction. Thus, $ \{ x_0^n + I \}_{n \in \mathbb N} $ is a linearly independent infinite family of $ K[x_0, x_1, x_2] / I $ so the quotient can not be infinite dimensional contradicting the exercise hypothesis. It then need to be $ V(I) = \emptyset $.
 \end{proof}
 
 
