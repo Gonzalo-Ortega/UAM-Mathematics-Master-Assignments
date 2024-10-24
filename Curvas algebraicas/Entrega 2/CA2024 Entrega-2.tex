@@ -57,6 +57,35 @@
 
 \hrule\hrule
 
+\subsection*{Exercise 1.}
+\begin{proof}
+  Let $ X $ be a set, and let $ U_i $ for $ i \in I $ be topological spaces, where $ X = \bigcup U_i $. Let $ \tau_i $ be the topology of each $ U_i $. For every $ i, j \in I $, the topologies $ \tau_i, \tau_j $ on $ U_i $ and $ U_j $ restricted to $ U_i \cap U_j $ agree. A definition of restricted topology, also known as the relative topology can be found in Section 6 of \cite{will}. We can define a topology over $ X $ by considering the union of all open sets of all $ U_i$'s. That is 
+  $$
+    \mathcal T = \{ V \subseteq X : V \cap U_i \in \tau_i, \; \forall i \in I\}.
+  $$
+  Let's check that $ \mathcal T $ is actually a topology. We have $ \emptyset \in \mathcal T $ as for all $i \in I $, $\emptyset \cap U_i = \emptyset \in \tau_i $. The same happens with $ X $, as for all $ i\in I$, $X \cap U_i = U_i \in \tau_i$. Therefore $ \emptyset \in \mathcal T $ and $ X \in \mathcal T $.
+
+  \vspace{1mm}
+  Suppose $ V_1, V_2 \in \mathcal T $, then
+  $$
+    (V_1 \cap V_2) \cap U_i = (V_1\cap U_i) \cap (V_2 \cap U_i) \in \tau_1,
+  $$
+  as $ V_1\cap U_i $ and $ V_2\cap U_i $ are open sets of $U_i$, and the intersection of open sets is open. Thus $ V_1 \cap V_2 \in \mathcal T $.
+
+  \vspace{1mm}
+  In the same manner, if $ \{V_\alpha\}_{\alpha \in A}$ is a collection of sets of $ \mathcal T $, we have
+  $$
+    \left(\bigcup_\alpha V_\alpha \right) = \bigcup_\alpha (V_\alpha \cup U_i) \in \tau_i
+  $$
+  as each $ V_\alpha \cup U_i $ is open in $U_i$. We have then $ \bigcup_\alpha V_\alpha \in \mathcal T $, and we can conclude that $ \mathcal T $ is a topology of X.
+
+  \vspace{1mm}
+  We have proved existence, lets prove now the uniqueness of $ \mathcal T $. Suppose we have two topologies $ \mathcal T_1 $ and $ \mathcal T_2 $ of $ X $ that restrict to the topology of each $ U_i $. Let $ \tau_i $ be the restricted topology of $ \mathcal T_1 $ on each $ U_i $ and $ \tau_j $ be the restricted topology of $ \mathcal T_2 $ on each $ U_j $. And let $ \tau_i', \tau_j' $ be the restricted topologies of $ \tau_i $ and $ \tau_j $ on $ U_i \cap U_j $. We then have that 
+  $$
+    V \in \mathcal T_1 \Leftrightarrow V \cap U_i \in \tau_i \Leftrightarrow V \cap U_i \cap U_j \in \tau_i' \underset{hypothesis}{\Leftrightarrow} V \cap U_i \cap U_j \in \tau_j' \Leftrightarrow  V \cap U_j \in \tau_j \Leftrightarrow V \in \mathcal T_2.
+  $$
+  Therefore, $ T_1 = T_2 $, so there is exactly one topology on $ X $ that restricts to the topology on each $ U_i $.
+\end{proof}
 \subsection*{Exercise 3.}
 
   If $ f \in K[x_0, x_1, x_2] $ be a non-constant homogeneous polynomial and let $ f = \prod_{i=1}^n g_i^{m_i} $ be the decomposition of $ f $ in irreducible polynomials.
@@ -78,15 +107,15 @@
     For $ n = 1 $, $ f = g_1^{m_1} $, so $ g_1^{m_1} $ is homogeneous and so $ g_1 $, as $ f $ is homogeneous. Suppose $ h = \prod_{i=1}^{n-1} g_i^{m_i} $ homogeneous. If $ g_n $ was not homogeneous, $ g_n^{m_n} $ neither would be, and the product $ h g_n^{m_n} $ would not be homogeneous as the product of an homogeneous and a non homogeneous polynomials can not be homogeneous. But $ h g_n^{m_n} = \prod_{i=1}^n g_i^{m_i} = f $ contradicting the fact of $ f $ been homogeneous. Thus $ g_n $ must be homogeneous and, because of induction, each $ g_i $ is homogeneous.
 
     \vspace{1mm}
-    As each $ g_i $ is an homogeneous irreducible polynomial, because of {\bf (a)}, $ V(g_i) $ is a irreducible curve. Therefor, $ V(f) = \cup_i V(g_i) $ is a decomposition in irreducible curves of $ V(f) $.
+    As each $ g_i $ is an homogeneous irreducible polynomial, because of {\bf (a)}, $ V(g_i) $ is a irreducible curve. Therefore, $ V(f) = \cup_i V(g_i) $ is a decomposition in irreducible curves of $ V(f) $.
   \end{proof}
 
-\subsection*{Exercise 4}
+\subsection*{Exercise 4.}
 \begin{proof}
-  Let $ I < K[x_0, x_1, x_2] $ be a homogeneous ideal. Let $ K[x_0, x_1, x_2] / I $ be finite dimensional. If $ V(I) \neq \emptyset \subset \mathbb P^2 $ then $ \exists p = [p_0: p_1: p_2] \in \mathbb P^2 $ such that $ \forall f \in I $, $ f(p) = 0 $. Without loos of generality we can asume $ p = [1: p_1: p_2] $ (the argument will follow analogously choosing any other coordinate to be different from $ 0 $). Thus $ \forall n \in \mathbb N, x_0^n \notin I $. 
+  Let $ I < K[x_0, x_1, x_2] $ be a homogeneous ideal. Let $ K[x_0, x_1, x_2] / I $ be finite dimensional. If $ V(I) \neq \emptyset \subset \mathbb P^2 $ then $ \exists p = [p_0: p_1: p_2] \in \mathbb P^2 $ such that $ \forall f \in I $, $ f(p) = 0 $. Without lose of generality we can asume $ p = [1: p_1: p_2] $ (the argument will follow analogously choosing any other coordinate to be different from $ 0 $). Thus $ \forall n \in \mathbb N, x_0^n \notin I $. 
 
   \vspace{1mm}
-  Therefor we have an infinite family $ \{ x_0^n + I \}_{n \in \mathbb N} $ of elements of $ K[x_0, x_1, x_2] / I $. If the family elements were linearly dependent it would exist $ n_i \in \mathbb N $, and a family of indices $ J \subset \mathbb N $ such that $ x_0^{n_i} = \sum_{j \in J} a_j (x_0^{n_j} + I) $. Let $ g = x_0^{n_i} - \sum_{j \in J} a_j (x_0^{n_j} + I) \in I $. Because of the equivalences of the homogeneous ideal definition seen in class, we have $ g_i \in I $ for each homogeneous part $ g_i $ of $ g $. In particular $ x_0^{n_i} \in I $ forming a contradiction. Thus, $ \{ x_0^n + I \}_{n \in \mathbb N} $ is a linearly independent infinite family of $ K[x_0, x_1, x_2] / I $ so the quotient can not be infinite dimensional contradicting the exercise hypothesis. It then need to be $ V(I) = \emptyset $.
+  Therefore we have an infinite family $ \{ x_0^n + I \}_{n \in \mathbb N} $ of elements of $ K[x_0, x_1, x_2] / I $. If the family elements were linearly dependent it would exist $ n_i \in \mathbb N $ and a finite family of indices $ J \subset \mathbb N $ such that $ x_0^{n_i} = \sum_{j \in J} a_j (x_0^{n_j} + I) $. Let $ g = x_0^{n_i} - \sum_{j \in J} a_j (x_0^{n_j} + I) \in I $. Because of the equivalences of the homogeneous ideal definition seen in class, we have $ g_i \in I $ for each homogeneous part $ g_i $ of $ g $. In particular $ x_0^{n_i} \in I $ forming a contradiction. Thus, $ \{ x_0^n + I \}_{n \in \mathbb N} $ is a linearly independent infinite family of $ K[x_0, x_1, x_2] / I $ so the quotient can not be infinite dimensional contradicting the exercise hypothesis. It then need to be $ V(I) = \emptyset $.
 \end{proof}
 
 
@@ -96,6 +125,11 @@
   Andreas Gathmann,
   \textit{Plane Algebraic Curves},
   Class Notes RPTU Kaiserslautern 2023.
+
+  \bibitem{will}
+  Stephen Willard,
+  \textit{General Topology},
+  Addison-Wesley 1970.
   
 \end{thebibliography}
 
