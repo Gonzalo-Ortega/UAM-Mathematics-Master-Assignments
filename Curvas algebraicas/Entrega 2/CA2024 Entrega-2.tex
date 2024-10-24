@@ -3,7 +3,7 @@
 \documentclass[11pt,a4paper]{article}
 
 %%%%%%%%%%%%%%%%%%
-
+\usepackage[colorlinks=true,pdftex]{hyperref}
 \usepackage{latexsym}
 \usepackage{amssymb}
 \usepackage{amsmath}
@@ -57,8 +57,29 @@
 
 \hrule\hrule
 
-\subsubsection*{\bf Exercise 3.}
+\subsubsection*{Exercise 3.}
 
+  If $ f \in K[x_0, x_1, x_2] $ be a non-constant homogeneous polynomial and let $ f = \prod_{i=1}^n g_i^{m_i} $ be the decomposition of $ f $ in irreducible polynomials.
+
+\subsubsection*{(a)}
+  \begin{proof} \
+
+    \vspace{1mm}
+    ($\Rightarrow$)
+    If $ V(f) $ is irreducible, suppose that we can not write $ f $ as a power of a irreducible polynomial. Then, there exist $ g_1, g_2 \in K[x_0, x_1, x_2] $, with $ g_1 \neq g_2 $, such that $ f = g_1 g_2 $. But then we have $ V(f) = V(g_1 g_2) = V(g_1) \cup V(g_2) $ as seen in Remark 3.9 of \cite{gath}. This is a contradiction as $ V(f) $ is irreducible so it need to be $ f = g^m $ for some $g$ irreducible.
+
+    \vspace{1mm}
+    ($\Leftarrow$)
+    If $ f = g^m $, with $ g $ irreducible, then we have $ V(f) = V(g^m) = V(g) $. $ V(g) $ needs to be irreducible, because if not it could be expressed as the union of two curves $ V(g_1) $ and $ V(g_2) $, having $ V(g) = V(g_1) \cap V(g_2) = V(g_1 g_2) $, and it would be $ g =  g_1^m g_2^m $ contradicting the fact of $ g $ being irreducible. Thus, $ V(g^m) $ is irreducible.
+  \end{proof}
+
+\subsubsection*{(b)}
+  \begin{proof}
+    For $ n = 1 $, $ f = g_1^{m_1} $, so $ g_1^{m_1} $ is homogeneous and so $ g_1 $, as $ f $ is homogeneous. Suppose $ h = \prod_{i=1}^{n-1} g_i^{m_i} $ homogeneous. If $ g_n $ was not homogeneous, $ g_n^{m_n} $ neither would be, and the product $ h g_n^{m_n} $ would not be homogeneous as the product of an homogeneous and a non homogeneous polynomials can not be homogeneous. But $ h g_n^{m_n} = \prod_{i=1}^n g_i^{m_i} = f $ contradicting the fact of $ f $ been homogeneous. Thus $ g_n $ must be homogeneous and, because of induction, each $ g_i $ is homogeneous.
+
+    \vspace{1mm}
+    As each $ g_i $ is an homogeneous irreducible polynomial, because of {\bf (a)}, $ V(g_i) $ is a irreducible curve. Therefor, $ V(f) = \cup_i V(g_i) $ is a decomposition in irreducible curves of $ V(f) $.
+  \end{proof}
 
 \begin{thebibliography}{9}
 
