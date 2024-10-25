@@ -118,12 +118,20 @@
   Therefore we have an infinite family $ \{ x_0^n + I \}_{n \in \mathbb N} $ of elements of $ K[x_0, x_1, x_2] / I $. If the family elements were linearly dependent it would exist $ n_i \in \mathbb N $ and a finite family of indices $ J \subset \mathbb N $ such that $ x_0^{n_i} = \sum_{j \in J} a_j (x_0^{n_j} + I) $. Let $ g = x_0^{n_i} - \sum_{j \in J} a_j (x_0^{n_j} + I) \in I $. Because of the equivalences of the homogeneous ideal definition seen in class, we have $ g_i \in I $ for each homogeneous part $ g_i $ of $ g $. In particular $ x_0^{n_i} \in I $ forming a contradiction. Thus, $ \{ x_0^n + I \}_{n \in \mathbb N} $ is a linearly independent infinite family of $ K[x_0, x_1, x_2] / I $ so the quotient can not be infinite dimensional contradicting the exercise hypothesis. It then need to be $ V(I) = \emptyset $.
 \end{proof}
 
-\subsection{Exercise 8 (Gathmann 4.9)}
+\subsection*{Exercise 8 (Gathmann 4.9)}
 
 \subsubsection*{(a)}
-Over $ \mathbb C $ let $ f = x + y^2 $, $ g = x + y^2 - x^3 $ 
+Over $ \mathbb C $ let $ f = x + y^2 $ and $ g = x + y^2 - x^3 $. Their respective homogenizations are $ f^{h} = xz +y^2 $ and $ g^{h} = xz^2 + y^2z - x^3 $. Making $ z = 0 $ to obtain their points at infinity we get $ f^{h}(z=0) = y^2 $ and $ g^{h}(z=0) = x^3 $. So the only point at infinity of $ f $ is $ (1:0:0) $ and of $ g $, $ (0:1:0) $. Thus, $ V(f) $ and $ V(g) $ do not intersect at infinity. In the affine part, their only intersection point is $ p = (0:0:1) $, and as $ \mathbb C = \bar{\mathbb C}$, because of Bézout's theorem
+$$
+  \mu_p(f, g) = \deg f \cdot \deg g = 2 \cdot 3 = 6.
+$$
 
 \subsubsection*{(b)}
+Over $ \mathbb C $, now let $ f = y^2 - x_2 $ and $ g = (x + y + 1) (y - x + 1) = y^2 - x^2 + 2y + 1 $. Their homogenizations are $ f^h = y^2 - x^2 + z^2 $ and $ g^h = y^2 - x^2 + 2yz + z^2 $. Then we have $ f^h(z=0) = y^2 - x^2 $ and $ g^h(z=0) = y^2 - x^2 $, so both curves have two common points at infinity, $ p_1 = (1:1:0) $ and $ p_2 = (1:-1:0) $. In the affine part we have other two common points, $ p_3 = (1:1:1) $ and $ p_4 = (1:-1:1) $ so using Bézout's theorem we have
+$$
+  \sum_{i=1}^{4} \mu_{p_i}(f, g) = \deg f \cdot \deg g = 2 \cdot 2 = 4,
+$$
+so it could only be $ \mu_{p_i}(f, g) = 1 $ for each $ i $.
 
 \begin{thebibliography}{9}
 
