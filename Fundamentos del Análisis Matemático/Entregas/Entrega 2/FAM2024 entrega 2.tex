@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 \usepackage{epsfig}
 \usepackage{epstopdf}
+\usepackage{amsthm}
 
 %%%%%%%%%%%%%%%%%%
 
@@ -46,11 +47,11 @@
 
 \vspace{3mm}
 
- \noindent {\bf NOMBRE}: Gonzalo Ortega Carpintero \hfill ({\it Para entregar el miércoles, 30 de octubre})
+ \noindent {\bf NOMBRE}: Gonzalo Ortega Carpintero \hfill ({\it Para entregar el jueves, 1 de noviembre})
 
 \vspace{2mm}
 
-\hrule\hrule
+\hrule\hrule 
 
 \vspace{2mm}
 
@@ -94,6 +95,35 @@ Mostrar que si $f\in L^1(\mathbb R^n)$ entonces $Mf\notin L^1(\mathbb R^n)$ a me
 \hrule
 \vskip 5mm
 
+\newpage
 \noindent {\bf SOL.:} 
- 
- \end{document}
+
+\subsection*{1.}
+\begin{proof}
+  Si fuera $ f = 0 $ a.e., entonces $ Mf(x) = 0 $ a.e. y se tendría
+  $$
+    \| Mf(x) \|_{L^1} = \int_{\mathbb R^n} |Mf(x)| dx = 0 < \infty.
+  $$
+  Si $ f \neq 0 $ a.e., entonces para cualquier $ x \in \mathbb R^n $ podemos tomar un $ z \in \mathbb R^n $ que cumpla que $ |x-z| > 1$ y que en un entorno de $ z $, exista algún $ y \in \mathbb R^n $ de forma que $ f(y) \neq 0 $. Así, para una bola centrada en $ x $ de radio $ |x-z| $, la integral 
+  $
+    \int_{B_{|x-z|}} |f(y)|\, dy > 0.
+  $
+  Por otro lado tenemos que el volumen la bola n-dimensional se puede expresar como
+  $ |B_r| = \frac{1}{c_n} r^n $, para un $c_n > 0 $. Así, tomando $ r = |x-z| $ en la definición del operador maximal, tenemos que
+  $$
+    Mf(x) \geq \frac{1}{|B_{|x-z|}|} \int_{B_{|x-z|}(x)} |f(y)|\, dy \geq c_n \frac{1}{|x-z|^n} \int_{B_{|x-z|}(x)} |f(y)|\, dy \geq c_n \frac{1}{|x-z|^n}.
+  $$
+  Integrando a ambos lados y haciendo el cambio de variable $ u = x - z $, de forma que $ du = dz $, tenemos
+  $$
+    \int_{R^n} Mf(x) \, dx = \int_{R^n} c_n \frac{1}{|x-z|^n} \, dx = c_n \int_{R^n} \frac{1}{|u|^n} \, du.
+  $$
+  Pasando ahora a coordenadas polares con el cambio $ u = r\theta $ con $ r = |u| \in (0, \infty)$ para determinar la distancia de $ u $ al origen y $ \theta \in \mathcal S^{n-1} $, la esfera unidad en $ \mathbb R^n $, para determinar el ángulo de $ u $. Tenemos que $ du = r^{n-1} \, dr d\theta $, luego
+  $$
+    \int_{\mathbb R^n} \frac{1}{|u|^n} \, du = \int_{0}^\infty \int_{S^{n-1}} \frac{1}{r^n} r^{n-1} \, dr d\theta = \int_{0}^\infty \frac{1}{r^n} r^{n-1} \, dr \int_{S^{n-1}} d\theta = c \int_{0}^\infty \frac{1}{r} \, dr = \infty.
+  $$
+  Por tanto $ \int_{\mathbb R^n} Mf(x) = \infty $ y se tiene así que $ Mf \notin L^1(\mathbb R^n)$ si $f \neq 0$ a.e.
+\end{proof}
+
+\subsection*{2.}
+
+\end{document}
