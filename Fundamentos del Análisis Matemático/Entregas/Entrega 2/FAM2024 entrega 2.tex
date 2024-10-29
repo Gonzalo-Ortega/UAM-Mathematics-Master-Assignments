@@ -14,6 +14,9 @@
 \usepackage{epstopdf}
 \usepackage{amsthm}
 
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{tkz-fct}
 %%%%%%%%%%%%%%%%%%
 
 \usepackage[spanish]{babel}
@@ -124,6 +127,20 @@ Mostrar que si $f\in L^1(\mathbb R^n)$ entonces $Mf\notin L^1(\mathbb R^n)$ a me
   Por tanto $ \int_{\mathbb R^n} Mf(x) = \infty $ y se tiene así que $ Mf \notin L^1(\mathbb R^n)$ si $f \neq 0$ a.e.
 \end{proof}
 
+\newpage
 \subsection*{2.}
+\input{triangle-iterations.tex}
 
+La la foto adjunta representa la segunda iteración $ F_2 $ de la construcción de una figura fractal semejante al triángulo de Sierpinski $ \mathbb S $, como podemos observar en la Figura \ref{fig:triangles}. Podemos expresar cada una de las iteraciones mediante la unión de los triángulos que las forman de la siguiente manera:
+\begin{align*}
+  F_0 &= \Delta_{0,1}, \\ 
+  F_1 &= \Delta_{1,1} \cup \dots \cup \Delta_{1,10} = \bigcup_{k=1}^{10} \Delta_{1, k}, \\
+  F_2 &= \bigcup_{k=1}^{100} \Delta_{2, k}, \\
+  F_n &= \bigcup_{k=1}^{n} \Delta_{n, k}. \\
+\end{align*}
+Tenemos entonces que la figura semejante al triángulo de Sierpinski es $ \mathbb S^* := \bigcap_{n=1}^\infty F_n $. Si denotamos $ S $ a una de las iteraciones de la construcción, entonces la siguiente iteración $ 2S $, es la unión de 10 copias desplazadas de $ S $. Por tanto, la medida de Hausdorff de dimensión $ s_0 $ tiene que cumplir
+$$
+  \mathcal H^{s_0} (2S) = 2^{s_0} \mathcal H^{s_0} (S) = 10 \mathcal H^{s_0} (S),
+$$
+y por tanto $ 2^{s_0} = 10 $ de donde obtenemos que la dimensión de Hausdorff de $ \mathbb S^* $ es $ s_0 = \frac{\log 10}{\log 2} $.
 \end{document}
