@@ -107,7 +107,7 @@ Mostrar que si $f\in L^1(\mathbb R^n)$ entonces $Mf\notin L^1(\mathbb R^n)$ a me
   $$
     \| Mf(x) \|_{L^1} = \int_{\mathbb R^n} |Mf(x)| dx = 0 < \infty.
   $$
-  Si $ f \neq 0 $ a.e., entonces para cualquier $ x \in \mathbb R^n $ podemos tomar un $ z \in \mathbb R^n $ que cumpla que $ |x-z| > 1$ y que en un entorno de $ z $, exista algún $ y \in \mathbb R^n $ de forma que $ f(y) \neq 0 $. Así, para una bola centrada en $ x $ de radio $ |x-z| $, la integral 
+  En caso contrario, existiría un conjunto $ A \subset \mathbb R^n $ con $ |A| > 0 $ donde para todo $ y \in A $, $ f(y) \neq 0 $. Para cualquier $ x \in \mathbb R^n $ podemos tomar un $ z \in \mathbb R^n $ que cumpla que $ |x-z| > 1 $ y que la intersección de la bola centrada en $ x $ de radio $ |x-z| $ con $ A $ no tenga medida cero. De esta forma, para todo $ y \in  B_{|x-z|} \cap A $, $ f(y) \neq 0 $. Así, para $ B_{|x-z|} $, la integral 
   $
     \int_{B_{|x-z|}} |f(y)|\, dy > 0.
   $
@@ -138,9 +138,14 @@ La la foto adjunta representa la segunda iteración $ F_2 $ de la construcción 
   F_2 &= \bigcup_{k=1}^{100} \Delta_{2, k}, \\
   F_n &= \bigcup_{k=1}^{n} \Delta_{n, k}. \\
 \end{align*}
-Tenemos entonces que la figura semejante al triángulo de Sierpinski es $ \mathbb S^* := \bigcap_{n=1}^\infty F_n $. Si denotamos $ S $ a una de las iteraciones de la construcción, entonces la siguiente iteración $ 2S $, es la unión de 10 copias desplazadas de $ S $. Por tanto, la medida de Hausdorff de dimensión $ s_0 $ tiene que cumplir
+Tenemos entonces que la figura semejante al triángulo de Sierpinski es $ \mathbb S^* := \bigcap_{n=1}^\infty F_n $. Si denotamos $ S $ a una de las iteraciones de la construcción, entonces la siguiente iteración es $ 4S $, ya que está formada colocando 4 triángulos $ s $ como base, es la unión de 10 copias desplazadas de $ S $. Por tanto, la medida de Hausdorff de dimensión $ s_0 $ tiene que cumplir
 $$
-  \mathcal H^{s_0} (2S) = 2^{s_0} \mathcal H^{s_0} (S) = 10 \mathcal H^{s_0} (S),
+  \mathcal H^{s_0} (4S) = 4^{s_0} \mathcal H^{s_0} (S) = 10 \mathcal H^{s_0} (S),
 $$
-y por tanto $ 2^{s_0} = 10 $ de donde obtenemos que la dimensión de Hausdorff de $ \mathbb S^* $ es $ s_0 = \frac{\log 10}{\log 2} $.
+y por tanto $ 4^{s_0} = 10 $ de donde obtenemos que la dimensión de Hausdorff de $ \mathbb S^* $ es $ s_0 = \frac{\log 10}{\log 4} $.
+
+\subsection*{3.}
+\begin{proof}
+  
+\end{proof}
 \end{document}
