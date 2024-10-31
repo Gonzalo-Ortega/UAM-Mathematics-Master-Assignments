@@ -144,8 +144,40 @@ $$
 $$
 y por tanto $ 4^{s_0} = 10 $ de donde obtenemos que la dimensión de Hausdorff de $ \mathbb S^* $ es $ s_0 = \frac{\log 10}{\log 4} $.
 
-\subsection*{3.}
+\subsection*{3.} 
+{\it Asumiendo que los $ R_j $ tienen lados paralelos a los ejes. }
 \begin{proof}
-  
+  Supongamos primero $ f \in \mathcal C_c(\mathbb R^2) $ función continua con soporte compacto. Se tiene entonces que $ \forall \epsilon > 0 \; \exists \delta > 0, \; |x-y| < \delta \Rightarrow |f(x) - f(y)| < \epsilon $. Podemos tomar $ j $ tan grande como se necesite para verificar que $ \operatorname{diam} R_j > \delta $. Luego a partir de ese $ j $, todo $ x, y \in R_j $ verifican $ |y| < \delta $, luego  $ |x - (x - y)|  < \delta $ y $ |f(x) - f(x - y)|  < \epsilon $. Por tanto,
+  $$
+    \left| \frac{1}{|R_j|} \int_{R_j} f(x-y) dy - f(x) \right| = \left| \frac{1}{|R_j|} \int_{R_j} f(x-y) - f(x) dy \right| = \frac{1}{|R_j|} \int_{R_j} | f(x-y) - f(x) | dy < \epsilon, 
+  $$
+  y se tiene
+  $$
+  \lim_{j \to \infty} \frac{1}{|R_j|} \int_{R_j} f(x-y) dy = f(x).
+  $$
+  Tomando $ x = (x_1, x_2), y = (y_1, y_2) \in \mathbb R^2 $ podemos expresar el operador maximal sobre este tipo de rectángulos como
+  $$
+    M_s f(x_1, x_2) = \sup_{R_j} \frac{1}{|R_j|} \int_{R_j} |f(x_1-y_1, x_2-y_2)| \; d(y_1, y_2).
+  $$
+  Definimos ahora
+  \begin{align*}
+    M_1 f(x_1, x_2) &= \sup_{h>0} \frac{1}{2h} \int_{-h}^{h} |f(x_1 - y_1, x_2)|\;  dy_1,\\
+    M_2 f(x_1, x_2) &= \sup_{h>0} \frac{1}{2h} \int_{-h}^{h} |f(x_1, x_2 - y_2)| \; dy_2. \\
+  \end{align*}
+  Tomando $ R_j = [-a_j, a_j] \times [-b_j, b_j] $ se tiene que
+  \begin{align*} 
+    M_s f(x_1, x_2) &\leq \frac{1}{|R_j|} \int_{R_j} |f(x_1-y_1, x_2-y_2)| \; d(y_1, y_2) = \frac{1}{4 a_j b_j} \int_{-a_j}^{a_j} \int_{-b_j}^{b_j} |f(x_1-y_1, x_2-y_2)| \; dy_2 dy_1 \\
+    &= \frac{1}{2 b_j} \int_{-a_j}^{a_j} \left( \frac{1}{2 a_j} \int_{-b_j}^{b_j} |f(x_1-y_1, x_2-y_2)| \; dy_2 \right) dy_1 \leq \frac{1}{2 b_j} \int_{-a_j}^{a_j} M_2 f(x_1 - y_1, x_2) \; dy_1 \\ 
+    &\leq M_1 \circ M_2 f(x_1, x_2).
+  \end{align*}
+  Aplicando la desigualdad de Hardy-Littlewood sobre $ M_1 $ y $ M_2 $ podemos sobre aplicarla con $ M_s $ de forma que podamos tomar una constante $ C $ tal que
+  $$
+    |\{x: \, M_s f(x - y) > \lambda\}| \leq \frac{C}{\lambda} \int_{R_j} f(x - y) \; dy.
+  $$
+  De esta forma, realizando un procedimiento análogo al hecho en clase para el teorema de diferenciación de Lebesgue, podemos concluir que el conjunto
+  $$
+    \left\{ x: \lim_{j \to \infty} \frac{1}{|R_j|} \int_{R_j} f(x-y) dy - f(x) > \lambda \right\}
+  $$
+  tiene medida cero.
 \end{proof}
 \end{document}
