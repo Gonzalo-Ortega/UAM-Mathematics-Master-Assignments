@@ -89,7 +89,7 @@ Prueba ahora que $\widehat F(\xi)=C_0\,\widehat G(\xi)$, para una constante $C_0
 \begin{proof}
     \
     \subsubsection*{Indicación 1:}
-    Supongamos que $ G(x) \in L^1$, entonces, por propiedades de la transformada de Fourier (\cite{Soria} Proposición 6.1), se tiene que $ \widehat G(x) \in L^\infty $, y en particular $ \widehat G(x) \in L^1$. Por tanto, se tiene también que $ \widehat{\widehat G}(x) \in L^\infty$. Pero por el Teorema de Inversión en $\mathscr{S}$ (\cite{Soria} Teorema 6.8), $ \widehat{\widehat G} (x) = \widehat G(-x)^{\widecheck{}} = \left(\widehat f(\cdot)|\cdot|^\alpha\right)^{\widecheck{}}(-x) = G(-x)$, donde haciendo el cambio de variable $ x \sim -x $, nos queda que $ G(x) \in L^\infty $. Con esto vemos que sería suficiente con probar el ejercicio para $ p = 1 $.
+    Supongamos que $ G(x) \in L^1$, entonces, por propiedades de la transformada de Fourier (\cite{Soria} Proposición 6.1), se tiene que $ \widehat G(x) \in L^\infty $, y en particular $ \widehat G(x) \in L^1$. Por tanto, se tiene también que $ \widehat{\widehat G}(x) \in L^\infty$. Pero por el Teorema de Inversión en $\mathscr{S}$ (\cite{Soria} Teorema 6.8), $ \widehat{\widehat G} (x) = \widehat G(-x)^{\widecheck{}} = \left(\widehat f(\cdot)|\cdot|^\alpha\right)^{\widecheck{}}(-x) = G(-x)$, donde haciendo el cambio de variable $ x = -x $, nos queda que $ G(x) \in L^\infty $. Con esto vemos que sería suficiente con probar el ejercicio para $ p = 1 $.
     \vskip 5mm
     Si fuera $ \alpha = 0 $, entonces $ G(x) = f(x) \in L^\infty $ ya que $ f \in \mathscr S$. Si fuera $ \alpha \ge 2 $, podríamos expresar $ |\xi|^\alpha = |\xi|^{2n + \alpha^*} = |\xi|^{2n} |\xi|^{\alpha^*}$ con $ 2n \in 2\mathbb N $ y $\alpha^* \in [0, 2)$. Por la propiedad de la derivada de la transformada (\cite{Soria} Corolario 6.4), tenemos que $ \widehat{D^{2n}f}(\xi) = (2 \pi i \xi)^{2n} \widehat f (\xi) \ge |\xi|^{2m} \widehat f (\xi)$. Por tanto tenemos
     $$
@@ -103,8 +103,19 @@ Prueba ahora que $\widehat F(\xi)=C_0\,\widehat G(\xi)$, para una constante $C_0
     \newpage
 
     \subsubsection*{Indicación 2:}
-    
-
+    Veamos que cada una de las dos integrales indicadas converge. Para la primera utilizamos el desarrollo de Taylor de $ f(x + y) = f(x) + \nabla f(x) \cdot y + \frac{1}{2}H_f(x) |y|^2 + \mathcal O (|y|^3)$. Luego
+    $$
+    \int_{\mathbb R^N}\int_{|y|\le 1}\frac{|f(x+y)-f(x)-\nabla f(x)\cdot y|}{|y|^{N+\alpha}}dy dx \le
+    \int_{\mathbb R^N}\int_{|y|\le 1}\frac{H_f(x) |y|^2}{|y|^{N+\alpha}}dy dx < \infty
+    $$
+    ya que $ \alpha \in (0, 2) $ y $ f \in \mathscr S $. Para la segunda integral basta con usar la forma de los elementos de $ \mathscr S $, así
+    $$
+    \int_{\mathbb R^N}\int_{|y|>1}\frac{|f(x+y)-f(x)|}{|y|^{N+\alpha}}dydx \le \int_{\mathbb R^N}\int_{|y|>1}\frac{|f(x+y)|+|f(x)|}{|y|^{N+\alpha}}dydx 
+    $$
+    $$
+    \le \int_{\mathbb R^N} \frac{2}{|x|^{2N}}\int_{|y|>1}\frac{1}{|y|^{N+\alpha}|x+y|^{2N}}dydx < \infty.
+    $$
+    Por tanto tenemos que si $\alpha \in (2, 0)$ se tiene $F(x) \in L^1$ como queríamos comprobar.
     \subsubsection*{Indicación 3:}
     Utilizando la nota $ ^{(1)} $ observamos que la segunda integral tiende a cero cuando $ R $ tiende a infinito, por lo que podemos considerar únicamente la primera integral. Calculando su transformada aplicando el Teorema de Fubini, usando las propiedades de la transformada (\cite{Soria} Prop. 6.1 {\it iv)}, Prop. 6.4) y sacando factor común $ \widehat f(\xi) $, tenemos
     \begin{align*}
