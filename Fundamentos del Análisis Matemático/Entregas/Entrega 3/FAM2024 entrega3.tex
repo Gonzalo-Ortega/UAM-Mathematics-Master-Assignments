@@ -48,7 +48,7 @@
 
 \vspace{3mm}
 
- \noindent {\bf NOMBRE}: \hfill ({\small \it Para entregar el jueves, 21 de noviembre})
+ \noindent {\bf NOMBRE}: Gonzalo Ortega Carpintero \hfill ({\small \it Para entregar el jueves, 21 de noviembre})
 
 \vspace{2mm}
 
@@ -89,9 +89,9 @@ Prueba ahora que $\widehat F(\xi)=C_0\,\widehat G(\xi)$, para una constante $C_0
 \begin{proof}
     \
     \subsubsection*{Indicación 1:}
-    Supongamos que $ G(x) \in L^1$, entonces, por propiedades de la transformada de Fourier (Soria, Proposición 6.1), se tiene que $ \widehat G(x) \in L^\infty $, y en particular $ \widehat G(x) \in L^1$. Por tanto, se tiene también que $ \widehat{\widehat G}(x) \in L^\infty$. Pero por el Teorema de Inversión en $\mathscr{S}$ (Soria, Teorema 6.8), $ \widehat{\widehat G} (x) = \widehat G(-x)^{\widecheck{}} = \left(\widehat f(\cdot)|\cdot|^\alpha\right)^{\widecheck{}}(-x) = G(-x)$, donde haciendo el cambio de variable $ x \sim -x $, nos queda que $ G(x) \in L^\infty $. Con esto vemos que sería suficiente con probar el ejercicio para $ p = 1 $.
+    Supongamos que $ G(x) \in L^1$, entonces, por propiedades de la transformada de Fourier (\cite{Soria} Proposición 6.1), se tiene que $ \widehat G(x) \in L^\infty $, y en particular $ \widehat G(x) \in L^1$. Por tanto, se tiene también que $ \widehat{\widehat G}(x) \in L^\infty$. Pero por el Teorema de Inversión en $\mathscr{S}$ (\cite{Soria} Teorema 6.8), $ \widehat{\widehat G} (x) = \widehat G(-x)^{\widecheck{}} = \left(\widehat f(\cdot)|\cdot|^\alpha\right)^{\widecheck{}}(-x) = G(-x)$, donde haciendo el cambio de variable $ x \sim -x $, nos queda que $ G(x) \in L^\infty $. Con esto vemos que sería suficiente con probar el ejercicio para $ p = 1 $.
     \vskip 5mm
-    Si fuera $ \alpha = 0 $, entonces $ G(x) = f(x) \in L^\infty $ ya que $ f \in \mathscr S$. Si fuera $ \alpha \ge 2 $, podríamos expresar $ |\xi|^\alpha = |\xi|^{2n + \alpha^*} = |\xi|^{2n} |\xi|^{\alpha^*}$ con $ 2n \in 2\mathbb N $ y $\alpha^* \in [0, 2)$. Por la propiedad de la derivada de la transformada (Soria, Corolario 6.4), tenemos que $ \widehat{D^{2n}f}(\xi) = (2 \pi i \xi)^{2n} \widehat f (\xi) \ge |\xi|^{2m} \widehat f (\xi)$. Por tanto tenemos
+    Si fuera $ \alpha = 0 $, entonces $ G(x) = f(x) \in L^\infty $ ya que $ f \in \mathscr S$. Si fuera $ \alpha \ge 2 $, podríamos expresar $ |\xi|^\alpha = |\xi|^{2n + \alpha^*} = |\xi|^{2n} |\xi|^{\alpha^*}$ con $ 2n \in 2\mathbb N $ y $\alpha^* \in [0, 2)$. Por la propiedad de la derivada de la transformada (\cite{Soria} Corolario 6.4), tenemos que $ \widehat{D^{2n}f}(\xi) = (2 \pi i \xi)^{2n} \widehat f (\xi) \ge |\xi|^{2m} \widehat f (\xi)$. Por tanto tenemos
     $$
     \int_{\mathbb R^N}
     \widehat f(\xi)|\xi|^\alpha e^{2\pi ix\cdot\xi}d\xi = \int_{\mathbb R^N}
@@ -106,6 +106,28 @@ Prueba ahora que $\widehat F(\xi)=C_0\,\widehat G(\xi)$, para una constante $C_0
     
 
     \subsubsection*{Indicación 3:}
+    Utilizando la nota $ ^{(1)} $ observamos que la segunda integral tiende a cero cuando $ R $ tiende a infinito, por lo que podemos considerar únicamente la primera integral. Calculando su transformada aplicando el Teorema de Fubini, usando las propiedades de la transformada (\cite{Soria} Prop. 6.1 {\it iv)}, Prop. 6.4) y sacando factor común $ \widehat f(\xi) $, tenemos
+    \begin{align*}
+        \widehat F (\xi) &= \lim_{R\to\infty} \int_{\mathbb R^N} \left( \int_{|y|\le R}\frac{f(x+y)-f(x)-\nabla f(x)\cdot y}{|y|^{N+\alpha}}dy\right) e^{2\pi i x \cdot \xi} dx \\
+        &= \lim_{R\to\infty} \int_{|y|\le R} \frac{1}{|y|^{N+\alpha}} \left( \int_{|y|\le R} ( f(x+y)-f(x)-\nabla f(x)\cdot y ) e^{2\pi i x \cdot \xi} dx \right) dy \\
+        &= \lim_{R\to\infty} \int_{|y|\le R} \frac{1}{|y|^{N+\alpha}} \left( e^{2\pi i x \cdot |\xi|} \widehat f(\xi) - \widehat f(\xi) - 2\pi i |\xi| \widehat f(\xi)\cdot y \right) dy \\
+        &= \widehat f(\xi) \lim_{R\to\infty} \int_{|y|\le R} \frac{1}{|y|^{N+\alpha}} \left( e^{2\pi i y \cdot |\xi|} - 1 - 2\pi i |\xi|\cdot y \right) dy.
+    \end{align*}
+    Haciendo el cambio de variable $ u = y|\xi| $, con $ dy = \frac{1}{|\xi|^N} du $ tenemos
+    $$
+        \widehat F (\xi) = \widehat f(\xi) \lim_{R\to\infty} \int_{|y|\le R} \frac{|\xi|^{N+\alpha}}{|u|^{N+\alpha}} \left( e^{2\pi i u} - 1 - 2\pi i u \right) \frac{1}{|\xi|^N} du = \widehat f(\xi)|\xi|^\alpha C(N, \alpha) = \widehat G(\xi) C_0.
+    $$
+    Por tanto, como por la { \bf Indicación 2} $ F(x) \in L^1 $ para $ \alpha \in (0, 2) $, entonces $ G(x) $ también. Con la justificación de la {\bf Indicación 1}, esto prueba que $ G(x) \in L^\infty $ como se pedía.
+        
 \end{proof}
+
+\begin{thebibliography}{9}
+
+    \bibitem{Soria}
+    Fernando Soria,
+    \textit{Curso de Variable Real},
+    Universidad Autónoma de Madrid 2019.
+    
+  \end{thebibliography}
 
 \end{document}
