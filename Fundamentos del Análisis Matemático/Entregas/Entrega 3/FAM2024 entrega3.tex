@@ -1,0 +1,89 @@
+\documentclass[11pt,a4paper]{article}
+
+%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\usepackage{verbatim}
+\usepackage{mathabx}
+\usepackage{mathrsfs}
+
+%%%%%%%%%%%%%%%%%%
+
+\usepackage[spanish]{babel}
+\usepackage[uft8]{inputenc}
+
+\newcommand{\blue}{\textcolor{blue}}
+\newcommand{\red}{\textcolor{red}}
+\newcommand{\w}{\textcolor{white}}
+
+\addtolength{\topmargin}{-3cm} 
+\addtolength{\oddsidemargin}{-2.5cm}
+\addtolength{\textheight}{+6.5cm} 
+\addtolength{\textwidth}{+5cm}
+
+
+\parindent=0cm    
+\parskip=0mm
+
+%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+\hrule\hrule
+\vspace{2mm}
+
+\noindent {\bf Fundamentos de Análisis Matemático, MMA 2024-25.
+\hfill{ENTREGA 3}}
+
+\vspace{3mm}
+
+ \noindent {\bf NOMBRE}: \hfill ({\small \it Para entregar el jueves, 21 de noviembre})
+
+\vspace{2mm}
+
+\hrule\hrule
+
+\vspace{2mm}
+
+\
+
+\noindent  {\bf 1.-} 
+ \blue{\em Demuestra que si $f\in\mathscr{S}(\mathbb R^N)$ y $\alpha\ge 0$ entonces la siguiente función pertenece a   $L^p(\mathbb R^N), \quad \forall p\ge 1$:
+$$
+G(x)=\left(\widehat f(\cdot)|\cdot|^\alpha\right)^{\widecheck{}}(x)=\int_{\mathbb R^N}
+\widehat f(\xi)|\xi|^\alpha e^{2\pi ix\cdot\xi}d\xi.
+$$}
+\vskip -2mm
+{\sc Indicaciones}: 
+\begin{enumerate}
+\item Justifica primero por qué es suficiente probarlo para  $p=1$ y $0<\alpha<2$. 
+\item Demuestra que si $0<\alpha<2$ 
+$$\displaystyle\int_{\mathbb R^N}\left(\int_{|y|\le 1}\frac{|f(x+y)-f(x)-\nabla f(x)\cdot y|}{|y|^{N+\alpha}}dy+
+\int_{|y|>1}\frac{|f(x+y)-f(x)|}{|y|^{N+\alpha}}dy\right)dx<\infty.$$ 
+
+\item  Lo anterior nos dice que la siguiente función  pertenece a $L^1(\mathbb R^N):$ ${}^($\footnote{ Puede ser útil observar que, al ser 
+$\nabla f(x)\cdot y$ una función impar en la variable  $y$, se tiene $$F(x)=\displaystyle\int_{|y|\le R}\frac{f(x+y)-f(x)-\nabla f(x)\cdot y}{|y|^{N+\alpha}}dy+
+\int_{|y|>R}\frac{f(x+y)-f(x)}{|y|^{N+\alpha}}dy, \quad \forall R>0.$$}${}^)$
+ \\[2mm]
+$F(x)=\displaystyle\int_{|y|\le 1}\frac{f(x+y)-f(x)-\nabla f(x)\cdot y}{|y|^{N+\alpha}}dy+
+\int_{|y|>1}\frac{f(x+y)-f(x)}{|y|^{N+\alpha}}dy.$    \\[1mm]
+Prueba ahora que $\widehat F(\xi)=C_0\,\widehat G(\xi)$, para una constante $C_0=C(N,\alpha)$ que depende solo de  $N$ y $\alpha$.
+\end{enumerate}
+\vskip 6mm
+\hrule
+\vskip 5mm
+
+
+\noindent {\bf SOL.:} 
+ 
+ \end{document}
