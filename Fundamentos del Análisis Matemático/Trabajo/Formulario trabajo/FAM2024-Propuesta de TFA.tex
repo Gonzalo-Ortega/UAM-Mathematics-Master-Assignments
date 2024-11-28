@@ -71,14 +71,17 @@ Universidad Autónoma de Madrid\\
 
 \item[1.-] {\bf  Motivación y/o reseñas históricas}:
 
-Las aplicaciones de transporte surgieron para expresar la idea de optimizar el proceso de transportar tierra de un lugar a otro. De la misma forma, se puede plantear el problema como la optimización de la distribución de oferta y demanda de diversos productos. Para abordar el problema es necesario definir el coste del transporte, es decir, una función distancia. Para nuestro caso concreto introduciremos la distancia de Wasserstein, que define una distancia entre distribuciones de probabilidad en un espacio métrico. La utilizaremos para medir la distancia entre diagramas de persistencia, utilizados en el análisis topológico de datos para representar la persistencia de los distintos grupos de homología persistente de un conjunto de datos a lo largo del tiempo.
+Las aplicaciones de transporte fueron introducidas en 1781 por Gaspard Monge para expresar la idea de optimizar el proceso de transportar tierra de un lugar a otro \cite[1.1 Historical overview]{Figalli}. De la misma forma, se puede plantear el problema como la optimización de la distribución de oferta y demanda de diversos productos, como replanteó Kantorovich en los años 40. La idea era permitir ahora dividir la masa a transportar, pudiendo interpretar el problema como la forma de cuantificar el coste de transformar una distribución de probabilidad en otra. Para abordar el problema es necesario definir el coste del transporte o transformación, es decir, una plantear una función distancia entre nuestros objetos a medir.
+
+En el análisis topológico de datos, aparecen diagramas para representar la persistencia de los distintos grupos de homología de un conjunto de datos a lo largo del tiempo. A dichos diagramas se les denota diagramas de persistencia, y a dichos grupos de homología, grupos de homología persistente. En el trabajo introduciremos la distancia de Wasserstein, que define una distancia entre distribuciones de probabilidad en un espacio métrico, permitiendo medir la distancia entre los diagramas de persistencia de diversos grupos de homología persistente.
 
 Mi motivación para abordar este tema viene de la necesidad de tratar estos conceptos en mi TFM, orientado al análisis topológico de datos. Ha sido una sugerencia de mi tutor, Manuel Mellado, de CUNEF. Es por eso que la idea es redactar el trabajo en inglés si es posible, para poder así incluir fragmentos del mismo directamente en el documento de mi TFM.
 
 \item[2.-] {\bf Breve resumen de los resultados principales}:
 
-A lo largo del trabajo se realizará una introducción del problema de transporte óptimo, de la p-distancia de Wasserstein (comprobando que efectivamente es una distancia) y del espacio de diagramas de persistencia con distancias de tipo Wasserstein. El objetivo será presentar el resultado del encaje isométrico de un espacio métrico dentro del espacio de diagramas de persistencia.
+A lo largo del trabajo se realizará una introducción del problema de transporte óptimo, de la p-distancia de Wasserstein (comprobando que efectivamente es una distancia dentro del espacio de medidas de probabilidad con $p$--momento finito) y del espacio de diagramas de persistencia con distancias de tipo Wasserstein. El objetivo será presentar el resultado del encaje isométrico de un espacio métrico separable dentro del espacio de diagramas de persistencia \cite[Theorem 19]{Bubenik}. En el caso de que una vez completada la introducción al problema con las correspondientes definiciones y pruebas auxiliares, y demostrado el resultado principal, el trabajo quedara algo corto, siempre podrá complementarse con algún corolario de de dicho teorema.
 
+\newpage
 \item[3.-] {\bf Bibliografía (libros y artículos) que se van a usar}: 
 \end{enumerate}
 
