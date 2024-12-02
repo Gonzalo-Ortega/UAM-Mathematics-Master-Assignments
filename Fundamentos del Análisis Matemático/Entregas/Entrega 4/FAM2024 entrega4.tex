@@ -1,0 +1,89 @@
+\documentclass[11pt,a4paper]{article}
+
+%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\usepackage{verbatim}
+\usepackage{mathabx}
+\usepackage{mathrsfs}
+
+%%%%%%%%%%%%%%%%%%
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+\newcommand{\blue}{\textcolor{blue}}
+\newcommand{\red}{\textcolor{red}}
+\newcommand{\w}{\textcolor{white}}
+
+
+%%%%%%%%%%%%%%%%%%
+
+\addtolength{\topmargin}{-3cm} 
+\addtolength{\oddsidemargin}{-2.5cm}
+\addtolength{\textheight}{+6.5cm} 
+\addtolength{\textwidth}{+5cm}
+
+
+\parindent=0cm    
+\parskip=0mm
+
+%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+\hrule\hrule
+\vspace{2mm}
+
+{\bf Fundamentos de Análisis Matemático, MMA 2024-25.
+\hfill{ENTREGA 3}}
+
+\vspace{3mm}
+
+ \noindent {\bf NOMBRE}: Gonzalo Ortega Carpintero \hfill ({\small \it Para entregar el jueves, 5 de diciembre})
+
+\vspace{2mm}
+
+\hrule\hrule
+
+\vspace{2mm}
+
+\
+
+{\bf 1.-} (Lema de Van der Corput) Sea $\Phi\in\mathcal{C}^2(\mathbb R)$ una función a valores reales, monótona y con $|\Phi'(x)|\ge 1$ en el intervalo $[a,b]$. Demuestra que
+$$
+\left|\int_a^b e^{i\Phi(x)}dx\right|\le 4. 
+$$
+
+ \vskip -1mm
+
+{\sc Indicaciones}: Escribe $e^{i\Phi(x)}=\Phi'(x)e^{i\Phi(x)}\frac 1{\Phi'(x)}$ y usa integración por partes. Luego observa que $\frac d{dx}\left(\frac 1{\Phi'(x)}\right)$ no cambia de signo por ser $\Phi'(x)$ monótona. 
+
+\vskip 8mm 
+
+{\bf 2.-} Demuestra que existe una constante $C>0$, finita, de forma que $\forall \lambda\in \mathbb R$ y $\forall a<b$ se tiene
+$$
+\left|\int_a^b e^{i(\lambda x^2+x)}\frac{dx}{|x|^{1/2}}\right|\le C
+$$
+ \vskip -1mm
+
+{\sc Indicaciones}: Podemos suponer que $0 \le a <b$. Haz un cambio de variables para que la integral quede de la forma $\displaystyle \int_{a'}^{b'} e^{i\Phi(y)}dy$. Finalmente, encuentra las regiones de monotonía de $\Phi'(x)$ y donde, además, $|\Phi'(x)|\ge 1$. Deberás considerar los casos $\lambda>0$ (fácil) y $  \lambda<0$ por separado. 
+\vskip 1cm 
+
+\noindent {\bf SOL.:} 
+ 
+ \end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
