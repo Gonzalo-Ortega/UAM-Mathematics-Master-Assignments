@@ -15,6 +15,7 @@
 \usepackage{verbatim}
 \usepackage{mathabx}
 \usepackage{mathrsfs}
+\usepackage{amsthm}
 
 %%%%%%%%%%%%%%%%%%
 
@@ -60,7 +61,7 @@
 
 \
 
-{\bf 1.-} (Lema de Van der Corput) Sea $\Phi\in\mathcal{C}^2(\mathbb R)$ una función a valores reales, monótona y con $|\Phi'(x)|\ge 1$ en el intervalo $[a,b]$. Demuestra que
+{\bf 1.-} (Lema de Van der Corput) Sea $\Phi\in\mathcal{C}^2(\mathbb R)$ una función a valores reales, donde $ \Phi'(x) $ es monótona y cumple $|\Phi'(x)|\ge 1$ en el intervalo $[a,b]$. Demuestra que
 $$
 \left|\int_a^b e^{i\Phi(x)}dx\right|\le 4. 
 $$
@@ -82,8 +83,25 @@ $$
 
 \noindent {\bf SOL.:} 
  
- \end{document}
+\section*{1.}
+\begin{proof}
+Siguiendo la indicación e integrando por partes se tiene:
+\begin{align*}
+    \left|\int_a^b e^{i\Phi(x)}dx\right| &= \left|\int_a^b i \Phi'(x) e^{i\Phi(x)} \frac 1{i \Phi'(x)}dx\right| = \left| \left[ \frac{-i}{\Phi'(x)} e^{i\Phi(x)}  \right]_a^b - \int_a^b e^{i\Phi(x)} \frac{i \Phi'(x)}{\Phi''(x)^2} dx\right| \\ 
+    &= \left| \frac{-i}{\Phi'(b)} e^{i\Phi(b)} - \frac{-i}{\Phi'(a)} e^{i\Phi(a)} - \int_a^b e^{i\Phi(x)} \frac{-i\Phi''(x)} {\Phi'(x)^2} dx\right| \\
+    &\le \left| \frac{-i}{\Phi'(b)} e^{i\Phi(b)} \right| + \left| \frac{-i}{\Phi'(a)} e^{i\Phi(a)} \right| + \left| \int_a^b e^{i\Phi(x)} \frac{-i\Phi''(x)} {\Phi'(x)^2} dx \right| \\
+    &\le \left| \frac{1}{\Phi'(b)} \right| + \left| \frac{1}{\Phi'(a)} \right| + \int_a^b \left|\frac{\Phi''(x)} {\Phi'(x)^2} \right| dx \le 1 + 1 + \int_a^b|\Phi''(x)|dx \\
+    &\le 2 + |\Phi'(b)| + |\Phi'(a)| \le 2 + 1 + 1 = 4,
+\end{align*}
+usando, en las dos últimas desigualdades, el hecho de $|\Phi'(x)|\ge 1$ y que $ \Phi'(x) $ no cambia de signo.
+\end{proof}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\section*{2.}
+\begin{proof}
+Haciendo el cambio de variable $ y = x^{\frac{1}{2}} $, tenemos $ x = y^2 $ nos queda $\Phi(y) = \lambda y^4 + y^2 $, con $ dy = \frac{dx}{|x|^{1/2}} $. Luego
+$$
+\left|\int_a^b e^{i(\lambda x^2+x)}\frac{dx}{|x|^{1/2}}\right| = \left|\int_{a'}^{b'} e^{i(\lambda y^4 + y^2)}dy\right|.
+$$
+Basta por tanto acotar la integral cuando $ \Phi(y) $ no cumple las hipótesis del Ejercicio 1.
+\end{proof}
+\end{document}
