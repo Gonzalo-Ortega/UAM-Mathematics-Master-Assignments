@@ -58,9 +58,28 @@
 \hrule\hrule
 
 \subsection*{Exercise 8 (Gathmann 6.25.).}
-
-
-
+Let $ F = y^2 z - x^3 + xz^2 $ and $ \varphi = \frac{y}{z} $. $ F = 0$ at the points $ P_1 = (0:0:1) $, $ P_2 = (1:0:1) $, $ P_3 = (-1:0:1) $, $ P_4 = (0:1:0) $. Hence, using \cite[Construction 6.17]{gath} and \cite[Algorithm 2.12]{gath}, we compute the multiplicity at each $ P_i $ of $ \varphi $ at $ F $.
+\begin{align*}
+  \mu_{P_1}(y) &= \mu_{(0,0)}(y, y^2-x^3+x) = \mu_{(0,0)}(y, x(1-x^2)) = 1 \\
+  \mu_{P_1}(z) &= \mu_{(0,0)}(1, y^2-x^3+x) = 0 \\
+  \mu_{P_1}(\varphi) &= \mu_{P_1}(y) - \mu_{P_1}(z) = 1 - 0 = 1 \\
+  \\
+  \mu_{P_2}(y) &= \mu_{(1,0)}(y, y^2-x^3+x) = \mu_{(0,0)}(y, y^2-(x+1)^3+x+1) = \mu_{(0,0)}(y, -x(x^2+3x-2)) = 1 \\
+  \mu_{P_2}(z) &= \mu_{(1,0)}(1, y^2-x^3+x) = \mu_{(0,0)}(1, y^2-(x+1)^3+x+1) = 0 \\
+  \mu_{P_2}(\varphi) &= \mu_{P_2}(y) - \mu_{P_2}(z) = 1 - 0 = 1 \\
+  \\
+  \mu_{P_3}(y) &= \mu_{(-1,0)}(y, y^2-x^3+x) = \mu_{(0,0)}(y, y^2-(x-1)^3+x-1) = \mu_{(0,0)}(y, x(x^2-3x+4)) = 1 \\
+  \mu_{P_3}(z) &= \mu_{(-1,0)}(1, y^2-x^3+x) = \mu_{(0,0)}(1, y^2-(x-1)^3+x-1) = 0 \\
+  \mu_{P_3}(\varphi) &= \mu_{P_3}(y) - \mu_{P_3}(z) = 1 - 0 = 1 \\
+  \\
+  \mu_{P_4}(y) &= \mu_{(0,0)}(1, z-x^3+xz^2) = 0 \\
+  \mu_{P_4}(z) &= \mu_{(0,0)}(z, z-x^3+xz^2) = \mu_{(0,0)}(z, z(1+xz)-x^3) = \mu_{(0,0)}(z, -x^3) = 3\\
+  \mu_{P_4}(\varphi) &= \mu_{P_4}(y) - \mu_{P_4}(z) = 0 - 3 = -3 \\
+\end{align*}
+Now, following \cite[Construction 6.23]{gath}, we have
+$$
+  \operatorname{div}\frac{y}{z} = 1 \cdot (0:0:1) + 1 \cdot (1:0:1) + 1 \cdot (-1:0:1) - 3 \cdot (0:1:0).
+$$
 
 \begin{thebibliography}{9}
 
@@ -70,8 +89,5 @@
   Class Notes RPTU Kaiserslautern 2023.
   
 \end{thebibliography}
-
-
-
 
 \end{document}
