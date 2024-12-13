@@ -57,6 +57,46 @@
 
 \hrule\hrule
 
+\subsection*{Exercise 7 (Gathmann 6.21.).}
+\begin{proof}
+We define, following \cite[Construction 3.13]{gath}, the ring homomorphism between the coordinate ring $ A(F) = K[x, y] / \langle F \rangle $ and the homogeneous coordinate ring of degree $ d $, $ S(F)$, formed by the homogeneous elements of degree $ d $ of $ S(F) = K[x, y, z] / \langle F \rangle$, as
+  \begin{align*}
+    \phi: A(F) &\longrightarrow S_d(F) \\
+    f^i = \sum_{i+j \leq d} a_{i,j} x^i y^j &\longmapsto \phi (f^i) = f^h = \sum_{i+j \leq d} a_{i,j} x^i y^j z^{d-i-j}.
+  \end{align*}
+  If $f, g \in A(F) $, $\phi $ and $ d = \operatorname{max}\{\operatorname{deg}f, \operatorname{deg}g\} $, $\phi$ is an homomorphism as
+  \begin{align*}
+    \phi(1) &= \phi(1 x^0 y^0) = 1 x^0 y^0 z^0 = 1, \\
+    \phi(f + g) &= \phi \left(\sum_{i + j \leq d} a_{i,j} x^i y^j + \sum_{i + j \leq d} b_{i,j} x^i y^j \right) = \phi \left(\sum_{i + j \leq d} (a_{i,j} + b_{i,j})  x^i y^j \right) \\
+    &= \sum_{i + j \leq d} (a_{i,j} + b_{i,j})  x^i y^j z^{d-i-j} = \sum_{i + j \leq d} a_{i,j}  x^i y^j z^{d-i-j} + \sum_{i + j \leq d} b_{i,j}  x^i y^j z^{d-i-j} \text{ and} \\
+    &= \phi(f) + \phi(g)\\ 
+    \phi(f \cdot g) &= \phi\left(\sum_{i + j \leq d} a_{i,j} x^i y^j \cdot \sum_{k + l \leq d} b_{k,l} x^k y^l\right) = \phi\left(\sum_{\substack{i + j \leq d\\k + l \leq d}} a_{i,j} b_{k,l} x^{i+k} y^{j+l} \right) \\
+    &= \sum_{\substack{i + j \leq d\\k + l \leq d}} a_{i,j} b_{k,l} x^{i+k} y^{j+l} z^{2d-i-j-k-l} = \sum_{i + j \leq d} a_{i,j} x^{i} y^{j} z^{d-i-j} \cdot \sum_{k + l \leq d} b_{k,l} x^{k} y^{l} z^{d-k-l} \\
+    &= \phi(f) \cdot \phi(g).
+  \end{align*}
+  Actually, $ \phi $ is an isomorphism, as we can define its inverse as
+  \begin{align*}
+    \phi^{-1}: S_d(F) &\longrightarrow A(F) \\
+    f^h = \sum_{i+j+k = d} a_{i,j,k} x^i y^j z^k &\longmapsto \phi^{-1} (f^h) = f^i = \sum_{i+j \leq d} a_{i,j,k} x^i y^j.
+  \end{align*}
+  Now, we can define the desired isomorphism between $ K(F) = \left\{\frac{f}{g}: f, g \in A(F)\right\} $ and $ K(F^h) = $ $ \left\{\frac{f}{g}: f, g \in S_d(F)\right\} $ as
+  \begin{align*}
+    \Phi: K(F) &\longrightarrow K(F^h) \\
+    \frac{f^i}{g^i} &\longmapsto \Phi \left(\frac{f^i}{g^i}\right)= \frac{\phi(f^i)}{\phi(g^i)} = \frac{f^h}{g^h},
+  \end{align*}
+  witch has inverse
+  \begin{align*}
+    \Phi^{-1}: K(F^h) &\longrightarrow K(F) \\
+    \frac{f^h}{g^h} &\longmapsto \Phi^{-1} \left(\frac{f^h}{g^h}\right)= \frac{\phi^{-1}(f^h)}{\phi^{-1}(g^h)} = \frac{f^i}{g^i},
+  \end{align*}
+  and, given $ \frac{f}{g}, \frac{h}{k} \in K(F) $, verifies
+  \begin{align*}
+    \Phi(\frac{1}{1}) &= \frac{\phi(1)}{\phi(1)} = \frac{1}{1}, \\
+    \Phi(\frac{f}{g} + \frac{h}{k}) &= \Phi(\frac{fk + gh}{gk}) = \frac{\phi(fk + gh)}{\phi(gk)} = \frac{\phi(f) \cdot \phi(k) + \phi(g) \cdot\phi(h)}{\phi(g) \cdot \phi(k)} = \frac{\phi(f)}{\phi(g)} + \frac{\phi(h)}{\phi(k)} = \Phi(\frac{f}{g}) + \Phi(\frac{h}{k}), \\
+    \Phi(\frac{f}{g} \cdot \frac{h}{k}) &= \Phi(\frac{f\cdot h}{g \cdot k}) = \frac{\phi(f\cdot h)}{\phi(g \cdot k)} = \frac{\phi(f) \cdot \phi(h)}{\phi(\phi(g) \cdot \phi(k)} = \Phi(\frac{f}{g})\cdot \Phi(\frac{h}{k}).
+  \end{align*}
+\end{proof}
+
 \subsection*{Exercise 8 (Gathmann 6.25.).}
 Let $ F = y^2 z - x^3 + xz^2 $ and $ \varphi = \frac{y}{z} $. $ F = 0$ at the points $ P_1 = (0:0:1) $, $ P_2 = (1:0:1) $, $ P_3 = (-1:0:1) $, $ P_4 = (0:1:0) $. Hence, using \cite[Construction 6.17]{gath} and \cite[Algorithm 2.12]{gath}, we compute the multiplicity at each $ P_i $ of $ \varphi $ at $ F $.
 \begin{align*}
