@@ -61,16 +61,18 @@
 \subsubsection*{(a)}
 \begin{proof}
   Let $ F = F_1 \cdots F_n $ be a reduced curve of degree 
-  $ d $ with its decomposition into $ F_i $ irreducible components. Lets proof the statement by induction over the number $ n $ of irreducible components. For $ n = 1 $, $ F = F_1 $ is an irreducible curve, so using \cite[Proposition 5.6]{gath}, we have that $ F $ has at most $ \binom{d - 1}{2} \leq \binom{d}{2} $ singular points. Assuming the hypothesis for $ n = m $, lets check it for $ n = m+1$. We have $ F = F_1 \cdots F_m F_{m+1} $, were $ \deg F = d $ and $ \deg F_1 \cdots F_m = d - \deg F_{m+1} $. Denote $d' = \deg F_{m+1} $. Using the induction hypothesis and \cite[Remark 2.23]{gath} we have that the singular points $ F $ has are at most
-  $$
-    \binom{d-d'}{2} + \binom{d'}{2} = \frac{(d-d')(d-d'-1)}{2} + \frac{d'(d'-1)}{2} = \frac{d(d-1)}{2} + d'(d'-d) \leq \frac{d(d-1)}{2} = \binom{d}{2}
-  $$
-  noting that $ d' \leq d $.
+  $ d $ with its decomposition into $ F_i $ irreducible components. Lets proof the statement by induction over the number $ n $ of irreducible components. For $ n = 1 $, $ F = F_1 $ is an irreducible curve, so using \cite[Proposition 5.6]{gath}, we have that $ F $ has at most $ \binom{d - 1}{2} \leq \binom{d}{2} $ singular points. Assuming the hypothesis for $ n = m $, lets check it for $ n = m+1$. We have $ F = F_1 \cdots F_m F_{m+1} $, were $ \deg F = d $ and $ \deg F_1 \cdots F_m = d - \deg F_{m+1} $. Denote $d' = \deg F_{m+1} $. Using the induction hypothesis we know that $ F_1 \dots F_m $ has at most $ \binom{d-d'}{2} $ singular points and, because \cite[Proposition 5.6]{gath}, $ F_{m+1} $ has $ \binom{d-1}{2} $. The  Bézout's theorem says that the intersection multiplicity of both curves is $ (d-d')d' $ so the singular points $ F $ has are at most
+  \begin{align*}
+    \binom{d-d'}{2} + \binom{d' - 1}{2} +(d-d')d' &= \frac{(d-d')(d-d'-1) + (d'-1)(d'-2) + 2dd' - 2d'^2}{2} \\
+    &= \frac{d(d-1)}{2} - d' +1 \leq \frac{d(d-1)}{2} = \binom{d}{2}
+  \end{align*}
+  noting that $ 1 \leq d' $.
 \end{proof}
 
 \subsubsection*{(b)}
 To find an example for each $ d $ where $ F $ has exactly $ \binom{d}{2} $ singular points, its enough to take $ d $ linear independent lines $ L_i $, $ i \in [1, d] $ where for each $ i \neq j \in [1, d] $, if $ P = L_i \cup L_j $, then $ L_i \cup L_k \neq P, \ \forall k \neq i,j \in [1, d] $. A concrete example could be formed by the lines of the form $ \left\{d(x+d)\right\}_{d \in \mathbb N} $. (Considering that the characteristic of the field $ K $ is not a multiple of $ d $).
 
+\newpage
 \subsection*{Exercise 7 (Gathmann 6.21.).}
 \begin{proof}
 We define, following \cite[Construction 3.13]{gath}, the ring homomorphism between the coordinate ring $ A(F) = K[x, y] / \langle F \rangle $ and the homogeneous coordinate ring of degree $ d $, $ S(F)$, formed by the homogeneous elements of degree $ d $ of $ S(F) = K[x, y, z] / \langle F \rangle$, as
@@ -106,8 +108,9 @@ We define, following \cite[Construction 3.13]{gath}, the ring homomorphism betwe
   and, given $ \frac{f}{g}, \frac{h}{k} \in K(F) $, verifies
   \begin{align*}
     \Phi(\frac{1}{1}) &= \frac{\phi(1)}{\phi(1)} = \frac{1}{1}, \\
-    \Phi(\frac{f}{g} + \frac{h}{k}) &= \Phi(\frac{fk + gh}{gk}) = \frac{\phi(fk + gh)}{\phi(gk)} = \frac{\phi(f) \cdot \phi(k) + \phi(g) \cdot\phi(h)}{\phi(g) \cdot \phi(k)} = \frac{\phi(f)}{\phi(g)} + \frac{\phi(h)}{\phi(k)} = \Phi(\frac{f}{g}) + \Phi(\frac{h}{k}), \\
-    \Phi(\frac{f}{g} \cdot \frac{h}{k}) &= \Phi(\frac{f\cdot h}{g \cdot k}) = \frac{\phi(f\cdot h)}{\phi(g \cdot k)} = \frac{\phi(f) \cdot \phi(h)}{\phi(\phi(g) \cdot \phi(k)} = \Phi(\frac{f}{g})\cdot \Phi(\frac{h}{k}).
+    \Phi(\frac{f}{g} + \frac{h}{k}) &= \Phi(\frac{fk + gh}{gk}) = \frac{\phi(fk + gh)}{\phi(gk)} = \frac{\phi(f) \cdot \phi(k) + \phi(g) \cdot\phi(h)}{\phi(g) \cdot \phi(k)} = \frac{\phi(f)}{\phi(g)} + \frac{\phi(h)}{\phi(k)} \\
+    &= \Phi(\frac{f}{g}) + \Phi(\frac{h}{k}), \\
+    \Phi(\frac{f}{g} \cdot \frac{h}{k}) &= \Phi(\frac{f\cdot h}{g \cdot k}) = \frac{\phi(f\cdot h)}{\phi(g \cdot k)} = \frac{\phi(f) \cdot \phi(h)}{\phi(g) \cdot \phi(k)} = \Phi(\frac{f}{g})\cdot \Phi(\frac{h}{k}).
   \end{align*}
 \end{proof}
 
