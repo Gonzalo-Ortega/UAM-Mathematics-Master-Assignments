@@ -1,20 +1,15 @@
-%%%%%%%%%%%%%%%%%%
-
 \documentclass[11pt,a4paper]{article}
 
-\usepackage[a4paper,bindingoffset=3mm,bottom=35mm]{geometry}
+\usepackage[a4paper,margin=2cm]{geometry}
 \usepackage[colorlinks=true,pdftex]{hyperref}
 \usepackage[pdftex]{graphicx}  
-\usepackage[spanish]{babel}
+\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath,amssymb, amsthm}
-\usepackage{hyperref}
+\usepackage{amsmath,amssymb,amsthm}
 \usepackage{color}
 \usepackage{afterpage}
-\usepackage{paralist}
 \usepackage{array}
 \usepackage{enumerate}
-\usepackage{paralist}
 \usepackage{enumitem}
 \usepackage{float}
 \usepackage{setspace}
@@ -26,47 +21,22 @@
 \usepackage{multirow}
 \usepackage{subcaption}
 \usepackage{tikz}
-\usepackage{tkz-fct}
-\usepackage{quotchap}
-\usepackage{lipsum}
-\usepackage{pgfplots}
-\usepackage{mathrsfs}
-
-%%%%%%%%%%%%%%%%%%
-
-\addtolength{\topmargin}{-3.5cm} \addtolength{\oddsidemargin}{-2cm}
-\addtolength{\textheight}{+5cm} \addtolength{\textwidth}{+4cm}
-
-
-\parindent=0mm
-\parskip 0mm
-
-\thispagestyle{empty}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \begin{document}
+
 \hrule\hrule
-\vspace{1mm}
-
-\noindent {\bf Algebraic curves, 2024-25.
-\hfill{Sheet 3}}
-
-\vspace{1mm}
-
- \noindent {\bf Name}: Gonzalo Ortega Carpintero
 \vspace{2mm}
-
+\noindent {\bf Mathematic Analysis Fundamentals. End of Course Thesis. 2024-2025. }
+\vspace{1mm} \\
+{\bf Title}: Optimal transport for Topological Data Analysis
+\vspace{1mm} \\
+{\bf Name}: Gonzalo Ortega Carpintero
+\vspace{2mm}
 \hrule\hrule
 
 \input{optimal-transport.tex}
 
-\addcontentsline{toc}{chapter}{Bibliografía}
-
-\footnotesize{
-    \bibliographystyle{IEEEtran}
-    \bibliography{bibliografia}
-}
+\bibliographystyle{IEEEtran}
+\bibliography{biblio.bib}
 
 \end{document}
