@@ -33,13 +33,6 @@
 \addtolength{\topmargin}{-3.5cm} \addtolength{\oddsidemargin}{-2cm}
 \addtolength{\textheight}{+5cm} \addtolength{\textwidth}{+4cm}
 
-
-\parindent=0mm
-\parskip 0mm
-
-\thispagestyle{empty}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -72,7 +65,6 @@
 \subsubsection*{(b)}
 To find an example for each $ d $ where $ F $ has exactly $ \binom{d}{2} $ singular points, its enough to take $ d $ linear independent lines $ L_i $, $ i \in [1, d] $ where for each $ i \neq j \in [1, d] $, if $ P = L_i \cup L_j $, then $ L_i \cup L_k \neq P, \ \forall k \neq i,j \in [1, d] $. A concrete example could be formed by the lines of the form $ \left\{d(x+d)\right\}_{d \in \mathbb N} $. (Considering that the characteristic of the field $ K $ is not a multiple of $ d $).
 
-\newpage
 \subsection*{Exercise 7 (Gathmann 6.21.).}
 \begin{proof}
 We define, following \cite[Construction 3.13]{gath}, the ring homomorphism between the coordinate ring $ A(F) = K[x, y] / \langle F \rangle $ and the homogeneous coordinate ring of degree $ d $, $ S(F)$, formed by the homogeneous elements of degree $ d $ of $ S(F) = K[x, y, z] / \langle F \rangle$, as
@@ -86,6 +78,9 @@ We define, following \cite[Construction 3.13]{gath}, the ring homomorphism betwe
     \phi(f + g) &= \phi \left(\sum_{i + j \leq d} a_{i,j} x^i y^j + \sum_{i + j \leq d} b_{i,j} x^i y^j \right) = \phi \left(\sum_{i + j \leq d} (a_{i,j} + b_{i,j})  x^i y^j \right) \\
     &= \sum_{i + j \leq d} (a_{i,j} + b_{i,j})  x^i y^j z^{d-i-j} = \sum_{i + j \leq d} a_{i,j}  x^i y^j z^{d-i-j} + \sum_{i + j \leq d} b_{i,j}  x^i y^j z^{d-i-j} \text{ and} \\
     &= \phi(f) + \phi(g)\\ 
+  \end{align*}
+
+  \begin{align*}
     \phi(f \cdot g) &= \phi\left(\sum_{i + j \leq d} a_{i,j} x^i y^j \cdot \sum_{k + l \leq d} b_{k,l} x^k y^l\right) = \phi\left(\sum_{\substack{i + j \leq d\\k + l \leq d}} a_{i,j} b_{k,l} x^{i+k} y^{j+l} \right) \\
     &= \sum_{\substack{i + j \leq d\\k + l \leq d}} a_{i,j} b_{k,l} x^{i+k} y^{j+l} z^{2d-i-j-k-l} = \sum_{i + j \leq d} a_{i,j} x^{i} y^{j} z^{d-i-j} \cdot \sum_{k + l \leq d} b_{k,l} x^{k} y^{l} z^{d-k-l} \\
     &= \phi(f) \cdot \phi(g).
@@ -114,6 +109,7 @@ We define, following \cite[Construction 3.13]{gath}, the ring homomorphism betwe
   \end{align*}
 \end{proof}
 
+\newpage
 \subsection*{Exercise 8 (Gathmann 6.25.).}
 Let $ F = y^2 z - x^3 + xz^2 $ and $ \varphi = \frac{y}{z} $. $ F = 0$ at the points $ P_1 = (0:0:1) $, $ P_2 = (1:0:1) $, $ P_3 = (-1:0:1) $, $ P_4 = (0:1:0) $. Hence, using \cite[Construction 6.17]{gath} and \cite[Algorithm 2.12]{gath}, we compute the multiplicity at each $ P_i $ of $ \varphi $ at $ F $.
 \begin{align*}
