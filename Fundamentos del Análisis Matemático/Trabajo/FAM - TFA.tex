@@ -6,21 +6,27 @@
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb,amsthm}
-\usepackage{color}
-\usepackage{afterpage}
-\usepackage{array}
-\usepackage{enumerate}
-\usepackage{enumitem}
-\usepackage{float}
-\usepackage{setspace}
-\usepackage{listings}
-\usepackage{algorithm}
-\usepackage{algorithmic}
-\usepackage{fancyhdr}
-\usepackage{rotating}
-\usepackage{multirow}
-\usepackage{subcaption}
-\usepackage{tikz}
+
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corolary}{Corolary}[section]
+\newtheorem{fact}{Fact}[section]
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+
+\newcommand{\authorname}{Gonzalo Ortega Carpintero}
+\newcommand{\dgmp}{\operatorname{Dgm}_p}
+\newcommand{\dgmi}{\operatorname{Dgm}_\infty}
+\newcommand{\costp}{\operatorname{cost}_p}
+\newcommand{\costi}{\operatorname{cost}_\infty}
+\newcommand{\wdp}{\omega_p}
+\newcommand{\wdi}{\omega_\infty}
+\newcommand{\n}{\mathbb N}
+\newcommand{\upr}{\mathbb{R}_<^2}
 
 \begin{document}
 
@@ -30,12 +36,13 @@
 \vspace{1mm} \\
 {\bf Title}: Optimal transport for Topological Data Analysis
 \vspace{1mm} \\
-{\bf Name}: Gonzalo Ortega Carpintero
+{\bf Name}: \authorname
 \vspace{2mm}
 \hrule\hrule
 
 \input{optimal-transport.tex}
 
+\pagebreak
 \bibliographystyle{IEEEtran}
 \bibliography{biblio.bib}
 
