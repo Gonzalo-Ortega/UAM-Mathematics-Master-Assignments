@@ -1,0 +1,133 @@
+\section{Wasserstein distance over persistence diagrams}
+
+The contents of this thesis are based on \cite{Figalli} and \cite{Bubenik}.
+
+Along this text, we will denote the strict upper triangular region of the Euclidean plane as $ \upr := \{(x, y) \in \mathbb R^2 : x < y\} $, and the diagonal of the plane as $ \Delta := \{(x, y) \in \mathbb R^2 : x = y\}$.
+
+\begin{definition}[Persistence diagram]
+    Let $ I $ be a countable set. A {\it persistence diagram} is a function $ D: I \to \upr $.
+\end{definition}
+
+\begin{definition}[Chebyshev distance](To do)
+    $d_\infty := \max \{|a_x - b_x|, |a_y - b_y|\}$
+\end{definition}
+
+\begin{proposition}
+    If $ a \in \upr $, then $ d_\infty(a, \Delta) = \inf_{t \in \Delta} d_\infty(a, t) = \frac{a_y - a_x}{2} $.
+\end{proposition}
+\begin{proof}
+    (to do)  
+\end{proof}
+
+\begin{proposition}
+    The upper triangular region of the Euclidean plane with the Chebyshev distance  $ (\upr, d_\infty) $ is a metric space.
+\end{proposition}
+\begin{proof}
+    (To do)
+\end{proof}
+
+\begin{definition}[Partial matching]
+    Let $ D_1: I_1 \to \upr $ and $ D_2: I_2 \to \upr $ be persistence diagrams. A {\it partial matching} between $ D_1 $ and $ D_2 $ is the triple $ (I_1', I_2', f) $ such that $ f: I_1' \to I_2' $ is a bijection with $ I_1' \subseteq I_1 $ and $ I_2' \subseteq I_2 $.
+\end{definition}
+
+\begin{definition}
+    Let $ D_1: I_1 \to \upr $ and $ D_2: I_2 \to \upr $ be persistence diagrams. Let $ (I_1', I_2', f) $ be a partial matching between them. If $ p < \infty $, the {\it $p$-cost of $ f $} is defined as
+    \begin{align*}
+        \costp(f) := \left(\sum_{i\in I_1'}d_\infty(D_1(i), D_2(f(i)))^p + \sum_{i \in I_1 \backslash I_1'} d_infty (D_1(i), \Delta)^p \right. 
+         + \left.\sum_{i \in I_2 \backslash I_2'} d_infty (D_2(i), \Delta)^p \right)^{\frac{1}{p}}.
+    \end{align*}
+    For $ p = \infty $, the {\it $\infty$-cost of $ f $} is defined as
+    \begin{align*}
+        \costi(f) := \max \{\sup_{i \in I_1'} d_\infty(D_1(i), D_2(f_i)), \sup_{i\in I_1 \backslash \ I_1'} d_\infty(D_1(i), \Delta), \sup_{i\in I_2 \backslash \ I_2'} d_\infty(D_2(i), \Delta)\}.
+    \end{align*}
+\end{definition}
+
+\begin{definition}[p-Wasserstein distance] \label{def-Wasserstein}
+    Let $ D_1, D_2 $ be persistence diagrams. Let $ 1 \leq p \leq \infty $. Define
+    $$
+        \tilde \wdp (D_1, D_2) = \inf \{\costp(f) : f \text{ is a partial matching between } D_1 \text{ and } D_2 \}.
+    $$
+    Let $ \emptyset $ denote the unique persistence diagram with empty indexing set. Let $ (\dgmp, \wdp) $ be the space of persistence diagrams $ D $ that satisfy $ \tilde \wdp(D, \emptyset) < \infty $ modulo the equivalence relation $ D_1 \sim D_2 $ if $ \tilde \wdp (D_1, D_2) = 0 $. The metric $ \wdp $ is called the {\it $p$-Wasserstein distance}.
+\end{definition}
+
+\begin{definition}[Bottleneck distance]
+    In the conditions of Definition \ref{def-Wasserstein}, if $ p = \infty $, the metric $ \wdi $ is called the {\it bottleneck distance}.
+\end{definition}
+
+\begin{proposition} \label{prop-empty-mathing-distance}
+    There is only one matching between $ D: I \to \upr $ and $ \emptyset $. Hence,
+    $$
+        \tilde \wdp(D, \emptyset) = \left(\sum_{i\in I} d_\infty(D(i), \Delta)^p\right)^{\frac{1}{p}}.
+    $$
+\end{proposition}
+\begin{proof}
+    (To do)
+\end{proof}
+
+\begin{proposition}
+    The space of persistence diagrams with the $p$-Wasserstein distance $(\dgmp, \wdp)$ is indeed a metric space.
+\end{proposition}
+\begin{proof}
+    (To do)
+\end{proof}
+
+\begin{definition}[Isometric embedding]
+    Let $ (X, d_X), (Y, d_Y) $ be metric spaces. An {\it isometric embedding} $ \eta: (X, d_X) \to (Y, d_Y) $ is a mapping that satisfies
+    $$
+        d_X(x_1, x_2) = d_Y(\eta(x_1), \eta(x_2))
+    $$
+    for all $x_1, x_2 \in X$.
+\end{definition}
+
+\begin{definition}[Ball]
+    Let $ 1\leq p \leq \infty $. Let $ D_0 \in \dgmp $. The {\it ball} at the space of persistence diagrams is defined as $ B_p(D_0, r) := \{D \in \dgmp : w_p(D, D_0) < r \} $.
+\end{definition}
+
+\begin{theorem}[Isometric embeeding of metric spaces into persistance diagrams]
+    Let $ (X, d) $ be a separable, bounded metric space. Then there exists an isometric embedding to the space of persistence diagrams $ \eta: (X, d) \to (\dgmi, \wdi)$ such that $ \eta(X) \subseteq B(\emptyset, \frac{3c}{c}) \backslash B(\emptyset, c) $.
+\end{theorem}
+
+\begin{proof}
+    As $ (X, d) $ is bounded, we can let $ c > \sup \{d(x, y): \  x, y \in X\} $. As $ (X, d) $ is separable, we can take $ \{x_k\}_{k=1}^\infty $, a countable, dense subset of $ (X, d) $. Consider
+    \begin{align*}
+        \eta: (X, d) &\to (\dgmi, \wdi) \\
+        x &\mapsto \{(2c(k-1), 2ck + d(x, x_k))\}_{k=1}^\infty
+    \end{align*}
+    For any $ x \in X $ and $ k \in \n$,
+    \begin{align*}
+        d_\infty((2c(k-1), 2ck + d(x, x_k)), \Delta) = \frac{2ck + d(x, x_k) - 2c(k-1)}{2} = c + \frac{d(x, x_k)}{2} < c + \frac{c}{2} = \frac{3c}{2}.
+    \end{align*}
+    Because of Proposition \ref{prop-empty-mathing-distance}, for every $ x \in X $, $ \tilde \wdi(\eta(x), \emptyset) < \infty $ and $ \eta $ is well defined. Note that
+    \begin{align*}
+        \wdi(\eta(x), \emptyset) = \sup_{1 \leq k < \infty} d_\infty((2c(k-1), 2ck + d(x, x_k)), \Delta),
+    \end{align*}
+    so $ \eta(x) \in B(\emptyset, \frac{3c}{c}) \backslash B(\emptyset, c)$.
+
+    Let $ \eta(x) $ and $ \eta(y) $ two equivalence classes of $ (\dgmi, \wdi) $. Choose the representative diagrams $D_x : \n \to \upr $ and $D_y : \n \to \upr $ and consider the partial matching $ (\n, \n, \operatorname{id}_\n) $. With it, for every $ k \in \n $, $ (2c(k-1), 2ck + d(x, x_k)) $ is matched with $ (2c(k-1), 2ck + d(y, x_k)) $. The Chebyshev distance between those points is
+    \begin{align*}
+        d_\infty(D_x(k), D_y(k)) &= \max \{|2c(k-1) - 2c(k-1)|, |2ck + d(x, x_k) - b_y - (2ck + d(y, x_k))|\} \\
+        &= \max \{0, |d(x, x_k) - d(x, y_k)|\} = |d(x, x_k) - d(x, y_k)|.
+    \end{align*}
+    Hence, because of the triangle inequality, the cost of this partial matching is
+    \begin{align*}
+        \costi(\operatorname{id}_\n) = \sup_k |d(x, x_k - d(y, x_k)) \leq d(x, y).
+    \end{align*}
+    Since $ \{ x_k \}_{k=1}^\infty $ is dense, for every $ \epsilon > 0 $, there exist a $ k \in \n $ such that $ d(x, x_k) \leq \epsilon $, so
+    \begin{align*}
+        |d(x, x_k) - d(y, x_k)| &\geq d(y, x_k) - d(x, x_k) = d(y, x_k) + d(x, x_k) - d(x, x_k) - d(x, x_k) \\
+        &\geq d(x, y) - 2d(x, x_k) > d(x, y) - 2\epsilon. 
+    \end{align*}
+    Therefore, $ \sup_k |d(x, x_k - d(y, x_k)) \geq d(x, y) $ and
+    \begin{align*}
+        \costi(\operatorname{id}_\n) = \sup_k |d(x, x_k - d(y, x_k)) = d(x, y).
+    \end{align*}
+    Suppose $ I, J \subseteq \n $ and $ (I, J, f) $ is a different partial matching between $ D_x $ and $ D_y $. Then there exist a $ k \in \n $ such that either $ k \notin I $ or $ k \in I $ and $ f(k) = k \neq k $. If $ k \notin I $, then
+    \begin{align*}
+        \costi(f) \geq d_\infty((2c(k-1), 2ck + d(x, x_k)), \Delta) \geq c.
+    \end{align*}
+    If $ k \in I$ and $ f(k) = k \neq k $, then
+    \begin{align*}
+        \costi(f) \geq || (2c(k-1), 2ck + d(x, x_k)) - (2c(k'-1), 2ck' + d(x, x_{k'}))||_\infty \geq 2 \epsilon.
+    \end{align*}
+    Hence, $ \costi(f) \geq c > d(x, y)$ and $d(x,y) = \wdi(\eta(x), \eta(y)) $, proving that $ \eta $ is an isometric embedding of a metric space into the space of persistence diagrams.
+\end{proof}

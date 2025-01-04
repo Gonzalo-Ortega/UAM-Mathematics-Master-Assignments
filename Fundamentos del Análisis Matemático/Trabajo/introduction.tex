@@ -1,0 +1,8 @@
+\section{Introduction}
+
+Transport maps were itroduced in 1781 by Gaspard Monge to represent the idea of moving earth from one place into an other \cite{Figalli}[1.1 Historical overview]. In this original formulation of the optimal transport problem, it was enough to consider $ \mathbb R^3 $ as the ambient space, using the Euclidean distance as the cost function of moving mass between two points.
+
+In the 30's, Leonid Kantorovich reformulated the problem to describe the optimization process of supply and demand distributions of diverse problems. The mass could be divided between different origin and destinations, making it possible to interpret the problem as the way to measure the cost of transforming one probability distribution into an other. In this thesis, will introduce the $p$-Wasserstein distance as a metric on the probability measures with finite $p$-moment space. When $ p = 1 $, the distance will represent the metric introduced in the Kantorovich optimal transport problem, also used named Earth Mover's distance, used for machine learning algorithms and computer vision problems \cite{earth}. When $p = \infty $ it is named the bottleneck distance, and will be the main them of study of this thesis.
+
+In topological data analysis, diagrams arise to represent the 
+persistence of the homology groups of a data set through time. Those diagrams are named persistence diagrams, and those homology groups, persistence homology groups. We will introduce an analogous $p$-Wasserstein distance in the space of persistence diagrams and prove that there exists an isometric embedding  from a separable metric space into the space of persistence diagrams with the Wasserstein distance.

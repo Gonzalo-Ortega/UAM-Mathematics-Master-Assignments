@@ -1,24 +1,30 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[12pt, a4paper]{article}
 
-\usepackage[a4paper,margin=2cm]{geometry}
-\usepackage[colorlinks=true,pdftex]{hyperref}
+\usepackage[a4paper,bindingoffset=3mm,bottom=35mm]{geometry}
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, pdftex]{hyperref}
+
 \usepackage[pdftex]{graphicx}  
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb,amsthm}
 
-\newtheorem{lemma}{Lemma}[section]
-\newtheorem{proposition}{Proposition}[section]
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{corolary}{Corolary}[section]
-\newtheorem{fact}{Fact}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corolary}[theorem]{Corolary}
+\newtheorem{fact}[theorem]{Fact}
 
 \theoremstyle{definition}
-\newtheorem{example}{Example}[section]
-\newtheorem{definition}{Definition}[section]
-\newtheorem{remark}{Remark}[section]
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
 
 \newcommand{\authorname}{Gonzalo Ortega Carpintero}
+\newcommand{\institution}{Universidad Autónoma de Madrid}
+\newcommand{\projecttitle}{Optimal transport for
+
+Topological Data Analysis}
+
 \newcommand{\dgmp}{\operatorname{Dgm}_p}
 \newcommand{\dgmi}{\operatorname{Dgm}_\infty}
 \newcommand{\costp}{\operatorname{cost}_p}
@@ -30,19 +36,39 @@
 
 \begin{document}
 
-\hrule\hrule
-\vspace{2mm}
-\noindent {\bf Mathematic Analysis Fundamentals. End of Course Thesis. 2024-2025. }
-\vspace{1mm} \\
-{\bf Title}: Optimal transport for Topological Data Analysis
-\vspace{1mm} \\
-{\bf Name}: \authorname
-\vspace{2mm}
-\hrule\hrule
+\begin{titlepage}
+    \centering
+    %{\includegraphics[width=0.2\textwidth]{logo}\par}
+    \vspace{1cm}
+    {\bfseries\LARGE \institution \par}
+    \vspace{1cm}
+    {\scshape\Large Mathematic Analysis Fundamentals \par}
+    \vspace{3cm}
+    {\scshape\Huge \projecttitle \par}
+    \vspace{3cm}
+    {\itshape\Large End of Course Thesis.
+    
+    2024-2025. \par}
+    \vfill
+    {\Large Author: \par}
+    {\Large \authorname \par}
+    \vfill
+    {\Large January 2025 \par}
+\end{titlepage}
+
+%\tableofcontents
+\setlength{\parskip}{0.75em}
+\renewcommand{\baselinestretch}{1.25}
+
+\input{introduction.tex}
+\pagebreak
 
 \input{optimal-transport.tex}
-
 \pagebreak
+
+\input{wasserstain-persistance-diagrams.tex}
+\pagebreak
+
 \bibliographystyle{IEEEtran}
 \bibliography{biblio.bib}
 
