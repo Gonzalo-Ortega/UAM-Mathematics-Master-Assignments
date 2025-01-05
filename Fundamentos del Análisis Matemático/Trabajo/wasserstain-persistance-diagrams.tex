@@ -33,12 +33,15 @@ Along this text, we will denote the strict upper triangular region of the Euclid
 \begin{definition}
     Let $ D_1: I_1 \to \upr $ and $ D_2: I_2 \to \upr $ be persistence diagrams. Let $ (I_1', I_2', f) $ be a partial matching between them. If $ p < \infty $, the {\it $p$-cost of $ f $} is defined as
     \begin{align*}
-        \costp(f) := \left(\sum_{i\in I_1'}d_\infty(D_1(i), D_2(f(i)))^p + \sum_{i \in I_1 \backslash I_1'} d_infty (D_1(i), \Delta)^p \right. 
-         + \left.\sum_{i \in I_2 \backslash I_2'} d_infty (D_2(i), \Delta)^p \right)^{\frac{1}{p}}.
+        \costp(f) := \bigg(&\sum_{i \in I_1'} d_\infty(D_1(i), D_2(f(i)))^p \\
+        &+ \sum_{i \in I_1 \setminus I_1'} d_\infty(D_1(i), \Delta)^p \\
+        &+ \sum_{i \in I_2 \setminus I_2'} d_\infty(D_2(i), \Delta)^p \bigg)^{\frac{1}{p}}.
     \end{align*}
     For $ p = \infty $, the {\it $\infty$-cost of $ f $} is defined as
     \begin{align*}
-        \costi(f) := \max \{\sup_{i \in I_1'} d_\infty(D_1(i), D_2(f_i)), \sup_{i\in I_1 \backslash \ I_1'} d_\infty(D_1(i), \Delta), \sup_{i\in I_2 \backslash \ I_2'} d_\infty(D_2(i), \Delta)\}.
+        \costi(f) := \max \bigg\{&\sup_{i \in I_1'} d_\infty(D_1(i), D_2(f_i)), \\
+        &\sup_{i\in I_1 \setminus I_1'} d_\infty(D_1(i), \Delta), \\
+        &\sup_{i\in I_2 \setminus I_2'} d_\infty(D_2(i), \Delta)\bigg\}.
     \end{align*}
 \end{definition}
 
@@ -95,7 +98,10 @@ Along this text, we will denote the strict upper triangular region of the Euclid
     \end{align*}
     For any $ x \in X $ and $ k \in \n$,
     \begin{align*}
-        d_\infty((2c(k-1), 2ck + d(x, x_k)), \Delta) = \frac{2ck + d(x, x_k) - 2c(k-1)}{2} = c + \frac{d(x, x_k)}{2} < c + \frac{c}{2} = \frac{3c}{2}.
+        d_\infty((2c(k-1), 2ck + d(x, x_k)), \Delta) 
+        &= \frac{2ck + d(x, x_k) - 2c(k-1)}{2} \\
+        &= c + \frac{d(x, x_k)}{2} \\
+        &< c + \frac{c}{2} = \frac{3c}{2}.
     \end{align*}
     Because of Proposition \ref{prop-empty-mathing-distance}, for every $ x \in X $, $ \tilde \wdi(\eta(x), \emptyset) < \infty $ and $ \eta $ is well defined. Note that
     \begin{align*}
@@ -105,8 +111,11 @@ Along this text, we will denote the strict upper triangular region of the Euclid
 
     Let $ \eta(x) $ and $ \eta(y) $ two equivalence classes of $ (\dgmi, \wdi) $. Choose the representative diagrams $D_x : \n \to \upr $ and $D_y : \n \to \upr $ and consider the partial matching $ (\n, \n, \operatorname{id}_\n) $. With it, for every $ k \in \n $, $ (2c(k-1), 2ck + d(x, x_k)) $ is matched with $ (2c(k-1), 2ck + d(y, x_k)) $. The Chebyshev distance between those points is
     \begin{align*}
-        d_\infty(D_x(k), D_y(k)) &= \max \{|2c(k-1) - 2c(k-1)|, |2ck + d(x, x_k) - b_y - (2ck + d(y, x_k))|\} \\
-        &= \max \{0, |d(x, x_k) - d(x, y_k)|\} = |d(x, x_k) - d(x, y_k)|.
+        d_\infty(D_x(k), D_y(k)) 
+        &= \max \big\{|2c(k-1) - 2c(k-1)|, \\
+        &\quad |2ck + d(x, x_k) - b_y - (2ck + d(y, x_k))| \big\} \\
+        &= \max \{0, |d(x, x_k) - d(y, x_k)|\} \\
+        &= |d(x, x_k) - d(y, x_k)|.
     \end{align*}
     Hence, because of the triangle inequality, the cost of this partial matching is
     \begin{align*}
@@ -114,8 +123,11 @@ Along this text, we will denote the strict upper triangular region of the Euclid
     \end{align*}
     Since $ \{ x_k \}_{k=1}^\infty $ is dense, for every $ \epsilon > 0 $, there exist a $ k \in \n $ such that $ d(x, x_k) \leq \epsilon $, so
     \begin{align*}
-        |d(x, x_k) - d(y, x_k)| &\geq d(y, x_k) - d(x, x_k) = d(y, x_k) + d(x, x_k) - d(x, x_k) - d(x, x_k) \\
-        &\geq d(x, y) - 2d(x, x_k) > d(x, y) - 2\epsilon. 
+        |d(x, x_k) - d(y, x_k)| 
+        &\geq d(y, x_k) - d(x, x_k) \\
+        &= d(y, x_k) + d(x, x_k) - d(x, x_k) - d(x, x_k) \\
+        &\geq d(x, y) - 2d(x, x_k) \\
+        &> d(x, y) - 2\epsilon.
     \end{align*}
     Therefore, $ \sup_k |d(x, x_k - d(y, x_k)) \geq d(x, y) $ and
     \begin{align*}

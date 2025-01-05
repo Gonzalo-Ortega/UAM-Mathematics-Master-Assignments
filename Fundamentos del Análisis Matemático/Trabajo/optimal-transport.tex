@@ -1,8 +1,33 @@
 \section{Optimal transport}
-The main result of optimal transport theory is the solution of Kantorovich's problem for general costs, the existence of an optimal transport plan.
+The main result of optimal transport theory is the solution of Kantorovich's problem for general costs, the existence of an optimal transport plan. Lets start by introducing Monge's and Kantorovich's problems, observing its main key difference. For that, we shall fist define a way to compare probability measures from two different spaces. We will denote the set of probability measures over a space X by $ \p(X) $, and the class of Borel-measurable sets by $ \B(X) $.
+
+\begin{definition}[Push-forward measure]
+    Let $ T: X \to Y $ be a Borel map, and $ \mu \in \p(X)$. Let $ A \in \B $. The {\it push-forward measure} $ \T\mu \in \p(Y) $ is defined as
+    $$
+        \T\mu(A) := \mu (T^{-1}(A)).
+    $$
+\end{definition}
+
+Now we can introduce transport maps, as functions witch transform one probability measure into an other.
+
+\begin{definition}[Transport map]
+    Given $ \mu \in \p(X) $ and $ \nu \in \p(Y) $, a {\it transport map from $\mu$ to $\nu$} is a Borel map $ T: X \to Y $ that satisfies $ \T\mu = \nu$.
+\end{definition}
+
+
+\begin{definition}[Transport plan]
+    Let $\pi_X : (X \times Y) \to X $ and $\pi_Y : (X \times Y) \to Y$ such that for every $(x, y) \in (X, Y) $, $\pi_X(x, y) = x$ and $ \pi_Y(x, y) = y $. A {\it transport plan between $\mu$ and $\nu$} is a probability measure $ \gamma \in \p(X \times Y) $ where
+    $$
+        (\pi_X)_\# \gamma = \mu \text{ and } (\pi_Y)_\# \gamma = \nu.
+    $$
+    The set of all couplings between $ \mu $ and $\nu$ is denoted $\Gamma(\mu, \nu)$.
+\end{definition}
+
+While the set of transport maps between two given probability measures might be empty, transport plans are a more flexible generalization of them allowing to modulate one measure into the other. In probability theory, transport plans are named {\it couplings}, and $\Gamma(\mu, \nu)$ is the collection of all probability measures in $ X \times Y $ with {\it marginals} $ \mu $ and $ \nu $ \cite{class}.
+
 
 \begin{proposition}
-    Let $ c: X \times Y \to [0, \infty] $ be lower semicontinous, and let $ \mu \in \mathcal P(X) $ and $ \nu \in \mathcal P(Y) $. Then there exists a coupling $ \bar \gamma \in \Gamma(\mu, \nu) $ that verifies
+    Let $ c: X \times Y \to [0, \infty] $ be lower semicontinous, and let $ \mu \in \p(X) $ and $ \nu \in \p(Y) $. Then there exists a coupling $ \bar \gamma \in \Gamma(\mu, \nu) $ that verifies
     $$
         \bar \gamma = \min \left\{ \gamma \in \Gamma(\mu, \nu) \ : \ \int_{X \times Y} c(x, y) d\gamma(x,y) \right\}.
     $$
@@ -11,40 +36,38 @@ The main result of optimal transport theory is the solution of Kantorovich's pro
     (to do)
 \end{proof}
 
-We will denote the set of probability measures over a space X by $ \mathcal P(X) $. 
-
 \begin{example}[Mean and variance in $ \mathbb R $]
     
 \end{example}
 
-\begin{definition}
+\begin{definition}[Probability measures with finite $p$-moment]
     Let $ (X, d) $ be a locally compact and separable, metric space. Let $ 1 \leq p < \infty $. The {\it set of probability measures with finite $p$-moment} is defined As
     $$
-        \mathcal P_p (X) := \left\{ \sigma \in \mathcal P (X) : \int_X d(x, x_0)^p d \mu (x) < \infty \text{ for some } x_0 \in X \right\}.
+        \p_p (X) := \left\{ \sigma \in \p (X) : \int_X d(x, x_0)^p d \mu (x) < \infty \text{ for some } x_0 \in X \right\}.
     $$
 \end{definition}
 
 \begin{proposition}
-    The definition of $ \mathcal P_p (X) $ is independent of the base point $ x_0 $
+    The definition of $ \p_p (X) $ is independent of the base point $ x_0 $
 \end{proposition}
 \begin{proof}
     (to do)
 \end{proof}
 
 \begin{definition}[$p$-Wasserstein distance]
-    Given $ u, v \in \mathcal P_p (X) $, the {\it $p$-Wasserstein distance} is defined as
+    Given $ u, v \in \p_p (X) $, the {\it $p$-Wasserstein distance} is defined as
     $$
         W_p(u, v) := \left( \inf_{\gamma \in \Gamma(u, v)} \int_{X \times X} d(x,y)^p d\gamma(x, y)\right)^{\frac{1}{p}}.
     $$
 \end{definition}
 
 \begin{proposition}
-    $W_p$ is a distance on the space $ \mathcal P_p(X) $.
+    $W_p$ is a distance on the space $ \p_p(X) $.
 \end{proposition}
 
 \begin{proof}
     We will follow the steps made in \cite{Figalli}[Theorem 3.1.5].
-    To prove the triangle inequality, let $ \mu_1, \mu_2, \mu_3 \in \mathcal P_p(X) $ and 
+    To prove the triangle inequality, let $ \mu_1, \mu_2, \mu_3 \in \p_p(X) $ and 
 
     (to do)
 \end{proof}
