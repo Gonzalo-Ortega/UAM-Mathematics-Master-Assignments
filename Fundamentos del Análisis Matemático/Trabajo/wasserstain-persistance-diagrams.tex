@@ -1,8 +1,8 @@
-\section{Wasserstein distance over persistence diagrams}
+\section{Wasserstein distance in persistence diagrams}
 
-The contents of this thesis are based on \cite{Figalli} and \cite{Bubenik}.
+In last section we have exposed the original optimal transport problem
 
-Along this text, we will denote the strict upper triangular region of the Euclidean plane as $ \upr := \{(x, y) \in \mathbb R^2 : x < y\} $, and the diagonal of the plane as $ \Delta := \{(x, y) \in \mathbb R^2 : x = y\}$.
+We will denote the strict upper triangular region of the Euclidean plane as $ \upr := \{(x, y) \in \mathbb R^2 : x < y\} $, and the diagonal of the plane as $ \Delta := \{(x, y) \in \mathbb R^2 : x = y\}$.
 
 \begin{definition}[Persistence diagram]
     Let $ I $ be a countable set. A {\it persistence diagram} is a function $ D: I \to \upr $.
@@ -67,11 +67,37 @@ Along this text, we will denote the strict upper triangular region of the Euclid
     (To do)
 \end{proof}
 
+Next proposition will prove that, in indeed, the space of persistence diagrams with the $p$-Wasserstein distance $(\dgmp, \wdp)$ is a metric space. Its proof is usually omitted in literature, as it based on the simple fact that $ d_\infty $ is a distance. We will give, however, an step by step version here.
+
 \begin{proposition}
-    The space of persistence diagrams with the $p$-Wasserstein distance $(\dgmp, \wdp)$ is indeed a metric space.
+    $\wdp$ is a distance on the space $ (\dgmp, \wdp) $.
 \end{proposition}
 \begin{proof}
-    (To do)
+    Let $ D_1, D_2, D_3 \in \dgmp$, with $ 1 \leq p \leq \infty $.
+
+    First of all, $ \wdp (D_1, D_2) \geq 0 $ because $ d_\infty \geq 0 $. $ \wdp (D_1, D_2) = 0 $ if and only if $ \tilde \wdp (D_1, D_2) \geq 0 $. Thus, because of the equivalence relationship used to define $ \wdp $, it has to be $ D_1 \sim D_2 $.
+
+    To check symmetry, note that every partial matching $ f $ is bijective, therefore $ f^{-1} $ is a partial matching. But, for all $ i \in I_1'$, exists $ j \in I_2' $ such that $ f(i) = j $ and
+    \begin{align*}
+        d_\infty (D_1(i), D_2(f(i))) = d_\infty (D_2(f(i)), D_1(i)) = d_\infty (D_2(j), D_1(f^{-1}(j))).
+    \end{align*}
+    Then, $ \costp(f) = \costp(f^{-1}) $ and we have
+    \begin{align*}
+        \wdp (D_1, D_2) &= \inf \{\costp(f) : f \text{ is a partial matching between } D_1 \text{ and } D_2 \} \\
+        &= \inf \{\costp(f^{-1}) : f^{-1} \text{ is a partial matching between } D_2 \text{ and } D_1 \} \\
+        &= \wdp (D_2, D_1).
+    \end{align*}
+    
+    Finally, lets prove the triangle inequality. If $ f: I_1' \to I_2' $ is a partial matching between $ D_1 $ and $ D_2 $ and $ g: I_2' \to I_3' $ is a partial matching between $ D_2 $ and $ D_3 $, $ g \circ f: I_1' \to I_3' $ is a partial matching between $ D_1 $ and $ D_3 $ as both $ f $ and $ g $ are bijective. Computing the cost of the matchings for $ p < \infty$, we notice that
+    \begin{align*}
+        &\sum_{i\in I_1'} d_\infty(D_1(i), D_2(f(i))) + \sum_{i\in I_1 \setminus I_1'} d_\infty(D_1(i), \Delta) + \sum_{i\in I_2 \setminus I_2'} d_\infty(D_2(i), \Delta) \\
+        + &\sum_{i\in I_2'} d_\infty(D_2(i), D_3(g(i))) + \sum_{i\in I_2 \setminus I_2'} d_\infty(D_2(i), \Delta) + \sum_{i\in I_3 \setminus I_3'} d_\infty(D_3(i), \Delta) \\
+        \geq &\sum_{i\in I_1'} d_\infty(D_1(i), D_3(g \circ f(i))) + \sum_{i\in I_1 \setminus I_1'} d_\infty(D_1(i), \Delta) + \sum_{i\in I_3 \setminus I_3'} d_\infty(D_3(i), \Delta)
+    \end{align*}
+    as $ d_\infty(D_1(i), D_2(f(i))) + d_\infty(D_2(f(i)), D_2(g(f(i)))) \geq d_\infty(D_1(i), D_3(g \circ f(i))) $ using the triangle inequality of $ d_\infty $. Therefore, for all partial matchings $ f $ and $ g $ as described, we have $ \costp (f) + \costp (g) \geq \costp (g \circ f) $. Using the same reasoning, por $ p = \infty $ we also obtain $ \costi (f) + \costi (g) \geq \costi (g \circ f) $. Hence, we have verified that
+    \begin{align*}
+        \wdp(D_1, D_2) + \wdp(D_2, D_3) \geq \wdp(D_1, D_3).
+    \end{align*}
 \end{proof}
 
 \begin{definition}[Isometric embedding]
@@ -82,7 +108,7 @@ Along this text, we will denote the strict upper triangular region of the Euclid
     for all $x_1, x_2 \in X$.
 \end{definition}
 
-\begin{definition}[Ball]
+\begin{definition}[Ball in persistence diagrams]
     Let $ 1\leq p \leq \infty $. Let $ D_0 \in \dgmp $. The {\it ball} at the space of persistence diagrams is defined as $ B_p(D_0, r) := \{D \in \dgmp : w_p(D, D_0) < r \} $.
 \end{definition}
 
@@ -91,7 +117,7 @@ Along this text, we will denote the strict upper triangular region of the Euclid
 \end{theorem}
 
 \begin{proof}
-    As $ (X, d) $ is bounded, we can let $ c > \sup \{d(x, y): \  x, y \in X\} $. As $ (X, d) $ is separable, we can take $ \{x_k\}_{k=1}^\infty $, a countable, dense subset of $ (X, d) $. Consider
+    We will follow the procedure followed in \cite{bubenik}[Theorem 19]. As $ (X, d) $ is bounded, we can let $ c > \sup \{d(x, y): \  x, y \in X\} $. As $ (X, d) $ is separable, we can take $ \{x_k\}_{k=1}^\infty $, a countable, dense subset of $ (X, d) $. Consider
     \begin{align*}
         \eta: (X, d) &\to (\dgmi, \wdi) \\
         x &\mapsto \{(2c(k-1), 2ck + d(x, x_k))\}_{k=1}^\infty

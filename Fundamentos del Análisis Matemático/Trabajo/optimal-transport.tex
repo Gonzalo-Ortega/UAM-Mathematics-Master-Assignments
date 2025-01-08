@@ -1,5 +1,5 @@
 \section{Optimal transport}
-The main result of optimal transport theory is the solution of Kantorovich's problem for general costs, the existence of an optimal transport plan. Lets start by introducing Monge's and Kantorovich's problems, observing its main key difference. For that, we shall fist define a way to compare probability measures from two different spaces. We will denote the set of probability measures over a space X by $ \p(X) $, and the class of Borel-measurable sets by $ \B(X) $.
+The main result of optimal transport theory is the solution of Kantorovich's problem for general costs: the existence of an optimal transport plan. Lets start by introducing Monge's and Kantorovich's problems, observing its main key difference. For that, we shall fist define a way to compare probability measures from two different spaces. We will denote the set of probability measures over a space X by $ \p(X) $, and the class of Borel-measurable sets by $ \B(X) $.
 
 \begin{definition}[Push-forward measure]
     Let $ T: X \to Y $ be a Borel map, and $ \mu \in \p(X)$. Let $ A \in \B $. The {\it push-forward measure} $ \T\mu \in \p(Y) $ is defined as
@@ -25,13 +25,24 @@ Now we can introduce transport maps, as functions witch transform one probabilit
 
 While the set of transport maps between two given probability measures might be empty, transport plans are a more flexible generalization of them allowing to modulate one measure into the other. In probability theory, transport plans are named {\it couplings}, and $\Gamma(\mu, \nu)$ is the collection of all probability measures in $ X \times Y $ with {\it marginals} $ \mu $ and $ \nu $ \cite{class}.
 
+Given this definitions, we can introduce Monge and Kantorovich problems, $ C_M(\mu, \nu) $ and $ C_K(\mu, \nu) $ respectively, as follows.
 
-\begin{proposition}
+\begin{definition}[Transport problems]
+    Fix $ \mu \in \p(X)$, $\nu \in \p(Y)$ and consider a lower semicontinous map $ c: X \times Y \to [0, \infty] $. Then
+\begin{align*}
+    C_M(\mu, \nu) &:= \inf \left\{\int_X c(x, T(x)) d\mu(x) : \T\mu = \nu \right\}, \\
+    C_K(\mu, \nu) &:= \inf \left\{\int_{X \times Y} c(x, y) d\gamma(x,y) : \gamma \in \Gamma(\mu, \nu) \ \right\}.
+\end{align*}
+\end{definition}
+
+Next theorem asserts that it actually exists a minimizing transport plan that minimizes Kantorovich problem. This will prove useful to verify that Wasserstein distance exists and it is a well defined metric.
+
+\begin{theorem}
     Let $ c: X \times Y \to [0, \infty] $ be lower semicontinous, and let $ \mu \in \p(X) $ and $ \nu \in \p(Y) $. Then there exists a coupling $ \bar \gamma \in \Gamma(\mu, \nu) $ that verifies
     $$
-        \bar \gamma = \min \left\{ \gamma \in \Gamma(\mu, \nu) \ : \ \int_{X \times Y} c(x, y) d\gamma(x,y) \right\}.
+    C_K(\mu, \nu) = \int_{X \times Y} c(x, y) d \bar \gamma(x,y).
     $$
-\end{proposition}
+\end{theorem}
 \begin{proof}
     (to do)
 \end{proof}
