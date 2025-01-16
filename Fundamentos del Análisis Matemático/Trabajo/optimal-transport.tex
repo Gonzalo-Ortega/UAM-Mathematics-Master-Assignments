@@ -37,6 +37,10 @@ Given this definitions, we can introduce Monge and Kantorovich problems, $ C_M(\
 
 Next theorem asserts that it actually exists a minimizing transport plan that minimizes Kantorovich problem. This will prove useful to verify that Wasserstein distance exists and it is a well defined metric.
 
+\begin{definition}[Tight family]
+    Let $ \mathcal A $ be a family of probability measures. The family $ \mathcal A $ is said to be {\it tight} if for any $ \epsilon > 0 $ and any $ \mu \in \mathcal A $, there exists a compact set $ K_\epsilon \subset X $ such that $ \mu (X \setminus K_\epsilon) \leq \epsilon $.
+\end{definition}
+
 \begin{theorem}
     Let $ c: X \times Y \to [0, \infty] $ be lower semicontinous, and let $ \mu \in \p(X) $ and $ \nu \in \p(Y) $. Then there exists a coupling $ \bar \gamma \in \Gamma(\mu, \nu) $ that verifies
     $$
