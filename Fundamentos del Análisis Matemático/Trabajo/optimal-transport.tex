@@ -1,5 +1,8 @@
-\section{Optimal transport}
-The main result of optimal transport theory is the solution of Kantorovich's problem for general costs: the existence of an optimal transport plan. Lets start by introducing Monge's and Kantorovich's problems, observing its main key difference. For that, we shall fist define a way to compare probability measures from two different spaces. We will denote the set of probability measures over a space X by $ \p(X) $, and the class of Borel-measurable sets by $ \B(X) $.
+\section{Optimal transport} \label{sec:optimal-transport}
+The main result of optimal transport theory is the solution of Kantorovich's problem for general costs: the existence of an optimal transport plan. In \ref{sec:preliminaries} introduce both,Monge's and Kantorovich's problems and explain its main differences. In \ref{sec:wp-probability} we define Wasserstein distance as it was originally conceived, as a way of computing a distance between two probability spaces.
+
+\subsection{Preliminaries} \label{sec:preliminaries}
+We fist define a way to compare probability measures from two different spaces. We will denote the set of probability measures over a space X by $ \p(X) $, and the class of Borel-measurable sets by $ \B(X) $.
 
 \begin{definition}[Push-forward measure]
     Let $ T: X \to Y $ be a Borel map, and $ \mu \in \p(X)$. Let $ A \in \B $. The {\it push-forward measure} $ \T\mu \in \p(Y) $ is defined as
@@ -14,13 +17,12 @@ Now we can introduce transport maps, as functions witch transform one probabilit
     Given $ \mu \in \p(X) $ and $ \nu \in \p(Y) $, a {\it transport map from $\mu$ to $\nu$} is a Borel map $ T: X \to Y $ that satisfies $ \T\mu = \nu$.
 \end{definition}
 
-
 \begin{definition}[Transport plan]
     Let $\pi_X : (X \times Y) \to X $ and $\pi_Y : (X \times Y) \to Y$ such that for every $(x, y) \in (X, Y) $, $\pi_X(x, y) = x$ and $ \pi_Y(x, y) = y $. A {\it transport plan between $\mu$ and $\nu$} is a probability measure $ \gamma \in \p(X \times Y) $ where
     $$
         (\pi_X)_\# \gamma = \mu \text{ and } (\pi_Y)_\# \gamma = \nu.
     $$
-    The set of all couplings between $ \mu $ and $\nu$ is denoted $\Gamma(\mu, \nu)$.
+    The set of all transport plans between $ \mu $ and $\nu$ is denoted $\Gamma(\mu, \nu)$.
 \end{definition}
 
 While the set of transport maps between two given probability measures might be empty, transport plans are a more flexible generalization of them allowing to modulate one measure into the other. In probability theory, transport plans are named {\it couplings}, and $\Gamma(\mu, \nu)$ is the collection of all probability measures in $ X \times Y $ with {\it marginals} $ \mu $ and $ \nu $ \cite{class}.
@@ -35,25 +37,34 @@ Given this definitions, we can introduce Monge and Kantorovich problems, $ C_M(\
 \end{align*}
 \end{definition}
 
-Next theorem asserts that it actually exists a minimizing transport plan that minimizes Kantorovich problem. This will prove useful to verify that Wasserstein distance exists and it is a well defined metric.
+The function $ c $ in the above formulations is denoted {\it cost} function, and the integrals to minimice are the {\it transportation costs}. Monge's formulation consist on minimizing the transportation cost among all transport maps, while Kantorovich's formulation consists in minimizing the transport cost of all transport plans.
 
-\begin{definition}[Tight family]
-    Let $ \mathcal A $ be a family of probability measures. The family $ \mathcal A $ is said to be {\it tight} if for any $ \epsilon > 0 $ and any $ \mu \in \mathcal A $, there exists a compact set $ K_\epsilon \subset X $ such that $ \mu (X \setminus K_\epsilon) \leq \epsilon $.
-\end{definition}
+There are cases where Monge's problem has no solution, as sometimes there is no transport map $ T $ satisfying $ T_\# \mu = \nu $. One of this cases arises when $ \mu $ is a Dirac measure but $ \nu $ is not. The key of Kantorovich problem is that it always has a transport plan that minimizes the problem. This will prove useful to verify that Wasserstein distance exists and it is a well defined metric.
 
-\begin{theorem}
+%\begin{definition} [Tight family]
+%    Let $ \mathcal A $ be a family of probability measures. The family $ \mathcal A $ is said to be {\it tight} if for any $\epsilon > O $ and any $ \mu \in \mathcal A $ , there exists a compact set $ K_\epsilon \subset X $ such that $ \mu (X \setminus K_\epsilon) \leq \epsilon $.
+%\end{definition}
+
+%\begin{theorem}[Prokhorov]
+%    A family $ \mathcal A \subset \p(X) $ is tight if and only if for any sequence $ (\mu_k)_{k \in \N} \subset \mathcal A $ there exists a subsequence $ (\mu_{k_j})_{j \in \N} $ and a probability measure $ \mu \in \p (X) $ 
+%\end{theorem}
+
+\begin{theorem}[Existance of an optimal coupling] \label{thm:existence}
     Let $ c: X \times Y \to [0, \infty] $ be lower semicontinous, and let $ \mu \in \p(X) $ and $ \nu \in \p(Y) $. Then there exists a coupling $ \bar \gamma \in \Gamma(\mu, \nu) $ that verifies
     $$
     C_K(\mu, \nu) = \int_{X \times Y} c(x, y) d \bar \gamma(x,y).
     $$
 \end{theorem}
-\begin{proof}
-    (to do)
-\end{proof}
 
-\begin{example}[Mean and variance in $ \mathbb R $]
-    
-\end{example}
+The proof of this theorem implies some auxiliary results that outreach the purpose of this thesis. A complete proof of Theorem \ref{thm:existence} can be found at \cite{Figalli}[Theorem 2.3.2]. An alternative prove can also be found in \cite{Villani}[Theorem 4.1].
+
+\subsection{Wasserstein distance over probability spaces} \label{sec:wp-probability}
+
+In an analogous way as Lebesgue spaces is defined over complex measurable functions, that is, for functions over a measure space $ X $ with a positive measure $ \mu $ such that for $ 0 < p < \infty $, the Lebesgue $p$-norm
+$$
+    \|f\|_p = \left(\int_X |f|^p d \mu\right)^{\frac{1}{p}} < \infty,
+$$
+$p$-Wasserstein distance is defined over probability measure spaces where $ \mu $ is a probability measure with finite $p$-moment. To give an example, in probability theory, the $1$-moment represent the mean and the $2$-moment, the variance.
 
 \begin{definition}[Probability measures with finite $p$-moment]
     Let $ (X, d) $ be a locally compact and separable, metric space. Let $ 1 \leq p < \infty $. The {\it set of probability measures with finite $p$-moment} is defined As
@@ -66,17 +77,34 @@ Next theorem asserts that it actually exists a minimizing transport plan that mi
     The definition of $ \p_p (X) $ is independent of the base point $ x_0 $
 \end{proposition}
 \begin{proof}
-    (to do)
+    Let $ x_1 \in X $ be other arbitrary base point, and consider the function $ f(s) = s^p $ with $ s \in \R^+ $, $p \in \N $. The function $ f $ is convex, that is, for every $ a, b \in \R^+ $ and for every $ \lambda \in [0, 1] $, it satisfies
+    $$
+        f(\lambda a + (1- \lambda)b) \leq \lambda f(a) + (1- \lambda) f(b).
+    $$
+    Now, taking $ \lambda = \frac{1}{2} $,
+    $$
+        (a + b)^p \leq 2^{p-1} (a^p + b^p).
+    $$
+    Thus, considering distances, and using the triangle inequality we have
+    $$
+        d(x, x_1)^p \leq (d(x, x_0) + d(x_0, x_1))^p \leq 2^{p-1} (d(x, x_0)^p + d(x_0, x_1)^p).
+    $$
+    Therefore, if a measure $ \sigma \in  \p (X) $ satisfies $ \int_X d(x, x_0)^p d \mu (x) < \infty $, then it must also satisfy $ \int_X d(x, x_1)^p d \mu (x) < \infty $.
 \end{proof}
 
 \begin{definition}[$p$-Wasserstein distance]
-    Given $ u, v \in \p_p (X) $, the {\it $p$-Wasserstein distance} is defined as
+    Let $ 0 < p < \infty $. Let $ u, v \in \p_p (X) $ two probability measures with finite p-moment, the {\it $p$-Wasserstein distance} is defined as
     $$
         W_p(u, v) := \left( \inf_{\gamma \in \Gamma(u, v)} \int_{X \times X} d(x,y)^p d\gamma(x, y)\right)^{\frac{1}{p}}.
     $$
 \end{definition}
+For $ p= \infty $ is posible to define the {\it $\infty$-Wasserstein distance} making use of the usual $ L^\infty $ norm taken with respect to $ \mu $ as
+$$
+    W_\infty (\mu, \nu) = \inf \| d(x, y) \|_\infty.
+$$
+This particular case of the Wasserstein distance is named {\it bottleneck distance} and will be of first importance in its equivalent version for persistence diagrams that we will introduce in Section \ref{sec:tda}.
 
-Finally, we will proof that the $p$-Wasserstein distance is a metric in the space of Probability measures with finite $p$-moment. To check the triangle inequality, we will make use of the following auxiliary theorem of probability theory. Let $ \mathbf X $ denote $ X_1  \times \cdots \times X_n $ for some $ n \in \N $.
+We will now prove that the $p$-Wasserstein distance is a metric in the space of Probability measures with finite $p$-moment. We limit to the case of $ 0 < p < \infty $, but for $ p= \infty $ a similar procedure can me made. To check the triangle inequality, we will make use of the following auxiliary theorem of probability theory. Let $ \mathbf X $ denote $ X_1  \times \cdots \times X_n $ for some $ n \in \N $.
 
 \begin{theorem}[Disintegration] \label{thm:disintegration}
     Let $ \mathbf X, X $ be Radon separable metric spaces, $ \mathbf \mu \in \p(\mathbf X) $, let $ \pi: \mathbb X \to X $ be a Borel map and let $ \nu = \pi_\#\mu \in \p(X) $. Then there exists a $\nu$-a.e. uniquely determined Borel family of probability measures $ \{\mu_x\}_{x \in X} \subset \p(\mathbf X) $ such that
@@ -89,7 +117,7 @@ Finally, we will proof that the $p$-Wasserstein distance is a metric in the spac
     $$
 \end{theorem}
 
-The proof of this theorem goes out of the reach of this thesis, the interested reader can find one proof at \cite{ambrosio}[Theorem 5.3.1]. The disintegration theorem needs $ X $ to be a Radon space, that is, every finite Borel measure is a Radon measure. With a Radon measure being a measure that is finite on all compact sets, outer regular on all Borel sets, and inner regular on open sets.
+The interested reader can find one proof of this theorem at \cite{ambrosio}[Theorem 5.3.1]. The disintegration theorem needs $ X $ to be a Radon space, that is, every finite Borel measure is a Radon measure. With a Radon measure being a measure that is finite on all compact sets, outer regular on all Borel sets, and inner regular on open sets.
 
 It is also possible to prove the triangle inequality in a more elementary manner without the use of the disintegration theorem as seen in \cite{elementary}. This ables to omit the assumption of the underlying space been Radon, but obtaining an obscurer proof in exchange. For the aim of this thesis, will be confortable with the requirements of the disintegration theorem and we present a proof following the steps made in \cite{Figalli}[Theorem 3.1.5].
 
@@ -98,6 +126,18 @@ It is also possible to prove the triangle inequality in a more elementary manner
 \end{proposition}
 
 \begin{proof}
+    Let $ \mu, \nu \in \p_p(X) $. Then, if $W_p(\nu, \mu) = 0 $, Theorem \ref{thm:existence} asures that there exists some $ \bar \gamma $ such that
+    \begin{align*}
+        \int_{X \times X} d(x, y)^p d{\bar \gamma}(x, y) = 0.
+    \end{align*}
+    This means $ x = y $ $\bar \gamma$-.a.e. so $ \bar \gamma = (\operatorname{Id} \times \operatorname{Id})_\# \mu $, making $ \nu = (\pi_{\operatorname{Id}})_\# \bar \gamma = \mu $.
+
+    To prove the symmetry of $ W_p $ let $ \gamma \in \Gamma(\nu, \mu) $ be the optimal coupling between $ \nu $ and $ \nu $, and define $ \tilde \gamma := S_\# \gamma $, with $ S(x, y) = (y, x) $. Then $ \tilde \gamma \in \Gamma(\nu, \mu) $ and using the symmetry of the distance, we have
+    \begin{align*}
+        W_p(\nu, \mu) \leq \int_{X \times X} d(x, y)^p d \tilde \gamma = \int_{X \times X} d(x, y)^p d \gamma = W_p(\mu, \nu).
+    \end{align*}
+    Now repeating the same procedure but exchanging the order of $ \mu $ and $ \nu $, we get $  W_p(\mu, \nu) \leq W_p(\nu, \mu)$ so it has to be $  W_p(\mu, \nu )= W_p(\nu, \mu)$.
+
     To prove the triangle inequality, let $ \mu_1, \mu_2, \mu_3 \in \p_p(X) $ and let $ \gamma_{12} \in \Gamma(\mu_1, \mu_2) $ and $ \gamma_{23} \in \Gamma(\mu_2, \mu_3) $ be optimal couplings. Let $ \tilde \gamma \in \p(X \times X \times X) $. Using Theorem \ref{thm:disintegration} we have
     \begin{align*}
         &\int_{X \times X \times X} \phi(x_1, x_2) d \tilde \gamma (x_1, x_2, x_3) \\
@@ -136,3 +176,47 @@ It is also possible to prove the triangle inequality in a more elementary manner
         &= W_p(\mu_1, \mu_2) + W_p(\mu_2, \mu_3).
     \end{align*}
 \end{proof}
+
+To conclude this section introducing Wasserstein distances over provability measures we will give a concrete example putting theory into practice.
+
+\begin{example}
+    We fill fix $ p = 2 $ and $ X = \R $ to compute the 2-Wasserstein distance $W_2(\mu, \nu)$ between two continuous probability measures on $\mathbb{R}$. Let $\mu(x) = \mathbb{I}_{[0,1]}(x)$ and $\nu(x) = 2 \cdot \mathbb{I}_{[0,1/2]}(x)$
+    where $\mathbb{I}_{[a,b]}$ is the indicator function
+    $$
+    \mathbb{I}_{[a,b]}(x) = 
+    \begin{cases}
+    1 & \text{if } x \in [a,b], \\
+    0 & \text{otherwise.}
+    \end{cases}
+    $$
+    That is, $\mu$ is a uniform distribution on $[0,1]$, and $\nu$ is a uniform distribution on $[0,1/2]$, scaled to integrate to 1. Their density functions are of $ f_\mu(x) = 1 $ for $x \in [0,1] $ and $ f_\nu(x) = 2 $ for $x \in [0,1/2] $. The $W_2$-distance between $\mu$ and $\nu$ is then given by
+    $$
+    W_2^2(\mu, \nu) = \inf_{\gamma \in \Gamma(\mu, \nu)} \int_{\mathbb{R} \times \mathbb{R}} d(x, y)^2 \, d\gamma(x, y),
+    $$
+    where $\Gamma(\mu, \nu)$ is the set of all couplings of $\mu$ and $\nu$.
+    
+    For measures on $\mathbb{R}$, the optimal coupling can be determined using the \emph{monotone transport map} $T(x)$, where $T: \mathbb{R} \to \mathbb{R}$ is the map that pushes $\mu$ onto $\nu$. The $W_2$-distance then simplifies to
+    $$
+    W_2^2(\mu, \nu) = \int_\mathbb{R} |x - T(x)|^2 f_\mu(x) \, dx.
+    $$
+    To compute $T(x)$, we observe that the transport map must verify
+    $$
+    \int_{-\infty}^{T(x)} f_\nu(y) \, dy = \int_{-\infty}^x f_\mu(y) \, dy,
+    $$
+    witch for our $\mu$ and $\nu$ becomes
+    $$
+    \int_{0}^{T(x)} 2 \, dy = \int_{0}^x 1 \, dy.
+    $$
+    Thus, the optimal transport map is $T(x) = x/2$, which maps the distribution of $\mu$ onto $\nu$. Substituting into the formula for $W_2^2$
+    $$
+    W_2^2(\mu, \nu) = \int_0^1 \left|x - \frac{x}{2}\right|^2 f_\mu(x) \, dx.
+    $$
+    Since $f_\mu(x) = 1$ for $x \in [0,1]$, this simplifies to
+    $$
+    W_2^2(\mu, \nu) = \int_0^1 \left(\frac{x}{2}\right)^2 \, dx = \int_0^1 \frac{x^2}{4} \, dx = \frac{1}{4}\int_0^1 x^2 \, dx = \frac{1}{4}\left[\frac{x^3}{3}\right]_0^1 = \frac{1}{4} \cdot \frac{1}{3} = \frac{1}{12}.
+    $$
+    Thus the $W_2$-distance between $\mu $ and $ \nu$ is
+    $$
+    W_2(\mu, \nu) = \sqrt{\frac{1}{12}} = \frac{1}{2\sqrt{3}}.
+    $$
+\end{example}

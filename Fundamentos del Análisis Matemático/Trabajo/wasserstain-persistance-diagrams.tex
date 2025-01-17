@@ -1,7 +1,8 @@
-\section{Wasserstein distance in persistence diagrams}
+\section{Reformulations for TDA} \label{sec:tda}
 
-In last section we have exposed the original optimal transport problem where the objetive was to measure distance between probability measures. We will now define a new Wasserstein distance, inspired in the original one, looking forward to measure the distance between persistence diagrams. After making a brief introduction to Algebraic Topology and Topological Data Analysis, we will introduce the required concepts to define our new Wasserstein distance, we will check that it is actually a distance between persistence diagrams, and we will conclude with the main result of this thesis: the existence of an isometric embedding from a separable metric space into the space of persistence diagrams.
+In last section we have exposed the original optimal transport problem where the objetive was to measure distance between probability measures. We will now define a new Wasserstein distance, inspired in the original one, looking forward to measure the distance between persistence diagrams. In \ref{sec:wp-persistance} we make a brief introduction to Algebraic Topology and TDA concepts required to define our new Wasserstein distance. We also check that it is actually a distance between persistence diagrams. In \ref{sec:embedding} and we will conclude with the main result of this thesis: the existence of an isometric embedding from a separable metric space into the space of persistence diagrams.
 
+\subsection{Wasserstein distance over persistence diagrams} \label{sec:wp-persistance}
 We will denote the strict upper triangular region of the Euclidean plane as $ \upr := \{(x, y) \in \R^2 : x < y\} $, and the diagonal of the plane as $ \Delta := \{(x, y) \in \R^2 : x = y\}$.
 
 \begin{definition}[Persistence diagram]
@@ -21,7 +22,7 @@ Instead of probability measures, now we are actually dealing with countable sets
     $$
 \end{definition}
 
-To define our adapted Wasserstein distance we need to check how Chebyshev distance measures distances between points of $ \upr $ and $ Delta $.
+To define our adapted Wasserstein distance we need to check how Chebyshev distance measures distances between points of $ \upr $ and $ \Delta $.
 
 \begin{proposition} \label{prop:distance-delta}
     If $ a = (a_x, a_y) \in \upr $, then $ d_\infty(a, \Delta) = \inf_{t \in \Delta} d_\infty(a, t) = \frac{a_y - a_x}{2} $.
@@ -119,6 +120,7 @@ Next proposition will prove that, in indeed, the space of persistence diagrams w
     \end{align*}
 \end{proof}
 
+\subsection{Metric spaces into persistence diagrams} \label{sec:embedding}
 \begin{definition}[Isometric embedding]
     Let $ (X, d_X), (Y, d_Y) $ be metric spaces. An {\it isometric embedding} $ \eta: (X, d_X) \to (Y, d_Y) $ is a mapping that satisfies
     $$
@@ -131,7 +133,7 @@ Next proposition will prove that, in indeed, the space of persistence diagrams w
     Let $ 1\leq p \leq \infty $. Let $ D_0 \in \dgmp $. The {\it ball} at the space of persistence diagrams is defined as $ B_p(D_0, r) := \{D \in \dgmp : w_p(D, D_0) < r \} $.
 \end{definition}
 
-\begin{theorem}[Isometric embeeding of metric spaces into persistance diagrams]
+\begin{theorem}[Isometric embedding of metric spaces into persistence diagrams]
     Let $ (X, d) $ be a separable, bounded metric space. Then there exists an isometric embedding to the space of persistence diagrams $ \eta: (X, d) \to (\dgmi, \wdi)$ such that $ \eta(X) \subseteq B(\emptyset, \frac{3c}{c}) \backslash B(\emptyset, c) $.
 \end{theorem}
 
