@@ -1,7 +1,8 @@
-
 *
-!.gitignore
+!*.py
 !*.tex
 !*.pdf
 !*.bib
-!/Slides
+!Python/
+!Figures/
+!Slides/
