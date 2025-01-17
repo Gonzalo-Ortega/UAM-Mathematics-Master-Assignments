@@ -1,6 +1,6 @@
 \section{Reformulations for TDA} \label{sec:tda}
 
-In last section we have exposed the original optimal transport problem where the objetive was to measure distance between probability measures. We will now define a new Wasserstein distance, inspired in the original one, looking forward to measure the distance between persistence diagrams. In \ref{sec:wp-persistance} we make a brief introduction to Algebraic Topology and TDA concepts required to define our new Wasserstein distance. We also check that it is actually a distance between persistence diagrams. In \ref{sec:embedding} and we will conclude with the main result of this thesis: the existence of an isometric embedding from a separable metric space into the space of persistence diagrams.
+In last section we have exposed the original optimal transport problem where the objetive was to measure distance between probability measures. We will now define a new Wasserstein distance, inspired in the original one, looking forward to measure the distance between persistence diagrams. In \ref{sec:wp-persistance} we make a brief introduction to TDA concepts required to define our new Wasserstein distance. We also check that it is actually a distance between persistence diagrams. In \ref{sec:embedding} and we will conclude with the main result of this thesis: the existence of an isometric embedding from a separable metric space into the space of persistence diagrams.
 
 \subsection{Wasserstein distance over persistence diagrams} \label{sec:wp-persistance}
 We will denote the strict upper triangular region of the Euclidean plane as $ \upr := \{(x, y) \in \R^2 : x < y\} $, and the diagonal of the plane as $ \Delta := \{(x, y) \in \R^2 : x = y\}$.
@@ -9,9 +9,20 @@ We will denote the strict upper triangular region of the Euclidean plane as $ \u
     Let $ I $ be a countable set. A {\it persistence diagram} is a function $ D: I \to \upr $.
 \end{definition}
 
+Persistence diagrams are just a way of presenting the out coming from computing the persistence homology groups of a set of data. This output comes in the so called {\it barcodes}, which are multisets of intervals. As every interval is given with its {\it birth} and {\it death} parameters, it can as well be seen as a point in $ \upr $.
+
 \begin{definition}[Partial matching]
     Let $ D_1: I_1 \to \upr $ and $ D_2: I_2 \to \upr $ be persistence diagrams. A {\it partial matching} between $ D_1 $ and $ D_2 $ is the triple $ (I_1', I_2', f) $ such that $ f: I_1' \to I_2' $ is a bijection with $ I_1' \subseteq I_1 $ and $ I_2' \subseteq I_2 $.
 \end{definition}
+
+\begin{example}
+    To give some visual intuition of how persistence diagrams are matched between each other, in Figure \ref{fig:1} we represent two diagrams, $ D_ 1 $ and $ D_2 $ over $ \upr $ with the diagonal $ \Delta $ and a posible partial matching between them.
+    \begin{figure}[h] \label{fig:1}
+        \centering
+        \includegraphics[width=8cm]{Figures/figure-1.pdf}
+        \caption{Partial matching over two persistence diagrams}
+    \end{figure}
+\end{example}
 
 Instead of probability measures, now we are actually dealing with countable sets of points in $ \R $. We will make use of the $ l^p $ norm at countable spaces to measure the distance between matched pairs and the distance between unmatched pairs and the diagonal $ \Delta $. For a more detailed explanation of Lebesgue measures check \cite{rudin}[Definition 3.7]. This norm is named after Pafnuty Chebyshev.
 
@@ -40,7 +51,7 @@ To define our adapted Wasserstein distance we need to check how Chebyshev distan
 
 We now verify that the upper triangular region of the Euclidean plane with the Chebyshev distance adapted to measure distances in $ \Delta $ is a metric space.
 \begin{proposition}
-    $ d_\infty $ is a distance in $ \upr $ with the diagonal $ \Delta $
+    $ d_\infty $ is a distance in $ \upr $ with the diagonal $ \Delta $.
 \end{proposition}
 \begin{proof}
     For points $ a, b \in \upr \subset \R^2 $, $ d_\infty $ is a distance as usual Lebesgue norms are well defined. See \cite{rudin}[Chapter 3]. To verify that the metric requirements are fulfilled for $ d_\infty(a, \Delta) $, it is enough to consider $ t = \frac{a_y - a_x}{2} $ as in Proposition \ref{prop:distance-delta}.
@@ -120,13 +131,10 @@ Next proposition will prove that, in indeed, the space of persistence diagrams w
     \end{align*}
 \end{proof}
 
-\begin{figure}[h] \label{fig:1}
-    \centering
-    \includegraphics[width=8cm]{Figures/figure-1.pdf}
-    \caption{Wasserstein distance}
-\end{figure}
-
 \subsection{Metric spaces into persistence diagrams} \label{sec:embedding}
+
+Finally, we will present the main theorem of this thesis, witch asserts that any separable bounded metric space can be seen in the form of a persistence diagram. This interesting fact allows the bottleneck distance to be used in much more general cases than the ones offered by the output of persistence homology.
+
 \begin{definition}[Isometric embedding]
     Let $ (X, d_X), (Y, d_Y) $ be metric spaces. An {\it isometric embedding} $ \eta: (X, d_X) \to (Y, d_Y) $ is a mapping that satisfies
     $$
@@ -139,7 +147,7 @@ Next proposition will prove that, in indeed, the space of persistence diagrams w
     Let $ 1\leq p \leq \infty $. Let $ D_0 \in \dgmp $. The {\it ball} at the space of persistence diagrams is defined as $ B_p(D_0, r) := \{D \in \dgmp : w_p(D, D_0) < r \} $.
 \end{definition}
 
-\begin{theorem}[Isometric embedding of metric spaces into persistence diagrams]
+\begin{theorem}[Isometric embedding of metric spaces into persistence diagrams] \label{thm:embedding}
     Let $ (X, d) $ be a separable, bounded metric space. Then there exists an isometric embedding to the space of persistence diagrams $ \eta: (X, d) \to (\dgmi, \wdi)$ such that $ \eta(X) \subseteq B(\emptyset, \frac{3c}{c}) \backslash B(\emptyset, c) $.
 \end{theorem}
 
@@ -197,8 +205,15 @@ Next proposition will prove that, in indeed, the space of persistence diagrams w
     Hence, $ \costi(f) \geq c > d(x, y)$ and $d(x,y) = \wdi(\eta(x), \eta(y)) $, proving that $ \eta $ is an isometric embedding of a metric space into the space of persistence diagrams.
 \end{proof}
 
-\begin{figure}[h] \label{fig:2}
-    \centering
-    \includegraphics[width=8cm]{Figures/figure-2.pdf}
-    \caption{Isometric embeeding}
-\end{figure}
+Lastly, we show in a toy example how the isometric embedding works for a discrete metric space of tree points.
+
+\begin{example}
+    In Figure \ref{fig:2} we follow the proceeding used in the proof of Theorem \ref{thm:embedding}. We have pictured a metric space with three points, $x_1, x_2 $ and $ x_3 $, with the respective distances between them, and its image for the map $ \nu $ with $ c = 6 $, were $ x_i \mapsto \{12(k-1), 12k + d(x_i, x_k) \}_{k=1}^3 $.
+    
+    \begin{figure}[h] \label{fig:2}
+        \centering
+        \includegraphics[width=15cm]{Figures/figure-2.pdf}
+        \vspace{-70pt}
+        \caption{Isometric embeeding over a finite metric space.}
+    \end{figure}
+\end{example}

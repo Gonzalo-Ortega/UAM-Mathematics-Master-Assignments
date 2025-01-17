@@ -9,14 +9,14 @@ x2, y2 = zip(*D2)
 
 plt.rcParams['text.usetex'] = True
 
+plt.scatter(x1, y1, color='#48c9b0', label=r'$D_1$')
+plt.scatter(x2, y2, color='#c948a1', label=r'$D_1$')
+
 plt.plot([x1[0], x2[0]], [y1[0], y2[0]], color='grey', label='Matching')
 plt.plot([x1[1], x2[1]], [y1[1], y2[1]], color='grey')
 plt.plot([x1[2], 1.5], [y1[2], 1.5], color='grey')
 
 plt.plot([0, 10], [0, 10], 'k--', label=r'$\Delta$')
-
-plt.scatter(x1, y1, color='#48c9b0', label=r'$D_1$')
-plt.scatter(x2, y2, color='#c948a1', label=r'$D_1$')
 
 # Labels and legend
 plt.xlabel(r'X')

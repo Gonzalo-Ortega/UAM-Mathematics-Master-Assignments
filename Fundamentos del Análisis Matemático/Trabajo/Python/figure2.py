@@ -1,40 +1,41 @@
 import matplotlib.pyplot as plt
 
-fig, axes = plt.subplots(1, 2, figsize=(10, 6))
+plt.rcParams['text.usetex'] = True
+fig, axes = plt.subplots(1, 2, gridspec_kw={'wspace': 0.5})
 
-pts = [(1, 1), (5, 1), (5, 4)]
-axes[0].plot([1, 5], [1, 1], color='grey', label='Matching')
-axes[0].plot([1, 5], [1, 4], color='grey', label='Matching')
-axes[0].plot([5, 5], [1, 4], color='grey', label='Matching')
+axes[0].plot([8, 40], [8, 8], color='grey')
+axes[0].annotate(r'$4$', (24, 4.8))
+                 
+axes[0].plot([8, 40], [8, 32], color='grey')
+axes[0].annotate(r'$5$', (24, 22.4))
 
-axes[0].scatter(1, 1, color='#48c9b0', label=r'$a$')
-axes[0].scatter(5, 1, color='#48c9b0', label=r'$b$')
-axes[0].scatter(5, 4, color='#48c9b0', label=r'$c$')
+axes[0].plot([40, 40], [8, 32], color='grey')
+axes[0].annotate(r'$3$', (40.8, 18.4))
 
+axes[0].scatter(8, 8, color='#48c9b0')
+axes[0].annotate(r'$x_1$', (4, 6.4))
 
+axes[0].scatter(40, 8, color='#c948a1')
+axes[0].annotate(r'$x_2$', (41.6, 6.4))
 
-# Annotate distances
-axes[0].annotate("0.5", (0.5, 0.5), textcoords="offset points", xytext=(10, -10), fontsize=10)
-axes[0].annotate("0.3", (1.5, 1.5), textcoords="offset points", xytext=(-20, -10), fontsize=10)
+axes[0].scatter(40, 32, color='#c9b048')
+axes[0].annotate(r'$x_3$', (41.6, 30.4))
 
+axes[0].set_xlim(0, 48)
+axes[0].set_ylim(0, 48)
 axes[0].axis('off')
 axes[0].set_aspect('equal')
 
 # Data for the second subplot
-x_offsets = [0, 2, 4]
-y1 = [2, 4, 6]
-y2 = [3, 5, 7]
+axes[1].scatter([0, 12, 24], [12, 28, 41], color='#48c9b0', label=r'$D_{x_1}$')
+axes[1].scatter([0, 12, 24], [16, 24, 39], color='#c948a1', label=r'$D_{x_2}$')
+axes[1].scatter([0, 12, 24], [17, 27, 36], color='#c9b048', label=r'$D_{x_3}$')
 
-# Second subplot
-for i in range(len(x_offsets)):
-    axes[1].scatter([x_offsets[i]] * 2, [y1[i], y2[i]], s=100, c=['green', 'blue'])
-    axes[1].scatter(x_offsets[i], y1[i] - 1, s=100, c='red')
-    axes[1].plot([x_offsets[i], x_offsets[i]], [y1[i], y2[i]], color='black', linestyle='-', linewidth=1)
-    axes[1].annotate(f"({x_offsets[i]}, {y1[i]})", (x_offsets[i], y1[i]), textcoords="offset points", xytext=(-15, 10))
-    axes[1].annotate(f"({x_offsets[i]}, {y2[i]})", (x_offsets[i], y2[i]), textcoords="offset points", xytext=(-15, -15))
+plt.plot([0, 42], [0, 42], 'k--', label=r'$\Delta$')
 
-axes[1].set_xlim(-1, 6)
-axes[1].set_ylim(0, 8)
+axes[0].set_xlim(0, 42)
+axes[0].set_ylim(0, 42)
 axes[1].set_aspect('equal')
+plt.legend(loc='lower right')
 
 plt.savefig('Fundamentos del Análisis Matemático/Trabajo/Figures/figure-2.pdf')
