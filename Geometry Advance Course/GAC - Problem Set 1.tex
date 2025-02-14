@@ -1,8 +1,5 @@
-%%%%%%%%%%%%%%%%%%
-
 \documentclass[11pt,a4paper]{article}
 
-%%%%%%%%%%%%%%%%%%
 \usepackage[colorlinks=true,pdftex]{hyperref}
 \usepackage{latexsym}
 \usepackage{amssymb}
@@ -14,27 +11,17 @@
 \usepackage{esint}
 \usepackage{hyperref}
 \usepackage{amsthm}
-
-\usepackage{mathtools} %for \stackrel
-
-%%%%%%%%%%%%%%%%%%
-
+\usepackage{mathtools}
 \usepackage{color}
 \newcommand{\red}{\textcolor{red}}
 \newcommand{\blue}{\textcolor{blue}}
-
-%%%%%%%%%%%%%%%%%%
-
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 
-%%%%%%%%%%%%%%%%%%
+\newcommand{\id}{\operatorname{id}}
 
 \addtolength{\topmargin}{-3.5cm} \addtolength{\oddsidemargin}{-2cm}
 \addtolength{\textheight}{+5cm} \addtolength{\textwidth}{+4cm}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \begin{document}
 \hrule\hrule
@@ -51,12 +38,85 @@
 \hrule\hrule
 
 \subsection*{Exercise 1}
+  \begin{proof}
+    Let $ f \colon X \to Y $ be a continuous map homotopic to an homotopy equivalence $ g \colon X \to Y $, $ f \simeq g $. As $ g $ is an homotopy equivalence, there exists $ h \colon Y \to X $ such that $ g \circ h \simeq \id_Y $ and $ h \circ g \simeq \id_X $. Also, as $ f \simeq g $, there exists an homotopy $ H \colon X \times I \to Y$ such that
+    \begin{align*}
+      H(x, 0) &= f(x), \\
+      H(x, 1) &= g(x).
+    \end{align*}
+    Therefore, we can define the homotopies $H_1 \colon Y \times I \to X $ and $H_2 \colon X \times I \to Y $ as
+    \begin{align*}
+      H_1(x, t) &\coloneqq h \circ H(x, t),  &  H_2(y, t) &\coloneqq H(h(x), t),
+    \end{align*}
+    where
+    \begin{align*}
+      H_1(x, 0) &= h \circ H(x, 0) = h \circ f(x),  &  H_2(y, 0) &= H(h(y), 0) = f(h(y)) = f \circ h (y), \\
+      H_1(x, 1) &= h \circ H(x, 1) = h \circ g(x),  &  H_2(y, 1) &= H(h(y), 1) = g(h(y)) = g \circ h (y).
+    \end{align*}
+    Hence, $ h \circ f \simeq h \circ g \simeq \id_X $ and $ f \circ h \simeq g \circ h \simeq \id_Y $, proving that $ f $ is also a homotopy equivalence.
+  \end{proof}
 
 \subsection*{Exercise 2}
+\begin{proof}
+  Let $ X $ be a topological space.
+
+  \vspace{0.5cm}
+  (a) $\Rightarrow$ (b). Let $ X $ be contractible and let $ x_0 $ be a single point set, such as $ X \simeq x_0$. Let $ Y $ be a topological space and $ f \colon X \to Y $ a continuous function. Then there exists an homotopy $ H \colon X \times I \to X$ such that
+  \begin{align*}
+    H(x, 0) &= \id_X = x, \\
+    H(x, 1) &= x_0.
+  \end{align*}
+  Defining $ H_* \colon X \times I \to Y $ as $ H_*(x, t) = f \circ H(x, t) $,
+  \begin{align*}
+    H_*(x, 0) &= f \circ H(x, 0) = f(x)\\
+    H_*(x, 1) &= f \circ H(x, 1) = f(x_0).
+  \end{align*}
+  Hence, $ f $ is nullhomotopic.
+
+  \vspace{0.5cm}
+  (b) $\Rightarrow$ (c) If for every topological space $ Y $ and every continuous function $ f \colon X \to Y $ is nullhomotopic, in particular the $ \id_X \colon X \to X $ is nullhomotopic and there exist an homotopy $ H \colon X \times I \to X$ such that
+  \begin{align*}
+    H(x, 0) &= \id_X = x, \\
+    H(x, 1) &= x_0.
+  \end{align*}.
+  If $ g \colon Y \to X $ is continuous we can define $ H_* \colon Y \times I \to X $ as $ H_*(x, t) \coloneq H(f(x), t) $,
+  \begin{align*}
+    H_*(x, 0) &= H(g(x), 0) = g(x)\\
+    H_*(x, 1) &= H(g(x), 1) = x_0.
+  \end{align*}
+  Hence, $ g $ is nullhomotopic
+
+  \vspace{0.5cm}
+  (c) $\Rightarrow$ (a). If for every topological space $ Y $ and every continuous function $ g \colon Y \to X $ is nullhomotopic, in particular, $ \id_X \colon X \to X $ is nullhomotopic. That is $ \id_X \simeq x_0 $ and $ X $ is contractible.
+\end{proof}
 
 \subsection*{Exercise 3}
+\begin{proof}
+  Let $ X = \{(x, y) \in \mathbb R^2 \colon x = t, \ y = t/n, \ t \in [0, 1], n \in \mathbb N \} \cup \{(x, y) \in \mathbb R^2 \colon x = t, \ y = 0, \ t \in [0, 1]\}  $. Define the homotopy $ H \colon X \times \to X $ such that
+  $$
+    H((x, y), t) \coloneqq
+    \begin{cases} 
+      (1-2t)(x, y), & \text{if  } \ 0 \leq t < \frac{1}{2}, \\ 
+      (2t - 1, 0), & \text{if  } \ \frac{1}{2} \leq t \leq 1. 
+    \end{cases}
+  $$
+  Then, $ H((x, y), 0) = (x, y) = \id_X $ and $ H((x, y), 1) = (1, 0) $. As $ H $ is continuous, the set $ \{ (1, 0) \} $ is a deformation retract of $ X $.
+  \vspace{0.5cm}
+
+  Suppose $ \{ (1, 0) \} $ is a strong deformation retract of $ X $, then for all $ t \in [0, 1]$, $ H((1, 0), t) = H((1, 0), 0) = (1, 0) $. Lets find a $ t_0 \in [0, 1]$ that contradicts this. For every $ n \in \mathbb N $, there exists a $ t_n \in [0, 1] $ such that $ H((1, \frac{1}{n}), t_n) = (0, 0) $, as if not, $ H $ would not be continuous. As $\{t_n\}_{n \geq 0}$ is a subset of the compact set $[0, 1]$, there exists a sub collection $\{t_{n_k}\}_{k \geq 0}$ such that when $ k \rightarrow \infty $, $ t_{n_k} \rightarrow t_0 $ and $\frac{1}{t_{n_k}} \rightarrow 0 $. Therefore
+  $$
+    H((1, 0), t_0) = \lim_{k \to \infty} H({t_{n_k}}, t_{n_k}) = \lim_{k \to \infty} (0,0) = (0, 0).
+  $$
+\end{proof}
 
 \subsection*{Exercise 7}
+Let $ X $ be a finite dimensional complex of dimension $ n $. Then
+$$
+  X = X^n = \frac{X^{n-1} \sqcup_\alpha D_\alpha^n}{x \sim \phi_\alpha(x)}, \ \forall \alpha \in I, \ \forall x \in S_\alpha^{n-1}, 
+$$
+is a topological space with the quotient topology, were $ \phi_\alpha $ is the gluing map.
+
+Thus, a $n$-cell $e_\alpha^n$ is open in $ X $ if the set $ \{ x\in X^{n-1} \sqcup_\alpha D_\alpha^n \colon [x] \in e_\alpha^n\} $ is open in $X^{n-1} \sqcup_\alpha D_\alpha^n $. But this set is equal to $ e_\alpha^n $, and $ e_\alpha^n $ is open in $ X^{n-1} \sqcup_\alpha D_\alpha^n $ as it is a copy of $ B^n $, witch is open in some $ D_\alpha^n $. Therefore, $ e_\alpha^n $ is open in $ X $.
 
 
 \begin{thebibliography}{9}
