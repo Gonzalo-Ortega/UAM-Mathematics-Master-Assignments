@@ -39,6 +39,30 @@
 \hrule\hrule
 
 \subsection*{Exercise 1}
+\begin{proof}
+Let $X$ and $Y$ path-connected spaces. If $[\gamma] \in \pi_1(X \times Y, (x, y)) $, then $ \gamma \colon I \to X \times Y $ is a loop in the direct product pace where $ \gamma(0) = \gamma(1) = (x,y) $. We can write $ \gamma $ as
+$
+  \gamma(t) = (\gamma_X(t), \gamma_Y(t))
+$
+where $ \gamma_X \colon I \to X $ and $ \gamma_Y \colon I \to Y $ are loops in $ X $ and $ Y $ respectively with $ \gamma_X(0) = \gamma_X(1) = x $ and $ \gamma_Y(0) = \gamma_Y(1) = y $. Hence we can define the morphism
+\begin{align*}
+  f \colon \pi_1(X \times Y, (x, y)) &\to \pi_1(X, x) \times \pi_1(Y,y) \\
+  [\gamma] &\mapsto ([\gamma_X], [\gamma_Y]).
+\end{align*}
+\begin{itemize}
+  \item Let $*$ denote the path concatenation operator and let $ [\gamma_1], [\gamma_2] \in \pi_1(X \times Y, (x, y)) $, then
+  $$
+    f([\gamma_1]\cdot[\gamma_2]) = f([\gamma_1 * \gamma_2]) = ([(\gamma_1 * \gamma_2)_X], [(\gamma_1 * \gamma_2)_Y]) = ([\gamma_{1X}], [\gamma_{1Y}]) \cdot ([\gamma_{2X}], [\gamma_{2Y}]) = f([\gamma_1]) \cdot f([\gamma_2])
+  $$
+  and $f$ is in fact an homomorphism.
+
+  \item If $ ([\gamma_X], [\gamma_Y]) $ is the identity in $\pi_1(X, x) \times \pi_1(Y,y)$ then $ [\gamma_X] $ is the class of the constant path $ [\gamma_X] = [x_0]$. The same for $ [\gamma_Y] = [y_0]$. Therefore, if $ f([\gamma]) = ([x_0], [y_0]) $ then $ [\gamma] = [(x_0, y_0)] $ is also the identity in $ \pi_1(X \times Y, (x, y)) $. Hence, $ f $ is injective.
+  
+  \item For any pair of path classes $ [\alpha] \in \pi_1(X, x) $ and $ [\beta] \in \pi_1(Y,y) $ we can take the path $ \gamma(t) =(\alpha(t), \beta(y)) $ for which $ f([\gamma]) = ([\alpha], [\beta]) $. Hence, $ f $ is also surjective.
+\end{itemize}
+This makes $ f $ a isomorphism and $ \pi_1(X \times Y, (x, y)) \cong \pi_1(X, x) \times \pi_1(Y,y) $
+\end{proof}
+
 
 
 \begin{thebibliography}{9}
