@@ -1,7 +1,7 @@
-
 *
 !.gitignore
-!*.tex
+!*/
 !*.pdf
+!*.tex
 !*.bib
-!/figures
+!*.png
