@@ -15,9 +15,7 @@
 \usepackage{color}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
-
-\usepackage{tikz}
-\usetikzlibrary{knots}
+\usepackage{pdfpages}
 
 \newcommand{\id}{\operatorname{id}}
 \newcommand{\R}{\mathbb R}
@@ -102,7 +100,7 @@ This makes $ f $ a isomorphism and $ \pi_1(X \times Y, (x, y)) \cong \pi_1(X, x)
     \pi_1(X) = \pi_1(V) = \Z.
   $$
 
-  \item Let $ X \coloneq \R^3 \setminus \{(x, 0, 0), (x, 1, 0) : x \in \R\} $. Using the retract
+  \item The space $\R^3 $ without any two disjoint lines is homeomorphic to $\R^3 $ without two disjoint {\it parallel} lines. Without lose of generality, let $ X \coloneq \R^3 \setminus \{(x, 0, 0), (x, 1, 0) : x \in \R\} $. Using the retract
   \begin{align*}
     r \colon X &\to \R^2 \setminus \{(0, 0), (1, 0)\} \\
     (x, y, z) &\mapsto (y, z)
@@ -112,11 +110,20 @@ This makes $ f $ a isomorphism and $ \pi_1(X \times Y, (x, y)) \cong \pi_1(X, x)
     \pi_1(X) = \pi_1(S^1 \vee S^1) = \mathbb Z * \mathbb Z.
   $$
   
-  \item 
+  \item Let $ X \coloneq T^2 - \{p, q\} $ be the torus minus two points. In Figure \ref{fig:7d} we make use of the diagrams seen in class to compute the fundamental group of the space. In step (1) we picture the diagram of the torus with two points removed. In (2) we contract one of the removed points to the boundary of the diagram while cutting one edge to the other point. Thus, in (3) we can see the obtained result. By deforming the diagram as in (4) and gluing the repeated edges $a$ and $b$ together we obtain the wedge of (5). That is, $ X \simeq S^1 \vee S^1 \vee S^1$ and 
+  $$
+  \pi_1(X) = \pi_1(S^1 \vee S^1 \vee S^1) = \mathbb Z * \mathbb Z * \mathbb Z.
+  $$
 \end{enumerate}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm]{7d.pdf}
+  \caption{Diagrams of the steps followed to compute the fundamental group of the torus $T^2$ minus two points.}
+  \label{fig:7d}
+\end{figure}
 
 \section*{Exercise 8}
-In Figure \ref{fig:63} we have chosen an orientation and numbered the undercrossings of the knot $ 6_3 $. Following the algorithm seen in class we compute the following Wirtinger relations. We denote (RH) the right hand crossings and (LH) the left hand ones. Note that we only need to compute the first 5, as the sixth can be computed as combinations of the previous ones.
+In Figure \ref{fig:63} we have chosen an orientation and numbered the under-crossings of the knot $ 6_3 $. Following the algorithm seen in class we compute the following Wirtinger relations. We denote (RH) the right hand crossings and (LH) the left hand ones. Note that we only need to compute the first 5, as the sixth can be computed as combinations of the previous ones.
 \renewcommand{\theenumi}{\arabic{enumi}} 
 \begin{enumerate}
   \item (RH) $ i_*(x_1) = a e b^{-1} e^{-1} $
@@ -131,10 +138,16 @@ $$
 $$
 \begin{figure}[h]
   \centering
-  \includegraphics[width=5cm]{63.png}
-  \caption{Knot $6_3$ with the chosen orientation and undercrossings numbered.}
+  \includegraphics[width=5cm]{63.pdf}
+  \caption{Knot $6_3$ with the chosen orientation and under-crossings numbered.}
   \label{fig:63}
 \end{figure}
+
+\section*{Exercise 10}
+The Wirtinger presentation of the fundamental group of any knot complement in $ S^3$ is a presentation of the from
+$$
+  a
+$$
 
 \begin{thebibliography}{9}
 
@@ -142,6 +155,9 @@ $$
   Allen Hatcher,
   \textit{Algebraic Topology},
   Allen Hatcher 2001.
+
+  \bibitem{nico}
+  \textit{In Exercise 7.d., the cut made to obtain vertex $c$ was inspired by the one explained to me by Nicolas.}
   
 \end{thebibliography}
 
