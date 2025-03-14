@@ -47,19 +47,17 @@ Let $ \Q^* = \Q - \{0\} $ be the multiplicative group of non-zero rationals. Eve
 \subsection*{Exercise 3}
 
 \subsection*{Exercise 4}
-Let $ G_1 = \langle S = \{a, b\} \mid a^3 b^5 a^{-3} b^{-5} \rangle $. To show that $ G_1 $ is infinite we will construct a surjective homomorphism from $ G_1 $ to $ \Z $. First, define $ \theta \colon S \to \Z $ as  
-$ \theta(a) = 5 $ and $ \theta(b) = -3 $. By the universal property of free groups there is a unique homomorphism $ \hat \theta \colon F(S) \to \Z $ extending $ \theta $. Thus, we have that
+Let $ G_1 = \langle S_1 = \{a, b\} \mid R_1 = \{a^3 b^5 a^{-3} b^{-5}\} \rangle $. To show that $ G_1 $ is infinite we will construct a surjective homomorphism from $ G_1 $ to $ \Z $. First, define $ \theta \colon S_1 \to \Z $ as $ \theta(a) = 2 $ and $ \theta(b) = -1 $. By the universal property of free groups there is a unique homomorphism $ \hat \theta \colon F(S) \to \Z $ extending $ \theta $ such that $ \hat \theta(a) = 2 $ and $ \hat \theta(b) = -1 $. Thus, we have that
 $$
-  \theta (a^3 b^5 a^{-3} b^{-5}) = 3\theta(a) + 5\theta(b) - 3 \theta(a) - 5 \theta(b) = 0,
+  \hat \theta (a^3 b^5 a^{-3} b^{-5}) = 3 \hat\theta(a) + 5 \hat\theta(b) - 3 \hat\theta(a) - 5 \hat\theta(b) = 0.
 $$
+Thus, $ R_1 \subset \ker (\hat \theta) $ and in fact $ \langle \langle R_1 \rangle \rangle \subset \ker (\hat \theta) $. For $ (ab)^n \in F(S_1)$, $ n \in \Z $, we have that $ \hat \theta((ab)^n) = n $. This makes any element of $\Z$ reachable from an element of $ F(S_1) $ by $ \hat \theta $, making $ \hat \theta $ a surjective homomorphism. Hence, by the fundamental theorem on homomorphisms, there exists a unique surjective homomorphism $ h_1: F(S_1)/\langle \langle R_1 \rangle \rangle = G_1 \to \Z $ proving $ G_1 $ is infinite.
 
-Let $ G_1 = \langle a, b \mid a^3 b^5 a^{-3} b^{-5} \rangle $.  Define the homomorphism $ \phi \colon G_1  \to \Z $ such that $ \phi(a) = 5 $ and $ \phi(b) = -3 $. From the restrictions of $ G_1 $ we know that $ a^3 b^5 a^{-3} b^{-5} = 1 $, the identity element in $ G_1 $. Indeed,
+Let now $ G_2 = \langle S_2 = \{a, b\} \mid R_2 = \{a^2 b^3\} \rangle $. We proceed as before. Define $ \phi \colon S_2 \to \Z $ as $ \phi(a) = 3 $ and $ \phi(b) = -2 $. Then there exists a unique homomorphism $ \hat \phi \colon F(S_2) \to \Z $ such that $ \hat \phi(a) = 3 $ and $ \hat \phi(b) = -2 $. Then
 $$
-  \phi (a^3 b^5 a^{-3} b^{-5}) = 3\phi(a) + 5\phi(b) - 3 \phi(a) - 5 \phi(b) = 0,
+  \hat \phi (a^2 b^3) = 3 \hat\phi(a) -2 \hat\phi(b) = 3 \cdot (-2) -2 \cdot 3 = 0.
 $$
-which is the identity element in $ \Z $ with operation $ + $. For $ a^{n2} b^{n3} $, $ n \in \Z $, we have that $ \phi(a^{n2} b^{n3}) = n $. This makes any element of $ \Z$ reachable from an element of $ G_1 $ by $ \phi $, making $ \phi $ a surjective homomorphism, proving $ G_1 $ is infinite.
-
-Let now $ G_2 = \langle a, b \mid a^2 b^3 \rangle $
+Hence, $ \langle \langle R_2 \rangle \rangle \subset \ker (\hat \phi) $ and $ \hat \phi((ab)^n) = n $,  $ \phi $ is surjective and there exists a unique surjective $ h_2: F(S_2)/\langle \langle R_2 \rangle \rangle = G_2 \to \Z $. Thus, $ G_2 $ is also infinite.
 
 \subsection*{Exercise 8}
 Let $ G = \langle S \mid R \rangle = F(S) / \langle \langle R \rangle \rangle $ be a finite presentation. All words $ w \in (S \sqcup S^{-1})^* $ such that $ w = 1 $ in $ G $ are the words $ w \in \langle \langle R \rangle \rangle $ by the definition of group presentation. Recall that
@@ -92,10 +90,10 @@ Each $k$-th iteration of Step 3 of the previous procedure is finite as \eqref{R}
 
 \begin{thebibliography}{9}
 
-  \bibitem{gath}
-  Allen Hatcher,
-  \textit{Algebraic Topology},
-  Allen Hatcher 2001.
+  \bibitem{marco}
+  Marco Linton,
+  \textit{Geometric group theory notes},
+  UAM Algebra Advance Course, 2025.
   
 \end{thebibliography}
 
