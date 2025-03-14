@@ -144,9 +144,21 @@ $$
 \end{figure}
 
 \section*{Exercise 10}
-The Wirtinger presentation of the fundamental group of any knot complement in $ S^3$ is a presentation of the from
+Let $ K $ be an arbitrary knot with $n \geq 3$ crossings. The Wirtinger presentation of the fundamental group of a knot complement in $S^3$ is a presentation of the from
 $$
-  a
+  \pi_1(S^3 \setminus K) \cong \left\langle S = \left\{ a_1, \dots, a_n \right\} \mid R = \left\{ a_i a_{k_i}^{\epsilon_i} a_{i+1}^{-1} a_{k_i}^{-\epsilon_i} \colon i \in \{1, \dots, n-1\}, \epsilon_i \in \{\pm 1\}  \right\}\right\rangle.
+$$
+If we consider the abelianization of $ \pi_1(S^3 \setminus K) $ we need to add the commutators of every pair of elements in $ S $. That is add the set $ C = \{[a_i, a_j] \colon a_i, a_j \in S\}$ to the presentation restrictions. Therefore
+$$
+  \operatorname{Ab} (\pi_1(S^3 \setminus K)) \cong \left\langle S \mid R \cup C \right\rangle.
+$$
+This implies that each element of $ R $ can be permuted and
+$$
+  1 = a_i a_{k_i}^{\epsilon_i} a_{i+1}^{-1} a_{k_i}^{-\epsilon_i} = a_i a_{i+1}^{-1} a_{k_i}^{\epsilon_i} a_{k_i}^{-\epsilon_i} = a_i a_{i+1}^{-1}.
+$$
+Thus, $ a_i = a_{i+1} $ for all $ i \in \{1, \dots, n-1\} $. As all the generators in $ S $ are the same, all elements in $ R \cup C $ can be removed, leaving
+$$
+  \operatorname{Ab} (\pi_1(S^3 \setminus K)) \cong \left\langle a_1 \mid - \right\rangle \cong F_1 \cong \Z.
 $$
 
 \begin{thebibliography}{9}
