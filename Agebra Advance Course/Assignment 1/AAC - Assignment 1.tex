@@ -47,7 +47,13 @@ Let $ \Q^* = \Q - \{0\} $ be the multiplicative group of non-zero rationals. Eve
 \subsection*{Exercise 3}
 
 \subsection*{Exercise 4}
-Let $ G_1 = \langle a, b \mid a^3 b^5 a^{-3} b^{-5} \rangle $. To show that $ G_1 $ is infinite we will construct a surjective homomorphism from $ G_1 $ to $ \Z $. Define the homomorphism $ \phi \colon G_1  \to \Z $ such that $ \phi(a) = 5 $ and $ \phi(b) = -3 $. From the restrictions of $ G_1 $ we know that $ a^3 b^5 a^{-3} b^{-5} = 1 $, the identity element in $ G_1 $. Indeed,
+Let $ G_1 = \langle S = \{a, b\} \mid a^3 b^5 a^{-3} b^{-5} \rangle $. To show that $ G_1 $ is infinite we will construct a surjective homomorphism from $ G_1 $ to $ \Z $. First, define $ \theta \colon S \to \Z $ as  
+$ \theta(a) = 5 $ and $ \theta(b) = -3 $. By the universal property of free groups there is a unique homomorphism $ \hat \theta \colon F(S) \to \Z $ extending $ \theta $. Thus, we have that
+$$
+  \theta (a^3 b^5 a^{-3} b^{-5}) = 3\theta(a) + 5\theta(b) - 3 \theta(a) - 5 \theta(b) = 0,
+$$
+
+Let $ G_1 = \langle a, b \mid a^3 b^5 a^{-3} b^{-5} \rangle $.  Define the homomorphism $ \phi \colon G_1  \to \Z $ such that $ \phi(a) = 5 $ and $ \phi(b) = -3 $. From the restrictions of $ G_1 $ we know that $ a^3 b^5 a^{-3} b^{-5} = 1 $, the identity element in $ G_1 $. Indeed,
 $$
   \phi (a^3 b^5 a^{-3} b^{-5}) = 3\phi(a) + 5\phi(b) - 3 \phi(a) - 5 \phi(b) = 0,
 $$
@@ -58,7 +64,7 @@ Let now $ G_2 = \langle a, b \mid a^2 b^3 \rangle $
 \subsection*{Exercise 8}
 Let $ G = \langle S \mid R \rangle = F(S) / \langle \langle R \rangle \rangle $ be a finite presentation. All words $ w \in (S \sqcup S^{-1})^* $ such that $ w = 1 $ in $ G $ are the words $ w \in \langle \langle R \rangle \rangle $ by the definition of group presentation. Recall that
 $$
-  \langle \langle R \rangle \rangle = \bigcup_{i=0}^\infty \left\{ \prod_{j=0}^\infty (g_j^{-1} r_j^{\epsilon_j} g_j) \mid g_j \in G, r_j \in R, \epsilon_j \in \{ \pm 1 \} \right\}.
+  \langle \langle R \rangle \rangle = \bigcup_{i=0}^\infty \left\{ \prod_{j=0}^\infty (g_j^{-1} r_j^{\epsilon_j} g_j) \mid g_j \in F(G), r_j \in R, \epsilon_j \in \{ \pm 1 \} \right\}.
 $$
 To enumerate the words $ w $ we can proceed as follows:
 \begin{enumerate}
@@ -72,13 +78,14 @@ To enumerate the words $ w $ we can proceed as follows:
     s_1, s_1^{-1}, s_2, s_2^{-1}, \dots, s_m, s_m^{-1}.
   \end{align}
 
-  \item Finally, now we just need to enumerate the elements of $ \langle \langle R \rangle \rangle $ in a sorted way without enumerating one same element more than once. For so, start enumerating the elements $ g \in F(S) $ by making combinations of the elements of \eqref{S} in a lexicographic order and in increasing word length. As $|S|$ is finite, for each word length $ k $, the amount of words of $ F(S) $ of length $ k $ is going to be $ m ^k $ minus the number of produced words that can be reduced. In any case, there is a finite number of words of length $ k $ in $ F(S) $. Denote this set as  $ F(S)_k $.
+  \item Finally, now we just need to enumerate the elements of $ \langle \langle R \rangle \rangle $ in a sorted way without enumerating one same element more than once. For so, start enumerating the elements $ g \in F(S) $ by making combinations of the elements of \eqref{S} in a lexicographic order and in increasing word length. As $|S|$ is finite, for each word length $ k $, the amount of words of $ F(S) $ of length $ k $ is going to be $ m ^k $ minus the number of produced words that can be reduced. In any case, there is a finite number of words of length $ k $ in $ F(S) $. Denote the set of words of length less than or equal to $ k $ as  $ F(S)_k $ and note that it is finite too.
   
   For each word length $ k $, we can iterate over the elements of \eqref{R}, and enumerate all the elements
   $$
   \prod_{j=0}^k (g_j^{-1} r_j^{\epsilon_j} g_j) \text{ with } g_j \in F(S)_k, r_j \in R, \epsilon_j \in \{ \pm 1 \}.
   $$
 
+  We reduce each obtained word and compare it with the finite number of words we had previously enumerated. If it is a new word, we enumerate it. 
 \end{enumerate}
 
 Each $k$-th iteration of Step 3 of the previous procedure is finite as \eqref{R} is finite and $ F(S)_k $ is finite. Therefore, on an input $ w \in (S \sqcup S^{-1})^* $, if $ w = 1 $ in $ G $, as $ w $ would have finite length, our procedure will find it in finite time. Else, our procedure may run forever.
