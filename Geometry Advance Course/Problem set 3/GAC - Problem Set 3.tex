@@ -22,6 +22,7 @@
 \newcommand{\im}{\operatorname{Im}}
 \newcommand{\R}{\mathbb R}
 \newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
 
 \addtolength{\topmargin}{-3.5cm} \addtolength{\oddsidemargin}{-2cm}
 \addtolength{\textheight}{+5cm} \addtolength{\textwidth}{+4cm}
@@ -70,6 +71,44 @@ Let $p\colon E \to B $ be a covering map. Let $ X $ be a path connected, simply 
 
 
 \subsection*{Exercise 5}
+  Let $ /Z_8 $ act on $ S^3 = {(z,w) \in \C^2 \mid |z|^2 + |w|^2 = 1}$ as $ [m] \cdot (z, w) \coloneq (\xi^m z, \xi^m w) $, where $ \xi $ is a primitive 8-th root of unity, $ (z, w) \in S^3 $ and $ [m] \in \Z $.
+  
+  \begin{enumerate}[label=\alph*)]
+    \item As $ \C^2 $ is a metric space, let $ d $ be the induced distance function over $ S^3 $. Define
+    $$
+      \epsilon \coloneq \frac{1}{2} d((z, w), \xi(z, w)).
+    $$
+    Let $ [m] \neq [n] \in \Z_8 $ act over $ (z, w) \in S^3 $. Let $ B_\epsilon((z, w)) $ be the open ball of center $ (z, w) $  and radius $ \epsilon $. Then $ [m] \cdot  B_\epsilon((z, w)) = B_\epsilon(\xi^m(z, w))$ and $ [n] \cdot  B_\epsilon((z, w)) = B_\epsilon(\xi^n(z, w))$. If
+    $$
+      B_\epsilon(\xi^m(z, w)) \cap B_\epsilon(\xi^n(z, w)) \neq \emptyset,
+    $$
+    then exists $ (x, y) \in S^3 $ such that $ (x, y) \in B_\epsilon(\xi^m(z, w)) $ and $ (x, y) \in B_\epsilon(\xi^n(z, w)) $. That is
+    \begin{align*}
+      d((x, y), \xi^m(z, w)) & < \epsilon, \\
+      d((x, y), \xi^n(z, w)) & < \epsilon. \\
+    \end{align*}
+    But then, by the triangle inequality of metric spaces,
+    $$
+      d(\xi^m(z, w), \xi^n(z, w)) \leq d(\xi^m(z, w), (x, y)) + d((x, y), \xi^n(z, w)) < 2 \epsilon = d((z, w), \xi(z, w)).
+    $$
+    This contradicts the fact that the minimum distance between the action of two roots of unity is the distance between the action of two consecutive roots. Hence, if $ m \neq n $, then 
+    $$
+      B_\epsilon(\xi^m(z, w)) \cap B_\epsilon(\xi^n(z, w)) = \emptyset,
+    $$
+    and the action if $ \Z_8 $ over $ S^3 $ is properly discontinuos.
+
+    \item Let $ L = S^3 / \Z_8 $. As $ \pi_1(S^3) $ is trivial, $ S^3 $ is simply connected. As $ Z_8 $ acts properly discontinuos on $ S^3$, by Corollary 16, $ \pi_1(L) \cong \Z_8 $.
+    
+    \item By the classification theorem for coverings, there exists a bijection between the set of coverings $p\colon E \to L $ and the conjugacy classes of groups of $ \pi_1(L)$. The sub groups of $ \Z_8 $ are: $1, \Z_2, \Z_4 $ and $ \Z_8$. As all of them are normal, the conjugacy classes are the subgroups themselves. That is, up to equivalence of coverings, the four coverings of $ S^3 $ are:
+    \begin{align*}
+      p_1 &\colon S^3 / \Z_8 \hookrightarrow_{\id} S^3 / \Z_8, \\
+      p_2 &\colon S^3 / \Z_4 \hookrightarrow_{/ \Z_2} S^3 / \Z_8, \\
+      p_3 &\colon S^3 / \Z_2 \hookrightarrow_{/ \Z_4} S^3 / \Z_8, \\
+      p_4 &\colon S^3 \hookrightarrow_{/ \Z_8} S^3 / \Z_8. \\
+    \end{align*}
+
+    \item
+  \end{enumerate}
 
 \subsection*{Exercise 7}
 
