@@ -16,8 +16,10 @@
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{pdfpages}
+\usepackage{enumitem}
 
 \newcommand{\id}{\operatorname{id}}
+\newcommand{\im}{\operatorname{Im}}
 \newcommand{\R}{\mathbb R}
 \newcommand{\Z}{\mathbb Z}
 
@@ -39,6 +41,33 @@
 \hrule\hrule
 
 \subsection*{Exercise 1}
+Let $p\colon E \to B $ be a covering map. Let $ X $ be a path connected, simply connected and locally path connected topological space, let $ x \in X $ and $ f\colon X \to B $ be a continuos surjective function.
+
+  \begin{enumerate}[label=\alph*)]
+    \item \begin{proof} By the lifting criterion we have that $ \forall e \in p^{-1}(f(x)) $, $ \exists ! \tilde f_e \colon X \to E $ continuos such that $ p \circ \tilde f_e = f $ and $ \tilde f_e(x) = e $. Suppose that $ f $ is a homeomorphism onto its image. Hence $ f $ is bijective, continuos and $ f^{-1} $ is continuos.
+    
+    Take $ x_1 \neq x_2 \in X $. As in particular $ f $ is injective, $ f(x_1) \neq f(x_2) $ and therefore $ p^{-1}(f(x_1)) \neq p^{-1}(f(x_1)) $. As $ p^{-1} \circ f = \tilde f_e $, we then have $ \tilde f_e(x_1) \neq \tilde f_e(x_1) $. Thus $ \tilde f_e $ is injective. Every function is surjective onto its image, so in particular, $ \tilde f_e $ is surjective onto its image and therefore bijective.
+  
+    By the lifting criterion, $ \tilde f_e $ is continuos. Also, $ \tilde f_e^{-1} = f^{-1} \circ p $. As $ p $ is a covering, it is continuos, and we have that, $ \tilde f_e^{-1} $ can be formed by the composition of continuos functions. Therefore, it is continuos too and $ \tilde f_e $ is a homeomorphism into its image.
+    \end{proof}
+  
+    \item \begin{proof} Let $ e \neq e' \in p^{-1}(f(x)) $. Suppose that there exists $ h \in E $ such that $ h \in \im \tilde f_e $ and $ h \in \im \tilde f_e' $. That is, there would exist $ x, x' \in X $ such that $ \tilde f_e(x) = h $ and $ \tilde f_e'(x') = h $. Hence we have that
+    $$
+      f(x) = p(\tilde f_e(x)) = p(\tilde f_e'(x)) = f(x').
+    $$
+    As $ f $ is injective, it must be $ x = x' $. But by the uniqueness of lifts, as $ \tilde f_e $ and  $ \tilde f_e' $ coincide on one point, they must be the same, and therefore $ e = e' $ making a contradiction. Thus, the images of $ \tilde f_e $ and $ \tilde f_e' $ must be disjoint.
+
+    Let $ h \in p^{-1} (f(X)) $. That means that $ \exists x \in X $ such that $ h = p^{-1}(f(x)) = \tilde f_h(x) \in \im(\tilde f_h)$. Thus,
+    $$
+      p^{-1} (f(X)) \subseteq \bigsqcup_{e \in p^{-1} (f(x))} \im(\tilde f_e).
+    $$
+    If $ h \in \bigsqcup_{e \in p^{-1} (f(x))} \im(\tilde f_e) $, then $ \exists e \in p^{-1} (f(x)) $ such that $ h \in \im(\tilde f_e) $. That means that $ \exists x \in X $ such that $ h = \tilde f_e(x) = p^{-1}(f(x)) \in p^{-1}(f(X)) $. Thus,
+    $$
+      p^{-1} (f(X)) \supseteq \bigsqcup_{e \in p^{-1} (f(x))} \im(\tilde f_e).
+    $$
+    \end{proof}
+  \end{enumerate}
+
 
 \subsection*{Exercise 5}
 
