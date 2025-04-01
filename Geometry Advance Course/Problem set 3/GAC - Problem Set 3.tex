@@ -111,6 +111,43 @@ Let $p\colon E \to B $ be a covering map. Let $ X $ be a path connected, simply 
   \end{enumerate}
 
 \subsection*{Exercise 7}
+Let $ K $ be a tame knot. Let $X$ de the 2-dimensional CW complex associated to the Wirtinger presentation of $\pi_1(X) \cong \pi_1(S^3 \setminus K)$. Let $v$ be the $0$-cell of $X$.
+\begin{enumerate}[label=\alph*)]
+  \item \begin{proof}
+    Let $ q $ be a positive prime number. If $ H $ is a normal subgroup of $ \pi_1(X) $ of index $ q $, then $ |\pi_1(X)/H| = q $. The quotient is a finite group of prime order, hence it is a cyclic group. As the quotient is finite and cyclic, then it must be $ \pi_1(X)/H \cong \Z / q\Z $. Hence $\pi_1(X)/H$ is unique up to isomorphism and $ H $ would be the unique subgroup generating the quotient map $ \phi \colon \pi_1(X) \twoheadrightarrow \pi_1(X) / H \cong \Z / q\Z $.
+
+    To prove the existence of $H$, note that as $ K $ is tame, Wirtinger presentation of $\pi_1(X)$ has a finite number of generators $ g_1, \dots, g_n$. Fix any $[k] \in \Z / q\Z $ different from $ 0 $ and note that it must be a generator of $ \Z / q\Z $ since $ q $ is prime. Map every generator of $\pi_1(X)$ to $ [k] $ trough the homomorphism $ \phi \colon \pi_1(X) \twoheadrightarrow \Z / q\Z $. That is, $ \phi(g_i) = [k] $ for all $ i = 1 \dots n $. This is well-defined because the Wirtinger presentation relations imply that all generators are conjugate to one another, and they are sent to the same element under the given assignment. Note that $ \phi $ is surjective because $ h $ is a generator. By the first group isometry theorem we have
+    $$
+      \pi_1(X)/\ker(\phi) \cong \im(\phi) \cong \Z / q\Z.
+    $$
+    Now, just take $ H = \ker(\phi) $.
+  \end{proof}
+  \item Let $ K = 4_1 $. Let $ p: Y \to X $ be the covering map associate to $\pi_1(X, v) $. Let $ q = 2 $. As seen in class, the Wirtinger of $ \pi_1(S^3/4_1) $ is
+  $$
+    \pi_1(S^3/4_1) \cong \langle a, b, c, d \mid a c^{-1} b^{-1} c, b d^{-1} c^{-1} d, c a^{-1} d^{-1} a \rangle.
+  $$
+  Following the procedure seen in class, $ Y^0 $ are the elements of $ \Z / 2\Z $:
+  $$
+    Y^0 = \{ [0], [1] \}.
+  $$
+  The elements of $Y^1$ are in bijection with $ \{ [0], [1] \} \times \{a, b, c, d\} $:
+  \begin{align*}
+    Y^1 = \bigl\{&e^1_{(0, a)} \eqcolon e, e^1_{(0, b)} \eqcolon f, e^1_{(0, c)} \eqcolon g, e^1_{(0, d)} \eqcolon h, \\
+    &e^1_{(1, a)} \eqcolon i, e^1_{(1, b)} \eqcolon j, e^1_{(1, c)} \eqcolon k, e^1_{(1, d)} \eqcolon l\bigr\}.
+  \end{align*}
+  Finally, elements in $Y^1$ are in bijection with $ \{ [0], [1] \} \times \{a c^{-1} b^{-1} c, b d^{-1} c^{-1} d, c a^{-1} d^{-1} a\} $:
+  \begin{align*}
+    Y^2 = \bigl\{&e^2_{(0, a c^{-1} b^{-1} c)}, e^2_{(0, b d^{-1} c^{-1} d)}, e^2_{(0, c a^{-1} d^{-1} a)}, \\
+    &e^2_{(1, a c^{-1} b^{-1} c)}, e^2_{(1, b d^{-1} c^{-1} d)}, e^2_{(1, c a^{-1} d^{-1} a)}\bigr\}.
+  \end{align*}
+  where the gluing maps can be given by
+  \begin{align*}
+    e^2_{(0, a c^{-1} b^{-1} c)} &\longrightarrow e g^{-1} j^{-1} k \\
+    e^2_{(1, a c^{-1} b^{-1} c)} &\longrightarrow i k f g \\
+    \cdots
+  \end{align*}
+  \end{enumerate}
+  
 
 \begin{thebibliography}{9}
 
