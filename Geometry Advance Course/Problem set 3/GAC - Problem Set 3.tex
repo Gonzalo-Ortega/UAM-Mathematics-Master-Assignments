@@ -47,9 +47,9 @@ Let $p\colon E \to B $ be a covering map. Let $ X $ be a path connected, simply 
   \begin{enumerate}[label=\alph*)]
     \item \begin{proof} By the lifting criterion we have that $ \forall e \in p^{-1}(f(x)) $, $ \exists ! \tilde f_e \colon X \to E $ continuos such that $ p \circ \tilde f_e = f $ and $ \tilde f_e(x) = e $. Suppose that $ f $ is a homeomorphism onto its image. Hence $ f $ is bijective, continuos and $ f^{-1} $ is continuos.
     
-    Take $ x_1 \neq x_2 \in X $. As in particular $ f $ is injective, $ f(x_1) \neq f(x_2) $ and therefore $ p^{-1}(f(x_1)) \neq p^{-1}(f(x_1)) $. As $ p^{-1} \circ f = \tilde f_e $, we then have $ \tilde f_e(x_1) \neq \tilde f_e(x_1) $. Thus $ \tilde f_e $ is injective. Every function is surjective onto its image, so in particular, $ \tilde f_e $ is surjective onto its image and therefore bijective.
+    Take $ x_1 \neq x_2 \in X $. As in particular $ f $ is injective, $ f(x_1) \neq f(x_2) $ and therefore $ p^{-1}(f(x_1)) \neq p^{-1}(f(x_1)) $, where $p^{-1} $ denotes the pre-image of $ p $. As $ p^{-1} \circ f = \tilde f_e $, we then have $ \tilde f_e(x_1) \neq \tilde f_e(x_1) $. Thus $ \tilde f_e $ is injective. Every function is surjective onto its image, so in particular, $ \tilde f_e $ is surjective onto its image and therefore bijective.
   
-    By the lifting criterion, $ \tilde f_e $ is continuos. Also, $ \tilde f_e^{-1} = f^{-1} \circ p $. As $ p $ is a covering, it is continuos, and we have that, $ \tilde f_e^{-1} $ can be formed by the composition of continuos functions. Therefore, it is continuos too and $ \tilde f_e $ is a homeomorphism into its image.
+    By the lifting criterion, $ \tilde f_e $ is continuos. Also, $ \tilde f_e^{-1} = f^{-1} \circ p|_{\im(\tilde f_e)} $. As $ p $ is a covering, it is continuos, and we have that, $ \tilde f_e^{-1} $ can be formed by the composition of continuos functions. Therefore, it is continuos too and $ \tilde f_e $ is a homeomorphism into its image.
     \end{proof}
   
     \item \begin{proof} Let $ e \neq e' \in p^{-1}(f(x)) $. Suppose that there exists $ h \in E $ such that $ h \in \im \tilde f_e $ and $ h \in \im \tilde f_e' $. That is, there would exist $ x, x' \in X $ such that $ \tilde f_e(x) = h $ and $ \tilde f_e'(x') = h $. Hence we have that
@@ -104,50 +104,70 @@ Let $p\colon E \to B $ be a covering map. Let $ X $ be a path connected, simply 
       p_1 &\colon S^3 / \Z_8 \hookrightarrow_{\id} S^3 / \Z_8, \\
       p_2 &\colon S^3 / \Z_4 \hookrightarrow_{/ \Z_2} S^3 / \Z_8, \\
       p_3 &\colon S^3 / \Z_2 \hookrightarrow_{/ \Z_4} S^3 / \Z_8, \\
-      p_4 &\colon S^3 \hookrightarrow_{/ \Z_8} S^3 / \Z_8. \\
+      p_4 &\colon S^3 \hookrightarrow_{/ \Z_8} S^3 / \Z_8, \\
     \end{align*}
+    where the notation $ X/\Z_i $ with $ i \in \{ 2, 4, 8\} $ means the quotient space of $ X $ by the action of $ \Z_i $ given by $ [m]_i \cdot (z, w) \coloneq (\xi_i^m z, \xi_i^m w) $. With $ X \in \{ S^3, S^3 / \Z_2, S^3 / \Z_4, S^3 / \Z_8\}$, $[m]_i \in \Z_i $, $ (z, w) \in X $ and where $ \xi_i $ is a primitive $i$-th root of unity.
 
-    \item
+    \item \begin{proof} Let $ f \colon L \to T $ be any continuos map from $ L $ to $ T = S^1 \times S^1 $. If we consider $ f_*(\pi_1(L)) \to \pi_1(T) $, we have that, since $ \pi_1(L) \cong \Z_8 $ is finite, $ f_*(\pi_1(L)) $ is going to be finite too. As $ \pi_1(T) \cong \Z \times \Z $ is an infinite group, its only finite subgroup is the trivial subgroup $ {1} $. Hence, considering the universal covering of 
+    the torus, $ \rho \colon \R^2 \to T $ we have that $ f_*(\pi_1(L)) $ is a subgroup of $ \rho_*(pi_1(\R^2)) $.
+    
+    By the lifting property, there exists $ \tilde f \colon L \to \R^2 $ such that $ f = \rho \circ \tilde f $. Fix $ x_0 \in \R^2 $, and let
+    \begin{align*}
+      H\colon L \times [0,1] &\to \R^2 \\
+      (l, t) &\mapsto (1-t) \tilde f(l) + tx_0.
+    \end{align*}
+    As $ H(l, 0) = \tilde f(l) $ and $ H(l, 1) = x_0 $, we have that $ \tilde f $ is nullhomotopic. If we now define
+    \begin{align*}
+      H'\colon L \times [0,1] &\to T \\
+      (l, t) &\mapsto \rho(H(l,t)),
+    \end{align*}
+    we have that $H'(l, 0) = \rho(\tilde f(l)) = f(l) $ and $H'(l, 1) = \rho(x_0) $ constant. Hence, $ f $ is nullhomotopic.
+  \end{proof}
   \end{enumerate}
 
 \subsection*{Exercise 7}
 Let $ K $ be a tame knot. Let $X$ de the 2-dimensional CW complex associated to the Wirtinger presentation of $\pi_1(X) \cong \pi_1(S^3 \setminus K)$. Let $v$ be the $0$-cell of $X$.
 \begin{enumerate}[label=\alph*)]
   \item \begin{proof}
-    Let $ q $ be a positive prime number. If $ H $ is a normal subgroup of $ \pi_1(X) $ of index $ q $, then $ |\pi_1(X)/H| = q $. The quotient is a finite group of prime order, hence it is a cyclic group. As the quotient is finite and cyclic, then it must be $ \pi_1(X)/H \cong \Z / q\Z $. Hence $\pi_1(X)/H$ is unique up to isomorphism and $ H $ would be the unique subgroup generating the quotient map $ \phi \colon \pi_1(X) \twoheadrightarrow \pi_1(X) / H \cong \Z / q\Z $.
+    Let $ q $ be a positive prime number. If $ H $ is a normal subgroup of $ \pi_1(X) $ of index $ q $, then $ |\pi_1(X)/H| = q $. The quotient is a finite group of prime order, hence it is a cyclic group. As the quotient is finite and cyclic, then it must be $ \pi_1(X)/H \cong \Z / q\Z $.
 
     To prove the existence of $H$, note that as $ K $ is tame, Wirtinger presentation of $\pi_1(X)$ has a finite number of generators $ g_1, \dots, g_n$. Fix any $[k] \in \Z / q\Z $ different from $ 0 $ and note that it must be a generator of $ \Z / q\Z $ since $ q $ is prime. Map every generator of $\pi_1(X)$ to $ [k] $ trough the homomorphism $ \phi \colon \pi_1(X) \twoheadrightarrow \Z / q\Z $. That is, $ \phi(g_i) = [k] $ for all $ i = 1 \dots n $. This is well-defined because the Wirtinger presentation relations imply that all generators are conjugate to one another, and they are sent to the same element under the given assignment. Note that $ \phi $ is surjective because $ h $ is a generator. By the first group isometry theorem we have
     $$
       \pi_1(X)/\ker(\phi) \cong \im(\phi) \cong \Z / q\Z.
     $$
     Now, just take $ H = \ker(\phi) $.
+
+    To show that $ H $ is unique, note that $\pi_1(X)/H$ is unique up to isomorphism and $ H $ would be subgroup generating the quotient map $ \phi \colon \pi_1(X) \twoheadrightarrow \pi_1(X) / H \cong \Z / q\Z $. That is, $ H = \ker(\phi) $ for some $ \phi $ defined as above. Note that there are $ q - 1 $ ways of defining $ \phi $, one for each element in $ \Z / q\Z $ were we can map all generators. Nevertheless, every posible $ \phi $ has the same kernel, the set of all generators powered to $ q $: $\{ g_i \in G \mid i = 1, \dots n\} $. Hence, as all posible kernels are the same, $ H $ is unique.
   \end{proof}
+
   \item Let $ K = 4_1 $. Let $ p: Y \to X $ be the covering map associate to $\pi_1(X, v) $. Let $ q = 2 $. As seen in class, the Wirtinger of $ \pi_1(S^3/4_1) $ is
   $$
-    \pi_1(S^3/4_1) \cong \langle a, b, c, d \mid a c^{-1} b^{-1} c, b d^{-1} c^{-1} d, c a^{-1} d^{-1} a \rangle.
+    \pi_1(S^3/4_1) \cong \langle a, b, c, d \mid a c^{-1} b^{-1} c, b d c^{-1} d^{-1}, c a^{-1} d^{-1} a \rangle.
   $$
   Following the procedure seen in class, $ Y^0 $ are the elements of $ \Z / 2\Z $:
   $$
-    Y^0 = \{ [0], [1] \}.
+    Y^0 = \{ [0] \eqcolon x_0, [1] \eqcolon x_1\}.
   $$
   The elements of $Y^1$ are in bijection with $ \{ [0], [1] \} \times \{a, b, c, d\} $:
   \begin{align*}
-    Y^1 = \bigl\{&e^1_{(0, a)} \eqcolon e, e^1_{(0, b)} \eqcolon f, e^1_{(0, c)} \eqcolon g, e^1_{(0, d)} \eqcolon h, \\
-    &e^1_{(1, a)} \eqcolon i, e^1_{(1, b)} \eqcolon j, e^1_{(1, c)} \eqcolon k, e^1_{(1, d)} \eqcolon l\bigr\}.
+    Y^1 = \bigl\{&e^1_{(x_0, a)} \eqcolon e_1, e^1_{(x_0, b)} \eqcolon e_2, e^1_{(x_0, c)} \eqcolon e_3, e^1_{(x_0, d)} \eqcolon e_4, \\
+    &e^1_{(x_1, a)} \eqcolon e_5, e^1_{(x_1, b)} \eqcolon e_6, e^1_{(x_1, c)} \eqcolon e_7, e^1_{(x_1, d)} \eqcolon e_8\bigr\}.
   \end{align*}
-  Finally, elements in $Y^1$ are in bijection with $ \{ [0], [1] \} \times \{a c^{-1} b^{-1} c, b d^{-1} c^{-1} d, c a^{-1} d^{-1} a\} $:
+  Finally, elements in $Y^1$ are in bijection with $ \{ [0], [1] \} \times \{a c^{-1} b^{-1} c, b d c^{-1} d^{-1}, c a^{-1} d^{-1} a\} $:
   \begin{align*}
-    Y^2 = \bigl\{&e^2_{(0, a c^{-1} b^{-1} c)}, e^2_{(0, b d^{-1} c^{-1} d)}, e^2_{(0, c a^{-1} d^{-1} a)}, \\
-    &e^2_{(1, a c^{-1} b^{-1} c)}, e^2_{(1, b d^{-1} c^{-1} d)}, e^2_{(1, c a^{-1} d^{-1} a)}\bigr\}.
+    Y^2 = \bigl\{&e^2_{(x_0, a c^{-1} b^{-1} c)} \eqcolon s_1, e^2_{(x_0, b d c^{-1} d^{-1})} \eqcolon s_2, e^2_{(x_0, c a^{-1} d^{-1} a)} \eqcolon s_3, \\
+    &e^2_{(x_1, a c^{-1} b^{-1} c)} \eqcolon s_4, e^2_{(x_1, b d c^{-1} d^{-1})} \eqcolon s_5, e^2_{(x_1, c a^{-1} d^{-1} a)} \eqcolon s_6\bigr\}.
   \end{align*}
   where the gluing maps can be given by
   \begin{align*}
-    e^2_{(0, a c^{-1} b^{-1} c)} &\longrightarrow e g^{-1} j^{-1} k \\
-    e^2_{(1, a c^{-1} b^{-1} c)} &\longrightarrow i k f g \\
-    \cdots
+    s_1 = e^2_{(x_0, a c^{-1} b^{-1} c)} &\longrightarrow e_1 e_3^{-1} e_6^{-1} e_7, \\
+    s_2 = e^2_{(x_1, a c^{-1} b^{-1} c)} &\longrightarrow e_5 e_7^{-1} e_2^{-1} e_3, \\
+    s_3 = e^2_{(x_0, b d c^{-1} d^{-1})} &\longrightarrow e_2 e_8 e_7^{-1} e_4^{-1}, \\
+    s_4 = e^2_{(x_1, b d c^{-1} d^{-1})} &\longrightarrow e_6 e_4 e_3^{-1} e_8^{-1}, \\
+    s_5 = e^2_{(x_0, c a^{-1} d^{-1} a)} &\longrightarrow e_3 e_1^{-1} e_8^{-1} e_5, \\
+    s_6 = e^2_{(x_1, c a^{-1} d^{-1} a)} &\longrightarrow e_7 e_5^{-1} e_4^{-1} e_1.\\
   \end{align*}
   \end{enumerate}
-  
 
 \begin{thebibliography}{9}
 
@@ -155,6 +175,9 @@ Let $ K $ be a tame knot. Let $X$ de the 2-dimensional CW complex associated to 
   Allen Hatcher,
   \textit{Algebraic Topology},
   Allen Hatcher 2001.
+
+  \bibitem{Saioa}
+  \textit{I collaborated with Saioa to think for ideas to complete Exercise 5.}
 
 \end{thebibliography}
 
