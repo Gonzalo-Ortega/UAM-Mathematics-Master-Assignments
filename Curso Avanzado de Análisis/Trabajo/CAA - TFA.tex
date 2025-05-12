@@ -1,0 +1,85 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[a4paper,bindingoffset=3mm,bottom=35mm]{geometry}
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, pdftex]{hyperref}
+
+\usepackage[pdftex]{graphicx}  
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corolary}[theorem]{Corolary}
+\newtheorem{fact}[theorem]{Fact}
+
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\authorname}{Gonzalo Ortega Carpintero}
+\newcommand{\institution}{Universidad Autónoma de Madrid}
+\newcommand{\projecttitle}{Convexidad y Desigualdades en Espacios Normados}
+
+\newcommand{\dgmp}{\operatorname{Dgm}_p}
+\newcommand{\dgmi}{\operatorname{Dgm}_\infty}
+\newcommand{\costp}{\operatorname{cost}_p}
+\newcommand{\costi}{\operatorname{cost}_\infty}
+\newcommand{\wdp}{\omega_p}
+\newcommand{\wdi}{\omega_\infty}
+\newcommand{\twdp}{\tilde \omega_p}
+\newcommand{\twdi}{\tilde \omega_\infty}
+\newcommand{\p}{\mathcal P}
+\newcommand{\B}{\mathcal B}
+\newcommand{\T}{T_\#}
+\newcommand{\N}{\mathbb N}
+\newcommand{\R}{\mathbb R}
+\newcommand{\upr}{\mathbb{R}_<^2}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    %{\includegraphics[width=0.2\textwidth]{logo}\par}
+    \vspace{1cm}
+    {\bfseries\LARGE \institution \par}
+    \vspace{1cm}
+    {\scshape\Large Curso Avanzado de Análisis \par}
+    \vspace{3cm}
+    {\scshape\Huge \projecttitle \par}
+    \vspace{3cm}
+    {\itshape\Large   
+    2024-2025. \par}
+    \vfill
+    {\Large Autor: \par}
+    {\Large \authorname \par}
+    \vfill
+    {\Large Mayo 2025 \par}
+\end{titlepage}
+
+
+\setlength{\parskip}{0.75em}
+\renewcommand{\baselinestretch}{1.25}
+
+
+\subsection*{Resumen}
+
+\subsection*{Palabras clave}
+
+
+\tableofcontents
+\pagebreak
+
+\input{introduction.tex}
+\pagebreak
+
+\input{inequalities.tex}
+\pagebreak
+
+
+\bibliographystyle{acm}
+\bibliography{biblio.bib}
+
+\end{document}
