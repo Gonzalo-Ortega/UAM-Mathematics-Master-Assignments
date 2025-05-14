@@ -7,36 +7,22 @@
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
 
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corolary}[theorem]{Corolary}
-\newtheorem{fact}[theorem]{Fact}
+\mathtoolsset{showonlyrefs}
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[theorem]{Proposición}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{corolary}[theorem]{Corolario}
+\newtheorem{fact}[theorem]{Hecho}
 
 \theoremstyle{definition}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{remark}[theorem]{Remark}
 
-\newcommand{\authorname}{Gonzalo Ortega Carpintero}
-\newcommand{\institution}{Universidad Autónoma de Madrid}
-\newcommand{\projecttitle}{Convexidad y Desigualdades en Espacios Normados}
-
-\newcommand{\dgmp}{\operatorname{Dgm}_p}
-\newcommand{\dgmi}{\operatorname{Dgm}_\infty}
-\newcommand{\costp}{\operatorname{cost}_p}
-\newcommand{\costi}{\operatorname{cost}_\infty}
-\newcommand{\wdp}{\omega_p}
-\newcommand{\wdi}{\omega_\infty}
-\newcommand{\twdp}{\tilde \omega_p}
-\newcommand{\twdi}{\tilde \omega_\infty}
-\newcommand{\p}{\mathcal P}
-\newcommand{\B}{\mathcal B}
-\newcommand{\T}{T_\#}
-\newcommand{\N}{\mathbb N}
-\newcommand{\R}{\mathbb R}
-\newcommand{\upr}{\mathbb{R}_<^2}
+\input{commands.tex}
 
 \begin{document}
 

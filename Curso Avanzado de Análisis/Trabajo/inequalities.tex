@@ -1,7 +1,85 @@
 \section{Desigualdades de Clarkson}
 
+Vamos a empezar probando un par de lemas auxiliares.
+
+\begin{lemma} \label{lema:clarkson-1}
+    Sea $ x \in [0, 1] $ y $ p \geq 2 $. Se verifica la desigualdad
+    \begin{align}
+        \left( \frac{1+x}{2} \right)^p + \left( \frac{1-x}{2} \right)^p \leq \frac{1}{2} (1 + x^p).
+    \end{align}
+\end{lemma}
+\begin{proof}
+    Definiendo la función
+    \begin{align}
+        F(x) \coloneq \left( \frac{1+x}{2} \right)^p + \left( \frac{1-x}{2} \right)^p - \frac{1}{2} (1 + x^p),
+    \end{align}
+    sería suficiente probar que $ F(x) \geq 0 $ para todo $ x \in [0, 1] $. Para $ x = 0 $, como $ p \geq 2 $, se tiene 
+    \begin{align}
+        F(0) = \frac{1}{2^p} + \frac{1}{2^p} - \frac{1}{2} \leq 0.
+    \end{align}
+    Para $ 0 < x \leq 1 $ definimos
+    \begin{align}
+        \Phi(x) \coloneq \frac{2^p}{x^p} F(x) = \left( \frac{1}{x} + 1 \right)^p + \left( \frac{1}{x} - 1 \right)^p - 2^{p-1} \left( \frac{1}{x^p} + 1 \right).
+    \end{align}
+    Para $ x = 1 $, $ \phi(1) = 0 $, luego veamos que $ \phi $ es creciente en el intervalo $ (0, 1) $. La derivada de $ \phi $ es
+    \begin{align}
+        \Phi'(x) = -\frac{p}{x^{p+1}} \left( (1+x)^{p-1} + (1-x)^{p-1} - 2^{p-1} \right).
+    \end{align}
+    Definiendo ahora la función $ \Psi(x) $ como la parte entre paréntesis de $ Phi$, y calculando su derivada tenemos
+    \begin{align}
+        \Psi(x) &\coloneq \left( (1+x)^{p-1} + (1-x)^{p-1} - 2^{p-1} \right), \\
+        \Psi'(x) &= (p-1)(1+x)^{p-2} - (p-1)(1-x)^{p-2}.
+    \end{align}
+    Luego $ \Psi'(x) \geq 0 $ para $ x \in (0, 1) $. Como $ \Psi(1) = 0 $, por el teorema del valor medio $ \Psi(x) \leq 0 $ para $ x \in (0, 1) $. Por tanto $ \Phi'(x) \geq 0 $ para $ x \in (0, 1) $ y como $ \Phi(1) = 0 $, $ \Phi(x) $ es no positiva para $ x \in (0, 1) $. Esto implica finalmente que $ F(x) \leq 0 $ para todo $ x \in (0, 1) $.
+\end{proof}
+
+\begin{lemma}
+    Sean $ z, w \in \C $ dos números complejos, donde si $ z = a + bi $, denotamos su módulo complejo como $|z| = \sqrt{a^2 + b^2} $. Dado $ p \geq 2 $ se verifica la desigualdad
+    \begin{align}
+        \left| \frac{1}{2}(z+w)\right|^p + \left| \frac{1}{2}(z-w)\right|^p \leq \frac{1}{2} |z|^p + \frac{1}{2} |w|^p.
+    \end{align}
+\end{lemma}
+\begin{proof}
+    Para el caso $ w = 0 $ es inmediato que se verifica la desigualdad ya que se tendría
+    $$
+        \left| \frac{z}{2}\right|^p + \left| \frac{z}{2}\right|^p = 2\left|\frac{z}{2}\right|^p = \frac{2}{2^p}\left|z\right|^p = \frac{1}{2^{p-1}}\left|z\right|^p \leq \frac{1}{2}\left|z\right|^p.
+    $$
+    Por tanto, y gracias a la simetría de los dos sumandos del lado derecho, podemos asumir sin pérdida de generalidad $ |z| \geq |w| > 0 $. Es decir, la desigualdad que queremos probar equivale, al dividir a ambos lados entre $ |z|^p $, a
+    $$
+        \left| \frac{1}{2}(1+\frac{w}{z})\right|^p + \left| \frac{1}{2}(1-\frac{w}{z})\right|^p \leq \frac{1}{2}\left(1 + \left|\frac{w}{z} \right|^p \right).
+    $$
+    Por tanto, tomando exponenciales, para $ 0 < r \leq 1 $ y $ 0 \leq \theta \leq 2 \pi $ tenemos
+    $$
+        \left| \frac{1+r \exp (i \theta)}{2} \right|^p + \left| \frac{1-r \exp (i \theta)}{2} \right|^p \leq \frac{1}{2}\left(1 + \frac{1+r \exp (i \theta)}{2}^p \right).
+    $$
+    Para $ \theta = 0 $ la desigualdad se reduce a la probada en el Lema \ref{lema:clarkson-1}. Veamos por tanto que dado un $ r $ fijo, se tiene un máximo en $ \theta = 0 $. Por la simetría del lado derecho de nuevo, podemos asumir que $ 0 \leq \theta \leq \frac{\pi}{2} $. Queremos por tanto probar que la función $g$ definida por
+    $$
+        g(\theta) = |1 + re^{i\theta}|^p + |1 - re^{i\theta}|^p
+    $$
+    tiene un máximo en el intervalo $[0, \frac{\pi}{2}] $ en el punto $ \theta = 0 $. Desarrollando la fórmula de Euler, $ e^{i\theta} = \cos(\theta) + i\sen(\theta)$,  y los módulos complejos tenemos
+    \begin{align}
+        g(\theta) &= \left|\sqrt{(1 + r \cos(\theta))^2 + (r\sen(\theta))^2} \right|^p + \left|\sqrt{(1 - r \cos(\theta))^2 + (- r\sen(\theta))^2} \right|^p \\
+         &= (1 + r^2 + 2r\cos(\theta))^\frac{p}{2} + (1 + r^2 - 2r\cos(\theta))^\frac{p}{2}
+    \end{align}
+    Tomamos ahora la derivada $g'$ de $ g $ respecto a $ \theta $ y observamos
+    \begin{align}
+        g'(\theta) = &\frac{p}{2}(1 + r^2 + 2r \cos(\theta))^{\frac{p}{2}-1} (-2r \sen(\theta)) + \\
+        &\frac{p}{2}(1 + r^2 - 2r \cos(\theta))^{\frac{p}{2}-1} (2r \sen(\theta)) \\
+        = &-pr \sen(\theta) \left((1+r^2 + 2r\cos(\theta))^{\frac{p}{2}-1} - (1+r^2 - 2r\cos(\theta))^{\frac{p}{2}-1}\right).
+    \end{align}
+    Como $ p \geq 2 $ entonces $g'(\theta) \leq 0 $. Es decir, la derivada de $ g $ no es creciente en todo $ \theta \in \left[0, \frac{\pi}{2}\right] $ y por tanto tiene un máximo en $ \theta = 0 $.
+\end{proof}
+
 \begin{theorem}
+    Dado $ p \geq q $, sean $ f, g \in L^p $, se verifica entonces la desigualdad
     $$
         \left\| \frac{1}{2} f+g \right\|_p^p + \left\| \frac{1}{2} f-g \right\|_p^p \leq \frac{1}{2} \left\|f\right\|_p^p + \frac{1}{2}\left\|g\right\|_p^p.
+    $$
+\end{theorem}
+
+\begin{theorem}
+    Sea $ 1 < p < 2 $, y sea $ q = \frac{p-1}{p}$. Para $ f, g \in L^p $ se tiene
+    $$
+        \left\| \frac{1}{2}f + g\right\|_p^q + \left\| \frac{1}{2}f - g\right\|_p^q \leq
     $$
 \end{theorem}
