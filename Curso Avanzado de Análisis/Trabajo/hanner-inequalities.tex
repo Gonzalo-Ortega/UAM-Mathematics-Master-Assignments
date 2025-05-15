@@ -1,0 +1,17 @@
+\section{Desigualdades de Hanner}
+En 1955, el matemático sueco Olof Hanner simplificó la prueba de la convexidad uniforme dada por Clarkson años antes \cite{hanner}. Para ello, introdujo dos nuevas desigualdades que también generalizan la regla del paralelogramo.
+
+\begin{theorem}[Desigualdades de Hanner]
+    Sean $ f $ y $ g $ dos funciones en $L^p$. Para $ p \geq 2 $, se verifica
+    \begin{align} \label{eq:hanner}
+        \left\| f+g \right\|_p^p + \left\| f-g \right\|_p^p \leq \left( \|f \|_p + \|g\|_p \right)^p + \left| \|f \|_p - \|g\|_p \right|^p.
+    \end{align}
+    Para $ 1 < p \leq 2 $, la desigualdad se invierte.
+\end{theorem}
+
+Antes de nada, notar que para $ p = 2 $, el lado de la derecha de \eqref{eq:hanner} es
+\begin{align}
+    \left( \|f \|_2 + \|g\|_2 \right)^2 + \left| \|f \|_2 - \|g\|_2 \right|^2 &= \|f \|_2^2 + \|g\|_2^2 + 2 \|f \|_2 \|g\|_2 + \|f \|_2^2 + \|g\|_2^2 - 2 \|f \|_2 \|g\|_2 \\
+    &= 2 \left(\|f \|_2^2 + \|g\|_2^2\right),
+\end{align}
+luego efectivamente se convierte en la ley del paralelogramo, la cual se verifica para $ p = 2 $.

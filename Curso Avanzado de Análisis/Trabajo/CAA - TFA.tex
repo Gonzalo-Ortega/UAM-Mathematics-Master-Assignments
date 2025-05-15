@@ -2,6 +2,7 @@
 
 \usepackage[a4paper,bindingoffset=3mm,bottom=35mm]{geometry}
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, pdftex]{hyperref}
+\usepackage{fullpage}
 
 \usepackage[pdftex]{graphicx}  
 \usepackage[spanish]{babel}
@@ -14,7 +15,7 @@
 \newtheorem{theorem}{Teorema}[section]
 \newtheorem{proposition}[theorem]{Proposición}
 \newtheorem{lemma}[theorem]{Lema}
-\newtheorem{corolary}[theorem]{Corolario}
+\newtheorem{corollary}[theorem]{Corolario}
 \newtheorem{fact}[theorem]{Hecho}
 
 \theoremstyle{definition}
@@ -61,7 +62,11 @@
 \input{introduction.tex}
 \pagebreak
 
-\input{inequalities.tex}
+\input{convex-spaces.tex}
+
+\input{clarkson-inequalities.tex}
+
+\input{hanner-inequalities.tex}
 \pagebreak
 
 

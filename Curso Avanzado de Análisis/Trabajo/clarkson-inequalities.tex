@@ -1,6 +1,28 @@
+
+
 \section{Desigualdades de Clarkson}
 
-Vamos a empezar probando un par de lemas auxiliares.
+Los espacios de funciones $ L^p $ no son por lo general espacios de Hilbert ya que, salvo para $ p = 2 $, no cumplen la regla del paralelogramo
+$$
+    \| x + y \|^2 + \| x - y \|^2 = 2 \left( \| x \|^2 + \| y\|^2 \right)
+$$
+En 1936, el matemático americano James A. Clarkson generalizó la regla del paralelogramo para hacerla válida para todo $ p \geq 1 $ en forma de dos nuevas desigualdades, una para $p \geq 2 $ y otra para $ 1 \leq p \leq 2 $, \cite{clarkson}. Si bien esto no permite definir un producto escalar sobre cualquier $ L^p $, si que permite comprobar que, como veremos, $ L^p $ es uniformemente convexo para $ p \geq 1 $.
+
+\begin{theorem}[Primera desigualdad de Clarkson] \label{thm:clarkson-1}
+    Para $ p \geq 2 $, dadas $ f, g \in L^p $, se verifica la desigualdad
+    \begin{align} \label{eq:clarkson-1}
+        \left\| f+g \right\|_p^p + \left\| f-g \right\|_p^p \leq 2^{p-1} \left( \left\|f\right\|_p^p + \left\|g\right\|_p^p \right).
+    \end{align}
+\end{theorem}
+
+\begin{theorem}[Segunda desigualdad de Clarkson]
+    Sea $ 1 < p < 2 $, y sea $ q = \frac{p-1}{p}$. Para $ f, g \in L^p $ se tiene
+    \begin{align} \label{eq:clarkson-2}
+        \left\| f + g \right\|_p^q + \left\| f - g \right\|_p^q \leq 2^p \left(\|f \|_p^p + \|g\|_p^p \right)^{\frac{q}{p}}.
+    \end{align}
+\end{theorem}
+
+Para desarrollar la demostración de ambas desigualdades hemos seguido la estructura de \cite{hewitt}. Empecemos probando un par de lemas auxiliares.
 
 \begin{lemma} \label{lema:clarkson-1}
     Sea $ x \in [0, 1] $ y $ p \geq 2 $. Se verifica la desigualdad
@@ -33,7 +55,7 @@ Vamos a empezar probando un par de lemas auxiliares.
     Luego $ \Psi'(x) \geq 0 $ para $ x \in (0, 1) $. Como $ \Psi(1) = 0 $, por el teorema del valor medio $ \Psi(x) \leq 0 $ para $ x \in (0, 1) $. Por tanto $ \Phi'(x) \geq 0 $ para $ x \in (0, 1) $ y como $ \Phi(1) = 0 $, $ \Phi(x) $ es no positiva para $ x \in (0, 1) $. Esto implica finalmente que $ F(x) \leq 0 $ para todo $ x \in (0, 1) $.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma} \label{lema:clarkson-2}
     Sean $ z, w \in \C $ dos números complejos, donde si $ z = a + bi $, denotamos su módulo complejo como $|z| = \sqrt{a^2 + b^2} $. Dado $ p \geq 2 $ se verifica la desigualdad
     \begin{align}
         \left| \frac{1}{2}(z+w)\right|^p + \left| \frac{1}{2}(z-w)\right|^p \leq \frac{1}{2} |z|^p + \frac{1}{2} |w|^p.
@@ -59,27 +81,39 @@ Vamos a empezar probando un par de lemas auxiliares.
     tiene un máximo en el intervalo $[0, \frac{\pi}{2}] $ en el punto $ \theta = 0 $. Desarrollando la fórmula de Euler, $ e^{i\theta} = \cos(\theta) + i\sen(\theta)$,  y los módulos complejos tenemos
     \begin{align}
         g(\theta) &= \left|\sqrt{(1 + r \cos(\theta))^2 + (r\sen(\theta))^2} \right|^p + \left|\sqrt{(1 - r \cos(\theta))^2 + (- r\sen(\theta))^2} \right|^p \\
-         &= (1 + r^2 + 2r\cos(\theta))^\frac{p}{2} + (1 + r^2 - 2r\cos(\theta))^\frac{p}{2}
+        &= (1 + r^2 + 2r\cos(\theta))^\frac{p}{2} + (1 + r^2 - 2r\cos(\theta))^\frac{p}{2}
     \end{align}
     Tomamos ahora la derivada $g'$ de $ g $ respecto a $ \theta $ y observamos
     \begin{align}
-        g'(\theta) = &\frac{p}{2}(1 + r^2 + 2r \cos(\theta))^{\frac{p}{2}-1} (-2r \sen(\theta)) + \\
-        &\frac{p}{2}(1 + r^2 - 2r \cos(\theta))^{\frac{p}{2}-1} (2r \sen(\theta)) \\
+        g'(\theta) = &\frac{p}{2}(1 + r^2 + 2r \cos(\theta))^{\frac{p}{2}-1} (-2r \sen(\theta)) + \frac{p}{2}(1 + r^2 - 2r \cos(\theta))^{\frac{p}{2}-1} (2r \sen(\theta)) \\
         = &-pr \sen(\theta) \left((1+r^2 + 2r\cos(\theta))^{\frac{p}{2}-1} - (1+r^2 - 2r\cos(\theta))^{\frac{p}{2}-1}\right).
     \end{align}
     Como $ p \geq 2 $ entonces $g'(\theta) \leq 0 $. Es decir, la derivada de $ g $ no es creciente en todo $ \theta \in \left[0, \frac{\pi}{2}\right] $ y por tanto tiene un máximo en $ \theta = 0 $.
 \end{proof}
 
-\begin{theorem}
-    Dado $ p \geq q $, sean $ f, g \in L^p $, se verifica entonces la desigualdad
-    $$
-        \left\| \frac{1}{2} f+g \right\|_p^p + \left\| \frac{1}{2} f-g \right\|_p^p \leq \frac{1}{2} \left\|f\right\|_p^p + \frac{1}{2}\left\|g\right\|_p^p.
-    $$
-\end{theorem}
+\begin{proof}[Demostración del Teorema \ref{thm:clarkson-1}]
+    Podemos asumir que $ f $ y $ g $ toman valores complejos y que están definidas en casi todo punto. Por tanto, para todo $ x \in X $, tal que $ f(x) $ y $ g(x) $ estén definidas, por el Lemma \ref{lema:clarkson-2} tenemos
+    \begin{align}
+        \left| z + w \right|^p + \left| z - w \right|^p \leq 2^{p-1} \left( |z|^p + |w|^p \right).
+    \end{align}
+    Basta con integrar a ambos lados respecto a $ X $ para la desigualdad \eqref{eq:clarkson-1}.
+\end{proof}
 
-\begin{theorem}
-    Sea $ 1 < p < 2 $, y sea $ q = \frac{p-1}{p}$. Para $ f, g \in L^p $ se tiene
-    $$
-        \left\| \frac{1}{2}f + g\right\|_p^q + \left\| \frac{1}{2}f - g\right\|_p^q \leq
-    $$
-\end{theorem}
+\begin{corollary}
+    Para $ p > 1 $, el espacio $ L_p $ es uniformemente convexo.
+\end{corollary}
+\begin{proof}
+    Sean $ f, g \in L^p $ con $ \|f\| = \|g\| = 1 $. Para $ p \geq 2 $, haciendo uso de \eqref{eq:clarkson-1} tenemos
+    \begin{align}
+        \| f + g \|_p^p + \| f - g \|_p^p \leq 2^{p-1}(1 + 1) = 2^p.
+    \end{align}
+    Ahora, si se tiene $\|f-g\| < \varepsilon \in (0, 2] $, dividiendo entre $ 2^p $ a ambos lados y despejando adecuadamente se sigue
+    \begin{align}
+        \left\| \frac{f + g}{2} \right\|_p \leq \left( 1 - \left\| \frac{f - g}{2} \right\|_p^p\right)^{\frac{1}{p}} \leq \left( 1 - \left( \frac{\varepsilon}{2} \right)^p\right)^{\frac{1}{p}} \eqcolon \delta,
+    \end{align}
+    donde $ \delta \in (0, 1) $ y se verifica la convexidad uniforme para $ p \geq 2 $. Para $ 1 < p \leq 2 $ usamos la desigualdad \eqref{eq:clarkson-2} para obtener
+    \begin{align}
+        \left\| f + g \right\|_p^q + \left\| f - g \right\|_p^q \leq 2 \left(1 + 1 \right)^{\frac{q}{p}} = 2^{\frac{q}{p}+1} = 2^q.
+    \end{align}
+    Análogamente al procedimiento anterior, ahora con $ \delta \coloneq  \left( 1 - \left( \frac{\varepsilon}{2} \right)^q\right)^{\frac{1}{q}} $ vemos que se verifica la convexidad uniforme también para $ 1 < p \leq 2 $.
+\end{proof}

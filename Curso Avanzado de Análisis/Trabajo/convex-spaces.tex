@@ -1,0 +1,67 @@
+\section{Espacios convexos}
+
+La principal herramienta para trabajar en espacios métricos, y en particular en los espacios normados \cite{babb}, es la desigualdad triangular 
+$$
+    \| x + y \| \leq \| x \| + \| y \|.
+$$
+
+\begin{definition}[Conjunto convexo]
+    Un conjunto $ C \subseteq X $ es {\bf convexo} si para todo par de puntos $ x, y \in C $, $ t \in [0, 1] $, se tiene $ tx + (1-t)y \in C $.
+\end{definition}
+
+Dado un espacio normado $ (X, \| \cdot \|) $, por conveniencia a veces denotado simplemente $ X $, definimos la bola cerrada y la esfera unidad en $ X $, $ B(X) $ y $ S(X) $ respectivamente como
+\begin{align}
+    B(X) &\coloneq \{x \in X \colon \| x \| \leq 1 \}, \\
+    S(X) &\coloneq \{x \in X \colon \| x \| = 1 \}.
+\end{align}
+
+\begin{definition}[Espacio estrictamente convexo]
+    Un espacio normado $ (X, \| \cdot \|) $ es {\bf estrictamente convexo} si para todo par de puntos $ x $ e $ y $ en la esfera unidad $ S(X) $ tales que el punto medio del segmento que los une esta también en la esfera unidad, i.e. $\| \frac{x+y}{2}\| $, se tiene $ x = y $.
+\end{definition}
+
+\begin{definition}[Espacio uniformemente convexo]
+    Un espacio normado $ (X, \| \cdot \|) $ es {\bf uniformemente convexo} si para todo $ \varepsilon \in (0, 2] $, existe un $ \delta \in (0, 1) $ tal que para todo par $ x, y \in B(X) $ con $ \| x - y \| < \varepsilon $ se tiene $ \| \frac{x+y}{2} \| < \delta $.
+\end{definition}
+
+\begin{proposition} \label{prop:hilbert-convex}
+    Sea $ (X, \langle \cdot, \cdot \rangle) $ un espacio dotado de un producto escalar con norma $ \|x\| \coloneq \sqrt{\langle x, x \rangle} $. Entonces el espacio $ (X, \|\cdot\|) $ es un espacio uniformemente, y por tanto también estrictamente, convexo. 
+\end{proposition}
+
+\begin{example}[Norma estrictamente convexa, pero no uniformemente convexa]
+    Consideremos la norma en el espacio de sucesiones convergentes $ \ell^1 $ dada por la suma de las normas $ \ell^1 $ y $ \ell^2 $, es decir, dada una sucesión $ x \in \ell^1 $,
+    $$
+        \| x \| \coloneq \| x \|_{\ell^1} + \| x \|_{\ell^2}.
+    $$
+    Gracias a la Proposición \ref{prop:hilbert-convex} sabemos que para todo $ x \neq y \in S(\ell^2) $, $ \|x+y\|_{\ell^2} < \|x\|_{\ell^2} + \|y\|_{\ell^2} $. Por tanto, haciendo también uso de la desigualdad triangular estándar en $ \ell^1 $ tenemos
+    \begin{align}
+        \|x+y\| = \|x+y\|_{\ell^1} + \|x+y\|_{\ell^2} < \left( \|x\|_{\ell^1} + \|y\|_{\ell^1} \right) + \left( \|x\|_{\ell^2} + \|y\|_{\ell^2} \right) = \|x\| + \|y\| = 2.
+    \end{align}
+    Por tanto, $ \ell_1 $ es estrictamente convexo. Sin embargo, definamos ahora las sucesiones
+    \begin{align}
+        x_{N, k} &=
+        \begin{cases}
+            1 & \text{si } k \leq N, \\
+            0 & \text{en caso contrario},
+        \end{cases}
+        &
+        y_{N, k} &=
+        \begin{cases}
+            1 & \text{si } N < k \leq 2N, \\
+            0 & \text{en caso contrario}.
+        \end{cases}
+    \end{align}
+    Por un lado tenemos que $ \|x\| = \|y\| = N + \sqrt{N} $ y que $ \|x_N - y_N\| = 2N + \sqrt{2N} $, ya que
+    \begin{align}
+        x_{N, k} - y_N &=
+        \begin{cases}
+            1 & \text{si } k \leq N, \\
+            -1 & \text{si } N < k \leq 2N, \\
+            0 & \text{si } k \geq 2N.
+        \end{cases}
+    \end{align}
+    Pero tenemos también que
+    \begin{align}
+        \left\| \frac{x_N+y_N}{2} \right\| = \frac{2N}{2} + \frac{\sqrt{2N}}{2}.
+    \end{align}
+    Dividiendo entre $ N + \sqrt{N} $ podemos hacer $ \left\| \frac{x_N+y_N}{2 (N + \sqrt{N})} \right\| $ tan cercano como queramos a $ 1 $, mientras que siempre tendremos $ \left\| \frac{x_N+y_N}{(N + \sqrt{N})} \right\| \geq \sqrt{2}$. Por tanto, $ (\ell^1, \| \cdot \|) $ no es uniformemente convexo.
+\end{example}
