@@ -16,9 +16,9 @@ En 1936, el matemático americano James A. Clarkson generalizó la regla del par
 \end{theorem}
 
 \begin{theorem}[Segunda desigualdad de Clarkson]
-    Sea $ 1 < p < 2 $, y sea $ q = \frac{p-1}{p}$. Para $ f, g \in L^p $ se tiene
+    Sea $ 1 < p < 2 $, y sea $ q = \frac{p}{p-1}$. Para $ f, g \in L^p $ se tiene
     \begin{align} \label{eq:clarkson-2}
-        \left\| f + g \right\|_p^q + \left\| f - g \right\|_p^q \leq 2^p \left(\|f \|_p^p + \|g\|_p^p \right)^{\frac{q}{p}}.
+        \left\| f + g \right\|_p^q + \left\| f - g \right\|_p^q \leq 2 \left(\|f \|_p^p + \|g\|_p^p \right)^{\frac{q}{p}}.
     \end{align}
 \end{theorem}
 
@@ -97,6 +97,53 @@ Para desarrollar la demostración de ambas desigualdades hemos seguido la estruc
         \left| z + w \right|^p + \left| z - w \right|^p \leq 2^{p-1} \left( |z|^p + |w|^p \right).
     \end{align}
     Basta con integrar a ambos lados respecto a $ X $ para la desigualdad \eqref{eq:clarkson-1}.
+\end{proof}
+
+\begin{lemma}
+    Sean $ x \in [0, 1] $, $ 1 < p \leq 2 $ y $ q = \frac{p}{p-1} $. Se verifica la desigualdad
+    \begin{align} \label{eq:clarkson-3}
+        (1+x)^q + (1-x)^q \leq 2(1+x^p)^\frac{1}{p-1}.
+    \end{align}
+\end{lemma}
+\begin{proof}
+    Si $ p = 2 $, entonces $ q = 2 $ y basta desarrollar los cuadrados para comprobar que la desigualdad es cierta. Podemos limitarnos por tanto al caso $ 1 < p < 2 $. Para $ x = 0 $ y para $ x = 1 $, \eqref{eq:clarkson-3} se convierte en una igualdad. Podemos, por tanto, considerar solo $ x \in (0, 1) $. Definiendo la función $ F(u) = \frac{1 - u}{1 + u} $, tenemos que cuando $ u $ va de $0$ a $1$, $ F(u) $ decrece estrictamente de $1$ a $0$. Por tanto, \eqref{eq:clarkson-3} equivale a
+    \begin{align}
+        \left(1 + \frac{1 - u}{1 + u}\right)^q + \left(1 - \frac{1 - u}{1 + u}\right)^q \leq 2 \left( 1 + \left( \frac{1 - u}{1 + u} \right)^p \right)^{\frac{1}{p-1}}
+    \end{align}
+    para $ 0 < u < 1 $. Multiplicando ambos lados por $ (1 + u)^q $, obtenemos
+    \begin{align}
+        2^q (1 + u^q) \leq 2 \left( (1 + u)^p + (1 - u)^p \right)^{\frac{1}{p-1}}
+    \end{align}
+    Elevando ahora ambos lados a $ (p - 1) $, obtenemos
+    \begin{align}
+        (1 + u^q)^{p-1} \leq \frac{1}{2} \left( (1 + u)^p + (1 - u)^p \right),
+    \end{align}
+    para $ 0 < u < 1 $. Como estos pasos son fácilmente reversibles, es suficiente probar esta última desigualdad. Expandiendo en series de potencias, tenemos
+    \begin{align}
+        &\frac{1}{2}\left((1+u)^{p}+(1-u)^{p}\right)-(1+u^{q})^{p-1} \\
+        &= \frac{1}{2}\left(\sum_{k=0}^{\infty}\binom{p}{k}u^{k}+\sum_{k=0}^{\infty}\binom{p}{k}(-1)^{k}\,u^{k}\right)\sum_{k=0}^{\infty}\binom{p-1}{k}u^{q\,k} \\
+        &= \sum_{k=0}^{\infty}\left(\binom{p}{2\,k}u^{2\,k}-\binom{p-1}{k}u^{q\,k}\right) \\
+        &= \sum_{k=1}^{\infty}\left(\binom{p}{2\,k}u^{2\,k} - \binom{p-1}{2\,k-1}u^{q\,(2\,k-1)}-\binom{p-1}{2\,k}u^{q\,2\,k}\right).
+    \end{align}
+    Se puede probar que esta última serie converge absoluta y uniformemente para $ u \in [0, 1] $. La prueba de ello, sin embargo, conlleva lo que en \cite{hewitt} denomina análisis {\it duro}. Las cuentas no conllevan demasiada complejidad, pero debido a su extensión, vamos a omitirlas en este trabajo. La prueba detallada se puede consultar en \cite{hewitt}[Teorema 7.25].
+    
+    Demostraremos que cada término $[\cdots]$ en esta serie es no negativo. Claramente, esto probará (3). El $ k $-ésimo término es
+    \begin{align}
+        &\frac{p\,(p-1)\,(p-2)\cdots(p-(2\,k-1))}{(2\,k)!}\,u^{2\,k} \\
+        &\qquad - \frac{(p-1)\,(p-2)\cdots(p-(2\,k-1))}{(2\,k-1)!}\,u^{q\,(2\,k-1)} \\
+        &\qquad - \frac{(p-1)\,(p-2)\cdots(p-2\,k)}{(2\,k)!}\,u^{q\,2\,k} \\
+        &= \frac{p\,(p-1)\,(2-p)\cdots(2\,k-1-p)}{(2\,k)!}\,u^{2\,k} \\
+        &\qquad - \frac{(p-1)\,(2-p)\,(3-p)\cdots(2\,k-1-p)}{(2\,k-1)!}\,u^{q\,(2\,k-1)} \\
+        &\qquad + \frac{(p-1)\,(2-p)\cdots(2\,k-p)}{(2\,k)!}\,u^{q\,2\,k} \\
+        &= u^{2\,k} \frac{(2-p)\,(3-p)\cdots(2\,k-p)}{(2\,k-1)!} \\
+        &\qquad \times \left(\frac{p\,(p-1)}{(2\,k)\,(2\,k-p)} - \frac{(p-1)}{(2\,k-p)} u^{q\,(2\,k-1) - 2\,k} + \frac{(p-1)}{(2\,k)} u^{q\,2\,k - 2\,k}\right).
+    \end{align}
+    El primer factor aquí es obviamente positivo. Reescribimos la expresión entre corchetes como
+    \begin{align}
+        \left[\frac{1}{\frac{2\,k-p}{p-1}} - \frac{1}{\frac{2\,k}{p-1}} - \frac{1}{\frac{2\,k-p}{p-1}} u^{\frac{2\,k-p}{p-1}} + \frac{1}{\frac{2\,k}{p-1}} u^{\frac{2\,k}{p-1}}\right]
+        = \left[\frac{1 - u^{\frac{2\,k-p}{p-1}}}{\frac{2\,k-p}{p-1}} - \frac{1 - u^{\frac{2\,k}{p-1}}}{\frac{2\,k}{p-1}}\right].
+    \end{align}
+    Un argumento elemental [que el lector deberá realizar] muestra que para cualquier $ u > 0 $ la función con valores $ \frac{1-u^{t}}{t} $, $ 0 < t < \infty $, es decreciente como función de $ t $. Como $ \frac{2\,k-p}{p-1} < \frac{2\,k}{p-1} $, se sigue que (5) es positivo.
 \end{proof}
 
 \begin{corollary}
