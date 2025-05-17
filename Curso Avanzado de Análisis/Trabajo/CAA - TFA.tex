@@ -1,76 +1,40 @@
-\documentclass[12pt, a4paper]{article}
+\documentclass[12pt, twoside]{article}
 
 \usepackage[a4paper,bindingoffset=3mm,bottom=35mm]{geometry}
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, pdftex]{hyperref}
-\usepackage{fullpage}
-
 \usepackage[pdftex]{graphicx}  
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{mathtools}
 
-\mathtoolsset{showonlyrefs}
-
-\newtheorem{theorem}{Teorema}[section]
-\newtheorem{proposition}[theorem]{Proposición}
-\newtheorem{lemma}[theorem]{Lema}
-\newtheorem{corollary}[theorem]{Corolario}
-\newtheorem{fact}[theorem]{Hecho}
-
-\theoremstyle{definition}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{remark}[theorem]{Remark}
-
-\input{commands.tex}
+\input{doc-configuration/math-definitions.tex}
+\input{doc-configuration/commands.tex}
+\input{doc-configuration/headers.tex}
 
 \begin{document}
-
-\begin{titlepage}
-    \centering
-    %{\includegraphics[width=0.2\textwidth]{logo}\par}
-    \vspace{1cm}
-    {\bfseries\LARGE \institution \par}
-    \vspace{1cm}
-    {\scshape\Large Curso Avanzado de Análisis \par}
-    \vspace{3cm}
-    {\scshape\Huge \projecttitle \par}
-    \vspace{3cm}
-    {\itshape\Large   
-    2024-2025. \par}
-    \vfill
-    {\Large Autor: \par}
-    {\Large \authorname \par}
-    \vfill
-    {\Large Mayo 2025 \par}
-\end{titlepage}
+\input{doc-configuration/titlepage.tex}
 
 
 \setlength{\parskip}{0.75em}
 \renewcommand{\baselinestretch}{1.25}
 
-
 \subsection*{Resumen}
 
 \subsection*{Palabras clave}
 
-
+\setcounter{page}{1}
 \tableofcontents
-\pagebreak
+\newpage
 
-\input{introduction.tex}
-\pagebreak
-
-\input{convex-spaces.tex}
-
-\input{clarkson-inequalities.tex}
-
-\input{hanner-inequalities.tex}
-\pagebreak
-
+\input{sections/introduction.tex}
+\newpage
+\input{sections/convex-spaces.tex}
+\newpage
+\input{sections/clarkson-inequalities.tex}
+\newpage
+\input{sections/hanner-inequalities.tex}
+\newpage
 
 \bibliographystyle{acm}
-\bibliography{biblio.bib}
+\bibliography{doc-configurations/biblio.bib}
 
 \end{document}

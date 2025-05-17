@@ -1,26 +1,24 @@
-
-
 \section{Desigualdades de Clarkson}
 
 Los espacios de funciones $ L^p $ no son por lo general espacios de Hilbert ya que, salvo para $ p = 2 $, no cumplen la regla del paralelogramo
-$$
+\begin{equation}
     \| x + y \|^2 + \| x - y \|^2 = 2 \left( \| x \|^2 + \| y\|^2 \right)
-$$
+\end{equation}
 En 1936, el matemático americano James A. Clarkson generalizó la regla del paralelogramo para hacerla válida para todo $ p \geq 1 $ en forma de dos nuevas desigualdades, una para $p \geq 2 $ y otra para $ 1 \leq p \leq 2 $, \cite{clarkson}. Si bien esto no permite definir un producto escalar sobre cualquier $ L^p $, si que permite comprobar que, como veremos, $ L^p $ es uniformemente convexo para $ p \geq 1 $.
 
-\begin{theorem}[Primera desigualdad de Clarkson] \label{thm:clarkson-1}
+\begin{restatable}[Primera desigualdad de Clarkson]{theorem}{Clarksoni} \label{thm:clarkson-1}
     Para $ p \geq 2 $, dadas $ f, g \in L^p $, se verifica la desigualdad
-    \begin{align} \label{eq:clarkson-1}
+    \begin{equation} \label{eq:clarkson-1}
         \left\| f+g \right\|_p^p + \left\| f-g \right\|_p^p \leq 2^{p-1} \left( \left\|f\right\|_p^p + \left\|g\right\|_p^p \right).
-    \end{align}
-\end{theorem}
+    \end{equation}
+\end{restatable}
 
-\begin{theorem}[Segunda desigualdad de Clarkson]
+\begin{restatable}[Segunda desigualdad de Clarkson]{theorem}{Clarksonii} \label{thm:clarkson-2}
     Sea $ 1 < p < 2 $, y sea $ q = \frac{p}{p-1}$. Para $ f, g \in L^p $ se tiene
-    \begin{align} \label{eq:clarkson-2}
+    \begin{equation} \label{eq:clarkson-2}
         \left\| f + g \right\|_p^q + \left\| f - g \right\|_p^q \leq 2 \left(\|f \|_p^p + \|g\|_p^p \right)^{\frac{q}{p}}.
-    \end{align}
-\end{theorem}
+    \end{equation}
+\end{restatable}
 
 Para desarrollar la demostración de ambas desigualdades hemos seguido la estructura de \cite{hewitt}. Empecemos probando un par de lemas auxiliares.
 
@@ -36,22 +34,24 @@ Para desarrollar la demostración de ambas desigualdades hemos seguido la estruc
         F(x) \coloneq \left( \frac{1+x}{2} \right)^p + \left( \frac{1-x}{2} \right)^p - \frac{1}{2} (1 + x^p),
     \end{align}
     sería suficiente probar que $ F(x) \geq 0 $ para todo $ x \in [0, 1] $. Para $ x = 0 $, como $ p \geq 2 $, se tiene 
-    \begin{align}
+    \begin{equation}
         F(0) = \frac{1}{2^p} + \frac{1}{2^p} - \frac{1}{2} \leq 0.
-    \end{align}
+    \end{equation}
     Para $ 0 < x \leq 1 $ definimos
     \begin{align}
         \Phi(x) \coloneq \frac{2^p}{x^p} F(x) = \left( \frac{1}{x} + 1 \right)^p + \left( \frac{1}{x} - 1 \right)^p - 2^{p-1} \left( \frac{1}{x^p} + 1 \right).
     \end{align}
     Para $ x = 1 $, $ \phi(1) = 0 $, luego veamos que $ \phi $ es creciente en el intervalo $ (0, 1) $. La derivada de $ \phi $ es
-    \begin{align}
+    \begin{equation}
         \Phi'(x) = -\frac{p}{x^{p+1}} \left( (1+x)^{p-1} + (1-x)^{p-1} - 2^{p-1} \right).
-    \end{align}
+    \end{equation}
     Definiendo ahora la función $ \Psi(x) $ como la parte entre paréntesis de $ Phi$, y calculando su derivada tenemos
-    \begin{align}
+    \begin{equation}
+    \begin{split}
         \Psi(x) &\coloneq \left( (1+x)^{p-1} + (1-x)^{p-1} - 2^{p-1} \right), \\
         \Psi'(x) &= (p-1)(1+x)^{p-2} - (p-1)(1-x)^{p-2}.
-    \end{align}
+    \end{split}
+    \end{equation}
     Luego $ \Psi'(x) \geq 0 $ para $ x \in (0, 1) $. Como $ \Psi(1) = 0 $, por el teorema del valor medio $ \Psi(x) \leq 0 $ para $ x \in (0, 1) $. Por tanto $ \Phi'(x) \geq 0 $ para $ x \in (0, 1) $ y como $ \Phi(1) = 0 $, $ \Phi(x) $ es no positiva para $ x \in (0, 1) $. Esto implica finalmente que $ F(x) \leq 0 $ para todo $ x \in (0, 1) $.
 \end{proof}
 
@@ -78,28 +78,29 @@ Para desarrollar la demostración de ambas desigualdades hemos seguido la estruc
     $$
         g(\theta) = |1 + re^{i\theta}|^p + |1 - re^{i\theta}|^p
     $$
-    tiene un máximo en el intervalo $[0, \frac{\pi}{2}] $ en el punto $ \theta = 0 $. Desarrollando la fórmula de Euler, $ e^{i\theta} = \cos(\theta) + i\sen(\theta)$,  y los módulos complejos tenemos
+    tiene un máximo en el intervalo $[0, \frac{\pi}{2}] $ en el punto $ \theta = 0 $. Desarrollando la fórmula de Euler, $ e^{i\theta} = \cos(\theta) + i\sin(\theta)$,  y los módulos complejos tenemos
     \begin{align}
-        g(\theta) &= \left|\sqrt{(1 + r \cos(\theta))^2 + (r\sen(\theta))^2} \right|^p + \left|\sqrt{(1 - r \cos(\theta))^2 + (- r\sen(\theta))^2} \right|^p \\
+        g(\theta) &= \left|\sqrt{(1 + r \cos(\theta))^2 + (r\sin(\theta))^2} \right|^p + \left|\sqrt{(1 - r \cos(\theta))^2 + (- r\sin(\theta))^2} \right|^p \\
         &= (1 + r^2 + 2r\cos(\theta))^\frac{p}{2} + (1 + r^2 - 2r\cos(\theta))^\frac{p}{2}
     \end{align}
     Tomamos ahora la derivada $g'$ de $ g $ respecto a $ \theta $ y observamos
     \begin{align}
-        g'(\theta) = &\frac{p}{2}(1 + r^2 + 2r \cos(\theta))^{\frac{p}{2}-1} (-2r \sen(\theta)) + \frac{p}{2}(1 + r^2 - 2r \cos(\theta))^{\frac{p}{2}-1} (2r \sen(\theta)) \\
-        = &-pr \sen(\theta) \left((1+r^2 + 2r\cos(\theta))^{\frac{p}{2}-1} - (1+r^2 - 2r\cos(\theta))^{\frac{p}{2}-1}\right).
+        g'(\theta) = &\frac{p}{2}(1 + r^2 + 2r \cos(\theta))^{\frac{p}{2}-1} (-2r \sin(\theta)) + \frac{p}{2}(1 + r^2 - 2r \cos(\theta))^{\frac{p}{2}-1} (2r \sin(\theta)) \\
+        = &-pr \sin(\theta) \left((1+r^2 + 2r\cos(\theta))^{\frac{p}{2}-1} - (1+r^2 - 2r\cos(\theta))^{\frac{p}{2}-1}\right).
     \end{align}
     Como $ p \geq 2 $ entonces $g'(\theta) \leq 0 $. Es decir, la derivada de $ g $ no es creciente en todo $ \theta \in \left[0, \frac{\pi}{2}\right] $ y por tanto tiene un máximo en $ \theta = 0 $.
 \end{proof}
 
-\begin{proof}[Demostración del Teorema \ref{thm:clarkson-1}]
+\Clarksoni
+\begin{proof}
     Podemos asumir que $ f $ y $ g $ toman valores complejos y que están definidas en casi todo punto. Por tanto, para todo $ x \in X $, tal que $ f(x) $ y $ g(x) $ estén definidas, por el Lemma \ref{lema:clarkson-2} tenemos
-    \begin{align}
+    \begin{equation}
         \left| z + w \right|^p + \left| z - w \right|^p \leq 2^{p-1} \left( |z|^p + |w|^p \right).
-    \end{align}
+    \end{equation}
     Basta con integrar a ambos lados respecto a $ X $ para la desigualdad \eqref{eq:clarkson-1}.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma} \label{lema:clarkson-3}
     Sean $ x \in [0, 1] $, $ 1 < p \leq 2 $ y $ q = \frac{p}{p-1} $. Se verifica la desigualdad
     \begin{align} \label{eq:clarkson-3}
         (1+x)^q + (1-x)^q \leq 2(1+x^p)^\frac{1}{p-1}.
@@ -146,21 +147,59 @@ Para desarrollar la demostración de ambas desigualdades hemos seguido la estruc
     Un argumento elemental [que el lector deberá realizar] muestra que para cualquier $ u > 0 $ la función con valores $ \frac{1-u^{t}}{t} $, $ 0 < t < \infty $, es decreciente como función de $ t $. Como $ \frac{2\,k-p}{p-1} < \frac{2\,k}{p-1} $, se sigue que (5) es positivo.
 \end{proof}
 
+\begin{lemma} \label{lema:clarkson-4}
+    Dados dos números complejos $ z, w \in \C $, si $ 1 < p \leq 2 $ tenemos
+    \begin{equation} \label{eq:clarkson-4}
+        |z + w|^q + |z - w|^q \leq 2(|z|^p + |w|^p)^{\frac{1}{1-p}}.
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    Cuando o bien $ z = 0 $, o bien $ w=0 $ basta sustituir para verificar la desigualdad y al igual que en el Lema \ref{lema:clarkson-2} podemos suponer sin pérdida de generalidad $ 0 < |z| \leq |w| $. Así, dividiendo ambos lados entre $ |w|^q $ obtenemos
+    \begin{equation}
+        \left|\frac{z}{w} + 1\right|^q + \left|\frac{z}{w} - 1\right|^q \leq 2\left( \left|\frac{z}{w} \right|^p + 1\right)^{\frac{1}{1-p}}.
+    \end{equation}
+    Tomando exponenciales con $ \frac{z}{w} = r e^{i \theta} $ para $ 0 <r \leq 1 $ y $ 0 \leq \theta \leq 2\pi $ tenemos
+    \begin{equation} \label{eq:clarkson-4-aux}
+        \left|r e^{i \theta} + 1\right|^q + \left|r e^{i \theta} - 1\right|^q \leq 2\left( r^p + 1\right)^{\frac{1}{1-p}}. 
+    \end{equation}
+    De forma análoga al procedimiento realizado en la demostración del Lema \ref{lema:clarkson-2}, basta notar que para $ \theta = 0 $ esta última desigualdad es la probada en el Lema \ref{lema:clarkson-3}. Y de igual forma, vemos que el lado izquierdo de la desigualdad \eqref{eq:clarkson-4-aux} tiene un máximo en el intervalo $ \left[0, \frac{\pi}{2} \right] $ en el punto $ \theta = 0 $. Esto prueba entonces \eqref{eq:clarkson-4-aux} se verifica para todo $ \theta \in \left[0, 2\pi \right] $ probando así la desigualdad \eqref{eq:clarkson-4}.
+\end{proof}
+
+\Clarksonii
+\begin{proof}
+    Por la desigualdad Minkowski para $ 0 < p < 1 $, tenemos 
+    \begin{equation} \label{eq:clarkson-minkowski}
+        \left\| \left| f + g \right|^q \right\|_{p-1} + \left\| \left| f - g \right|^q \right\|_{p-1} \leq \left\| \left| f + g \right|^q + \left| f - g \right|^q \right\|_{p-1}.
+    \end{equation}
+    La parte izquierda de \eqref{eq:clarkson-minkowski} es igual que la parte izquierda de \eqref{eq:clarkson-2} ya que para todo $ h \in L^p(X, \mu) $ se tiene
+    \begin{equation}
+        \| | h |^q \|_{p-1} = \left( \int_{X} \left| |h|^q \right|^{p-1} d \mu \right)^{\frac{1}{p-1}} = \|h\|_p^q,
+    \end{equation}
+    ya que $ q (p-1) = p $ y $ \frac{1}{p-1} = \frac{q}{p} $. Desarrollando la norma, la parte derecha verifica
+    \begin{equation}
+        \left\| \left| f + g \right|^q + \left| f - g \right|^q \right\|_{p-1} = \left( \int_X \left( \left| f + g \right|^q + \left| f - g \right|^q \right)^{p-1} d \mu \right)^\frac{1}{{p-1}},
+    \end{equation}
+    la cual, usando el Lema \ref{lema:clarkson-4}, es menor o igual que
+    \begin{equation}
+        \left( \int_X 2^{p-1}( \left| f \right|^p + \left| g \right|^p)  d \mu \right)^\frac{1}{{p-1}} = 2 \left(\|f \|_p^p + \|g\|_p^p \right)^{\frac{1}{p-1}}.
+    \end{equation}
+\end{proof}
+
 \begin{corollary}
     Para $ p > 1 $, el espacio $ L_p $ es uniformemente convexo.
 \end{corollary}
 \begin{proof}
     Sean $ f, g \in L^p $ con $ \|f\| = \|g\| = 1 $. Para $ p \geq 2 $, haciendo uso de \eqref{eq:clarkson-1} tenemos
-    \begin{align}
+    \begin{equation}
         \| f + g \|_p^p + \| f - g \|_p^p \leq 2^{p-1}(1 + 1) = 2^p.
-    \end{align}
+    \end{equation}
     Ahora, si se tiene $\|f-g\| < \varepsilon \in (0, 2] $, dividiendo entre $ 2^p $ a ambos lados y despejando adecuadamente se sigue
-    \begin{align}
+    \begin{equation}
         \left\| \frac{f + g}{2} \right\|_p \leq \left( 1 - \left\| \frac{f - g}{2} \right\|_p^p\right)^{\frac{1}{p}} \leq \left( 1 - \left( \frac{\varepsilon}{2} \right)^p\right)^{\frac{1}{p}} \eqcolon \delta,
-    \end{align}
+    \end{equation}
     donde $ \delta \in (0, 1) $ y se verifica la convexidad uniforme para $ p \geq 2 $. Para $ 1 < p \leq 2 $ usamos la desigualdad \eqref{eq:clarkson-2} para obtener
-    \begin{align}
-        \left\| f + g \right\|_p^q + \left\| f - g \right\|_p^q \leq 2 \left(1 + 1 \right)^{\frac{q}{p}} = 2^{\frac{q}{p}+1} = 2^q.
-    \end{align}
+    \begin{equation}
+        \left\| f + g \right\|_p^q + \left\| f - g \right\|_p^q \leq 2 \left(\|f \|_p^p + \|g\|_p^p \right)^{\frac{q}{p}}.
+    \end{equation}
     Análogamente al procedimiento anterior, ahora con $ \delta \coloneq  \left( 1 - \left( \frac{\varepsilon}{2} \right)^q\right)^{\frac{1}{q}} $ vemos que se verifica la convexidad uniforme también para $ 1 < p \leq 2 $.
 \end{proof}

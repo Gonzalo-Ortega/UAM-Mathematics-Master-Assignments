@@ -1,0 +1,22 @@
+% Custom header/footer configuration for article documents
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{} % Clear all headers/footers
+
+% Article version (no chapters)
+\renewcommand{\sectionmark}[1]{\markright{Sección \thesection.\ #1}}
+\renewcommand{\subsectionmark}[1]{\markright{Hola \thesubsection.\ #1}}
+
+% Headers (adjust based on single/double-sided needs)
+\fancyhead[LO]{\nouppercase\rightmark}
+\fancyhead[RO]{\thepage}
+\fancyhead[RE]{\projecttitle}
+\fancyhead[LE]{\thepage}
+
+% Footer (optional)
+\fancyfoot[C]{} % Empty footer
+
+% Header spacing
+\setlength{\headheight}{14.5pt}
+\setlength{\headsep}{30pt}
