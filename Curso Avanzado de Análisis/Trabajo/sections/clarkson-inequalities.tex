@@ -1,10 +1,12 @@
-\section{Desigualdades de Clarkson}
+\section{Desigualdades para el estudio de la convexidad}
+
+\subsection{Desigualdades de Clarkson}
 
 Los espacios de funciones $ L^p $ no son por lo general espacios de Hilbert ya que, salvo para $ p = 2 $, no cumplen la regla del paralelogramo
 \begin{equation}
     \| x + y \|^2 + \| x - y \|^2 = 2 \left( \| x \|^2 + \| y\|^2 \right)
 \end{equation}
-En 1936, el matemático americano James A. Clarkson generalizó la regla del paralelogramo para hacerla válida para todo $ p \geq 1 $ en forma de dos nuevas desigualdades, una para $p \geq 2 $ y otra para $ 1 \leq p \leq 2 $, \cite{clarkson}. Si bien esto no permite definir un producto escalar sobre cualquier $ L^p $, si que permite comprobar que, como veremos, $ L^p $ es uniformemente convexo para $ p \geq 1 $.
+En 1936, el matemático americano James A. Clarkson generalizó la regla del paralelogramo para hacerla válida para todo $ 1 < p < \infty $ en forma de dos nuevas desigualdades, una para $ 2 \geq p < \infty $ y otra para $ 1 < p \leq 2 $, \cite{clarkson}. Si bien esto no permite definir un producto escalar sobre cualquier $ L^p $, si que permite comprobar que, como veremos, $ L^p $ es uniformemente convexo para $ 1 < p < \infty $.
 
 \begin{restatable}[Primera desigualdad de Clarkson]{theorem}{Clarksoni} \label{thm:clarkson-1}
     Para $ p \geq 2 $, dadas $ f, g \in L^p $, se verifica la desigualdad
@@ -20,9 +22,11 @@ En 1936, el matemático americano James A. Clarkson generalizó la regla del par
     \end{equation}
 \end{restatable}
 
-Para desarrollar la demostración de ambas desigualdades hemos seguido la estructura de \cite{hewitt}. Empecemos probando un par de lemas auxiliares.
+En su artículo original, \cite{clarkson}, Clarkson prueba además que estas desigualdades se invierte cuando se cambia del caso $ 2 \geq p < \infty $ al caso $ 1 < p < \infty $. Comprueba, además, que los resultados no son válidos solo para los espacios de funciones $ L^p $, sino también para los espacios de sucesiones $ \ell^p $, construyendo su prueba a partir de estos. Por motivos de brevedad y simplicidad, en este trabajo nos vamos a limitar a demostrar los dos teoremas que hemos enunciado, que son suficientes para probar que $ L^p $ es uniformemente convexo para $ 1 < p < \infty $.
 
-\begin{lemma} \label{lema:clarkson-1}
+Para desarrollar la demostración de ambas desigualdades hemos seguido la estructura de \cite{hewitt}, que a su vez sigue de cerca, matizando algunos detalles, la demostración de Clarkson. El Teorema \ref{thm:clarkson-1} puede demostrarse de forma sencilla con técnicas básicas de Cálculo. Empecemos probando un par de lemas auxiliares para la demostración del .
+
+\begin{lemma}[Lema 15.3, \cite{hewitt}] \label{lema:clarkson-1}
     Sea $ x \in [0, 1] $ y $ p \geq 2 $. Se verifica la desigualdad
     \begin{align}
         \left( \frac{1+x}{2} \right)^p + \left( \frac{1-x}{2} \right)^p \leq \frac{1}{2} (1 + x^p).
@@ -55,7 +59,7 @@ Para desarrollar la demostración de ambas desigualdades hemos seguido la estruc
     Luego $ \Psi'(x) \geq 0 $ para $ x \in (0, 1) $. Como $ \Psi(1) = 0 $, por el teorema del valor medio $ \Psi(x) \leq 0 $ para $ x \in (0, 1) $. Por tanto $ \Phi'(x) \geq 0 $ para $ x \in (0, 1) $ y como $ \Phi(1) = 0 $, $ \Phi(x) $ es no positiva para $ x \in (0, 1) $. Esto implica finalmente que $ F(x) \leq 0 $ para todo $ x \in (0, 1) $.
 \end{proof}
 
-\begin{lemma} \label{lema:clarkson-2}
+\begin{lemma}[Lema 15.4, \cite{hewitt}] \label{lema:clarkson-2}
     Sean $ z, w \in \C $ dos números complejos, donde si $ z = a + bi $, denotamos su módulo complejo como $|z| = \sqrt{a^2 + b^2} $. Dado $ p \geq 2 $ se verifica la desigualdad
     \begin{align}
         \left| \frac{1}{2}(z+w)\right|^p + \left| \frac{1}{2}(z-w)\right|^p \leq \frac{1}{2} |z|^p + \frac{1}{2} |w|^p.
@@ -100,25 +104,31 @@ Para desarrollar la demostración de ambas desigualdades hemos seguido la estruc
     Basta con integrar a ambos lados respecto a $ X $ para la desigualdad \eqref{eq:clarkson-1}.
 \end{proof}
 
-\begin{lemma} \label{lema:clarkson-3}
+Vamos ahora con la demostración del Teorema \ref{thm:clarkson-2}, para la cual volvemos a enunciar dos lemas auxiliares que simplificarán la prueba.
+
+\begin{lemma}[Lema 15.6, \cite{hewitt}] \label{lema:clarkson-3}
     Sean $ x \in [0, 1] $, $ 1 < p \leq 2 $ y $ q = \frac{p}{p-1} $. Se verifica la desigualdad
     \begin{align} \label{eq:clarkson-3}
         (1+x)^q + (1-x)^q \leq 2(1+x^p)^\frac{1}{p-1}.
     \end{align}
 \end{lemma}
 \begin{proof}
-    Si $ p = 2 $, entonces $ q = 2 $ y basta desarrollar los cuadrados para comprobar que la desigualdad es cierta. Podemos limitarnos por tanto al caso $ 1 < p < 2 $. Para $ x = 0 $ y para $ x = 1 $, \eqref{eq:clarkson-3} se convierte en una igualdad. Podemos, por tanto, considerar solo $ x \in (0, 1) $. Definiendo la función $ F(u) = \frac{1 - u}{1 + u} $, tenemos que cuando $ u $ va de $0$ a $1$, $ F(u) $ decrece estrictamente de $1$ a $0$. Por tanto, \eqref{eq:clarkson-3} equivale a
-    \begin{align}
+    Si $ p = 2 $, entonces $ q = 2 $ y basta desarrollar los cuadrados para comprobar que la desigualdad es cierta. Podemos limitarnos por tanto al caso $ 1 < p < 2 $. Para $ x = 0 $ y para $ x = 1 $, la desigualdad se convierte en una igualdad. Podemos, por tanto, considerar solo $ x \in (0, 1) $. Definiendo la función
+    \begin{equation}
+        F(u) \coloneq \frac{1 - u}{1 + u},
+    \end{equation}
+    tenemos que cuando $ u $ va de $0$ a $1$, $ F(u) $ decrece estrictamente de $1$ a $0$. Por tanto, nuestra desigualdad equivale a 
+    \begin{equation}
         \left(1 + \frac{1 - u}{1 + u}\right)^q + \left(1 - \frac{1 - u}{1 + u}\right)^q \leq 2 \left( 1 + \left( \frac{1 - u}{1 + u} \right)^p \right)^{\frac{1}{p-1}}
-    \end{align}
+    \end{equation}
     para $ 0 < u < 1 $. Multiplicando ambos lados por $ (1 + u)^q $, obtenemos
-    \begin{align}
+    \begin{equation}
         2^q (1 + u^q) \leq 2 \left( (1 + u)^p + (1 - u)^p \right)^{\frac{1}{p-1}}
-    \end{align}
+    \end{equation}
     Elevando ahora ambos lados a $ (p - 1) $, obtenemos
-    \begin{align}
+    \begin{equation}
         (1 + u^q)^{p-1} \leq \frac{1}{2} \left( (1 + u)^p + (1 - u)^p \right),
-    \end{align}
+    \end{equation}
     para $ 0 < u < 1 $. Como estos pasos son fácilmente reversibles, es suficiente probar esta última desigualdad. Expandiendo en series de potencias, tenemos
     \begin{align}
         &\frac{1}{2}\left((1+u)^{p}+(1-u)^{p}\right)-(1+u^{q})^{p-1} \\
@@ -128,7 +138,7 @@ Para desarrollar la demostración de ambas desigualdades hemos seguido la estruc
     \end{align}
     Se puede probar que esta última serie converge absoluta y uniformemente para $ u \in [0, 1] $. La prueba de ello, sin embargo, conlleva lo que en \cite{hewitt} denomina análisis {\it duro}. Las cuentas no conllevan demasiada complejidad, pero debido a su extensión, vamos a omitirlas en este trabajo. La prueba detallada se puede consultar en \cite{hewitt}[Teorema 7.25].
     
-    Demostraremos que cada término $[\cdots]$ en esta serie es no negativo. Claramente, esto probará (3). El $ k $-ésimo término es
+    Veamos ahora que cda termino de esta última serie es no negativo concluyendo así nuestra prueba. El $ k $-ésimo término de la serie se puede desarrollar como
     \begin{align}
         &\frac{p\,(p-1)\,(p-2)\cdots(p-(2\,k-1))}{(2\,k)!}\,u^{2\,k} \\
         &\qquad - \frac{(p-1)\,(p-2)\cdots(p-(2\,k-1))}{(2\,k-1)!}\,u^{q\,(2\,k-1)} \\
@@ -139,15 +149,15 @@ Para desarrollar la demostración de ambas desigualdades hemos seguido la estruc
         &= u^{2\,k} \frac{(2-p)\,(3-p)\cdots(2\,k-p)}{(2\,k-1)!} \\
         &\qquad \times \left(\frac{p\,(p-1)}{(2\,k)\,(2\,k-p)} - \frac{(p-1)}{(2\,k-p)} u^{q\,(2\,k-1) - 2\,k} + \frac{(p-1)}{(2\,k)} u^{q\,2\,k - 2\,k}\right).
     \end{align}
-    El primer factor aquí es obviamente positivo. Reescribimos la expresión entre corchetes como
-    \begin{align}
-        \left[\frac{1}{\frac{2\,k-p}{p-1}} - \frac{1}{\frac{2\,k}{p-1}} - \frac{1}{\frac{2\,k-p}{p-1}} u^{\frac{2\,k-p}{p-1}} + \frac{1}{\frac{2\,k}{p-1}} u^{\frac{2\,k}{p-1}}\right]
-        = \left[\frac{1 - u^{\frac{2\,k-p}{p-1}}}{\frac{2\,k-p}{p-1}} - \frac{1 - u^{\frac{2\,k}{p-1}}}{\frac{2\,k}{p-1}}\right].
-    \end{align}
-    Un argumento elemental [que el lector deberá realizar] muestra que para cualquier $ u > 0 $ la función con valores $ \frac{1-u^{t}}{t} $, $ 0 < t < \infty $, es decreciente como función de $ t $. Como $ \frac{2\,k-p}{p-1} < \frac{2\,k}{p-1} $, se sigue que (5) es positivo.
+    Como $ p < 2$, el primer factor de este producto es positivo. Si reescribimos ahora el segundo factor como 
+    \begin{equation}
+        \left(\frac{1}{\frac{2\,k-p}{p-1}} - \frac{1}{\frac{2\,k}{p-1}} - \frac{1}{\frac{2\,k-p}{p-1}} u^{\frac{2\,k-p}{p-1}} + \frac{1}{\frac{2\,k}{p-1}} u^{\frac{2\,k}{p-1}}\right)
+        = \left(\frac{1 - u^{\frac{2\,k-p}{p-1}}}{\frac{2\,k-p}{p-1}} - \frac{1 - u^{\frac{2\,k}{p-1}}}{\frac{2\,k}{p-1}}\right),
+    \end{equation}
+    podemos ver que que para cualquier $ u > 0 $, la función con valores $ \frac{1-u^{t}}{t} $, $ 0 < t < \infty $, es decreciente como función de $ t $. Como $ \frac{2\,k-p}{p-1} < \frac{2\,k}{p-1} $, este segundo factor es también positivo, concluyendo así nuestra prueba.
 \end{proof}
 
-\begin{lemma} \label{lema:clarkson-4}
+\begin{lemma}[Lema 15.7, \cite{hewitt}] \label{lema:clarkson-4}
     Dados dos números complejos $ z, w \in \C $, si $ 1 < p \leq 2 $ tenemos
     \begin{equation} \label{eq:clarkson-4}
         |z + w|^q + |z - w|^q \leq 2(|z|^p + |w|^p)^{\frac{1}{1-p}}.
@@ -185,7 +195,7 @@ Para desarrollar la demostración de ambas desigualdades hemos seguido la estruc
     \end{equation}
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}[Corolario del Teorema 2, \cite{hewitt}] \label{coro:clarkson}
     Para $ p > 1 $, el espacio $ L_p $ es uniformemente convexo.
 \end{corollary}
 \begin{proof}

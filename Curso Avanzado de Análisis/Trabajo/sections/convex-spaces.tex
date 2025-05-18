@@ -25,11 +25,17 @@ Dado un espacio normado $ (X, \| \cdot \|) $, por conveniencia a veces denotado 
     Un espacio normado $ (X, \| \cdot \|) $ es {\bf uniformemente convexo} si para todo $ \varepsilon \in (0, 2] $, existe un $ \delta \in (0, 1) $ tal que para todo par $ x, y \in B(X) $ con $ \| x - y \| < \varepsilon $ se tiene $ \| \frac{x+y}{2} \| < \delta $.
 \end{definition}
 
+\begin{corollary} \label{coro:1}
+    Todo espacio uniformemente convexo es estrictamente convexo.
+\end{corollary}
+
 \begin{proposition} \label{prop:hilbert-convex}
     Sea $ (X, \langle \cdot, \cdot \rangle) $ un espacio dotado de un producto escalar con norma $ \|x\| \coloneq \sqrt{\langle x, x \rangle} $. Entonces el espacio $ (X, \|\cdot\|) $ es un espacio uniformemente, y por tanto también estrictamente, convexo. 
 \end{proposition}
 
-\begin{example}[Norma estrictamente convexa, pero no uniformemente convexa]
+Para ver que la implicación del Corolario \ref{coro:1} no funciona en sentido contrario, el siguiente ejemplo presenta una norma estrictamente convexa, pero no uniformemente convexa, construyéndose a partir de una combinación de normas en espacios de sucesiones.
+
+\begin{example}[Ejemplo 7, \cite{babb}]
     Consideremos la norma en el espacio de sucesiones convergentes $ \ell^1 $ dada por la suma de las normas $ \ell^1 $ y $ \ell^2 $, es decir, dada una sucesión $ x \in \ell^1 $,
     \begin{equation}
         \| x \| \coloneq \| x \|_{\ell^1} + \| x \|_{\ell^2}.

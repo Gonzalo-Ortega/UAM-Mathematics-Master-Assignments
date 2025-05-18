@@ -1,17 +1,70 @@
-\section{Desigualdades de Hanner}
+\subsection{Desigualdades de Hanner}
 En 1955, el matemático sueco Olof Hanner simplificó la prueba de la convexidad uniforme dada por Clarkson años antes \cite{hanner}. Para ello, introdujo dos nuevas desigualdades que también generalizan la regla del paralelogramo.
 
-\begin{theorem}[Desigualdades de Hanner]
+\begin{theorem}[Desigualdades de Hanner, Teorema 2.5, \cite{lieb}]
     Sean $ f $ y $ g $ dos funciones en $L^p$. Para $ p \geq 2 $, se verifica
     \begin{equation} \label{eq:hanner}
         \left\| f+g \right\|_p^p + \left\| f-g \right\|_p^p \leq \left( \|f \|_p + \|g\|_p \right)^p + \left| \|f \|_p - \|g\|_p \right|^p.
     \end{equation}
     Para $ 1 < p \leq 2 $, la desigualdad se invierte.
 \end{theorem}
-
 Antes de nada, notar que para $ p = 2 $, el lado de la derecha de \eqref{eq:hanner} es
 \begin{align}
     \left( \|f \|_2 + \|g\|_2 \right)^2 + \left| \|f \|_2 - \|g\|_2 \right|^2 &= \|f \|_2^2 + \|g\|_2^2 + 2 \|f \|_2 \|g\|_2 + \|f \|_2^2 + \|g\|_2^2 - 2 \|f \|_2 \|g\|_2 \\
     &= 2 \left(\|f \|_2^2 + \|g\|_2^2\right),
 \end{align}
 luego efectivamente se convierte en la ley del paralelogramo, la cual se verifica para $ p = 2 $.
+Vamos a dar una prueba siguiendo la dada en \cite{lieb}[Teorema 2.5].
+
+\begin{proof}
+Sin pérdida de generalidad, podemos asumir $\|f\|_p = 1$ y definimos $M \coloneq \|g\|_p \leq 1$. Para $0 \leq x \leq 1$, consideramos las funciones:
+\begin{align}
+    \Phi(x) &\coloneq (1 + x)^{p-1} + (1 - x)^{p-1}, \\
+    \Psi(x) &\coloneq \left[(1 + x)^{p-1} - (1 - x)^{p-1}\right] x^{1-p}, \\
+    F_M(x) &\coloneq \Phi(x) + \Psi(x) M^p.
+\end{align}
+Calculando la derivada de $ F_M $, 
+\begin{equation}
+    F_M'(x) = \Phi'(x) + \Psi'(x) M^p = (p-1)\left[(1 + x)^{p-2} - (1 - x)^{p-2}\right]\left(1 - \left(\frac{M}{x}\right)^p\right)
+\end{equation}
+observamos que $F_M'(x) = 0$ solo cuando $x = M$, por lo que para $p < 2$, $F_M(x)$ tiene un máximo en $x = M$, y para $p > 2$, $F_M(x)$ tiene un mínimo en $x = M$. Además, en ambos casos se cumple:
+\begin{equation}
+    F_M(M) = (1 + M)^p + (1 - M)^p.
+\end{equation}
+Para $p < 2$ tenemos $\Psi(x) \leq \Phi(x)$, y para $p > 2$ tenemos $\Psi(x) \geq \Phi(x)$. Esto implica que para todo $0 \leq x \leq 1$ y $A, B \geq 0$:
+\begin{equation}
+    \Phi(x)|A|^p + \Psi(x)|B|^p \leq |A + B|^p + |A - B|^p \quad \text{para } p < 2
+\end{equation}
+y la desigualdad inversa para $p > 2$. La igualdad se alcanza cuando $x = B/A \leq 1$. Esta desigualdad se puede extender a números complejos $A$ y $B$. Para ver esto, consideramos $A = a$ y $B = b e^{i\theta}$ con $a, b > 0$. Tenemos que
+\begin{equation}
+    (a^2 + b^2 + 2ab \cos \theta)^{p/2} + (a^2 + b^2 - 2ab \cos \theta)^{p/2}
+\end{equation}
+alcanza su mínimo en $\theta = 0$ para $p < 2$ (y su máximo para $p > 2$), debido a que $x \mapsto x^{r}$ es cóncava para $0 < r < 1$ y convexa para $r > 1$. Para completar la demostración, integramos ahora la desigualdad puntual
+\begin{equation}
+    |f + g|^p + |f - g|^p \geq \Phi(x)|f|^p + \Psi(x)|g|^p \quad \text{para } p < 2
+\end{equation}
+(con la desigualdad inversa para $p > 2$). Tomando $x = M = \|g\|_p$ (pues asumimos $\|f\|_p = 1$) obtenemos
+\begin{equation}
+    \|f + g\|_p^p + \|f - g\|_p^p \geq (1 + M)^p + (1 - M)^p = (\|f\|_p + \|g\|_p)^p + |\|f\|_p - \|g\|_p|^p
+\end{equation}
+para $1 \leq p \leq 2$, y la desigualdad inversa para $p \geq 2$, lo que completa la demostración.
+\end{proof}
+
+\subsection{Una pequeña comparación}
+
+Las desigualdades de Hanner dan una mejor acotación de la convexidad uniforme de $ L^p $. Veámoslo para el caso $ 2 \leq p < \infty $. La desigualdad de Clarkson y la de Hanner afirman, respectivamente, 
+\begin{align}
+    \left\| f+g \right\|_p^p + \left\| f-g \right\|_p^p &\leq 2^{p-1} \left( \|f\|_p^p + \|g\|_p^p \right), \\
+    \left\| f+g \right\|_p^p + \left\| f-g \right\|_p^p &\leq \left( \|f \|_p + \|g\|_p \right)^p + \left| \|f \|_p - \|g\|_p \right|^p.
+\end{align}
+Por tanto, basta tomar las funciones constantes $ f' = \|f \|_p $ y $ g' = \|g\|_p $ donde, naturalmente, $ f', g' \in L^p $ y
+\begin{align}
+    \left( \|f \|_p + \|g\|_p \right)^p = \left( f' + g' \right)^p = \left\| f'+g' \right\|_p^p, \\
+    \left| \|f \|_p - \|g\|_p \right|^p = \left| f' - g' \right|^p = \left\| f'-g' \right\|_p^p.
+\end{align}
+Así pues, utilizando aplicando tanto Clarkson como Hanner, obtenemos la siguiente cadena de desigualdades, probando la mejor cota dada por Hanner:
+\begin{align}
+     \left\| f+g \right\|_p^p + \left\| f-g \right\|_p^p &\leq  \left( \|f \|_p + \|g\|_p \right)^p + \left| \|f \|_p - \|g\|_p \right|^p = \left\| f'+g' \right\|_p^p + \left\| f'-g' \right\|_p^p \\
+     &\leq 2^{p-1} \left( \|f'\|_p^p + \|g'\|_p^p \right) = 2^{p-1} \left( \|f\|_p^p + \|g\|_p^p \right).
+\end{align}
+Nótese también que efectivamente las desigualdades no pueden ser estrictas ya que para el caso $ \|f\| = \|g\| = 1 $, tanto la desigualdad de Clarkson como la de Hanner dan la misma cota, $ 2^p $, la cual permite probar la convexidad uniforme de $ L^p $ haciendo uso de cualquiera de las desigualdades. La prueba usando Clarkson la hemos visto en el Corolario \ref{coro:clarkson}, y la prueba análoga, aunque dando una mejor cota se puede consultar en \cite{hanner}.
