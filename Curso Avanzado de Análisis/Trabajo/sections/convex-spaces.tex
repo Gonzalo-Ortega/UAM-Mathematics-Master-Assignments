@@ -9,6 +9,34 @@ La principal herramienta para trabajar en espacios métricos, y en particular en
     Un conjunto $ C \subseteq X $ es {\bf convexo} si para todo par de puntos $ x, y \in C $, $ t \in [0, 1] $, se tiene $ tx + (1-t)y \in C $.
 \end{definition}
 
+\begin{proposition}
+    Sea $ p \colon X \to [0,\infty) $ una función con la propiedad de que para todo $ x \in X $ y para todo $ \lambda \in \R $ se tiene que $ p(\lambda x) = |\lambda| p(x) $. Dicha función satisface la desigualdad triangular si y solo si la bola  $B_p \coloneq \{ x \in X \colon p(x) \leq 1 \} $ es compacto.
+\end{proposition}
+\begin{proof}
+    Si $ p $ satisface la desigualdad triangular, dados $ x, y \in B_p $, $ p(x) \leq 1 $ y  $ p(y) \leq 1 $, y tenemos que para todo $ t \in [0, 1] $,
+    \begin{equation}
+        p(tx + (1-t) y) \leq p(tx) + p((1-t)y) = tp(x) + (1-t)p(y) \leq t + (1-t) = 1.
+    \end{equation}
+    Por tanto, $ tx + (1-t)y \in B_p $ y $ B_p $ es convexa.
+
+    Supongamos ahora que $ B_p $ es convexa. Para todo $ x, y \in X $ con $ p(x), p(y) \neq 0 $, definimos $ t \in (0, 1) $ como
+    \begin{equation}
+        t \coloneq \frac{p(x)}{p(x) + p(y)}, \text{ donde } 1 - t = \frac{p(y)}{p(x) + p(y)}.
+    \end{equation}
+    Tenemos que $ \frac{x}{p(x) } $ y $ \frac{x}{p(x) } $ están contenidos en $ B_p $ ya que, tomando el primer caso como ejemplo, 
+    \begin{equation}
+        p(\frac{x}{p(x)}) = \frac{p(x)}{p(x)} = 1.
+    \end{equation}
+    Ahora bien, como $ B_p $ es convexa, 
+    \begin{equation}
+        1 \geq p\left(t \frac{x}{p(x)} + (1-t) \frac{y}{p(y)}\right) = p\left( \frac{x}{p(x)+p(y)} + \frac{y}{p(x)+p(y)} \right).
+    \end{equation}
+    Por tanto, despejando tenemos
+    \begin{equation}
+        p(x)+p(y) \geq p(x+y).
+    \end{equation}
+\end{proof}
+
 Dado un espacio normado $ (X, \| \cdot \|) $, por conveniencia a veces denotado simplemente $ X $, definimos la bola cerrada y la esfera unidad en $ X $, $ B(X) $ y $ S(X) $ respectivamente como
 \begin{equation}
 \begin{split}
