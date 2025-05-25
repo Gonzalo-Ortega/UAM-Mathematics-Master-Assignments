@@ -1,11 +1,53 @@
 \section{Desigualdades para el estudio de la convexidad}
-
-\subsection{Desigualdades de Clarkson}
-
 Los espacios de funciones $ L^p $ no son por lo general espacios de Hilbert ya que, salvo para $ p = 2 $, no cumplen la regla del paralelogramo
 \begin{equation}
     \| x + y \|^2 + \| x - y \|^2 = 2 \left( \| x \|^2 + \| y\|^2 \right)
 \end{equation}
+A lo largo de esta sección vamos a introducir las desigualdades de Clarkson y las desigualdades de Hanner, las cuales fueron en introducidas para probar la convexidad uniforme en la mayoría de espacios $ L^p $. Veamos con un par de ejemplos porque para los casos $ L^1 $ y $ L^\infty $, no se verifica la convexidad uniformemente
+
+\begin{example}
+    Consideremos el espacio \(L^1([0,1], \lambda)\) y definamos, para \(n \in \mathbb{N}\):
+    \begin{equation}
+        f_n = \chi_{[0,1/n]}, \quad g_n = \chi_{[1-1/n,1]}.
+    \end{equation}
+    Entonces:
+    \begin{equation}
+        \|f_n\|_1 = \|g_n\|_1 = \frac{1}{n} \to 0.
+    \end{equation}
+    Definiendo funciones normalizadas,
+    \begin{equation}
+        \tilde{f}_n = \frac{f_n}{\|f_n\|_1} = n \chi_{[0,1/n]}, \quad \tilde{g}_n = \frac{g_n}{\|g_n\|_1} = n \chi_{[1-1/n,1]}.
+    \end{equation}
+    Así
+    \begin{equation}
+        \|\tilde{f}_n\|_1 = \|\tilde{g}_n\|_1 = 1, \quad \|\tilde{f}_n - \tilde{g}_n\|_1 = 2,
+    \end{equation}
+    pero,
+    \begin{equation}
+        \left\|\frac{\tilde{f}_n + \tilde{g}_n}{2}\right\|_1 = \frac{1}{2}(\|\tilde{f}_n\|_1 + \|\tilde{g}_n\|_1) = 1.
+    \end{equation}
+    Esto muestra que, aunque \(\|\tilde{f}_n - \tilde{g}_n\|_1 = 2\), el promedio \(\left\|\frac{\tilde{f}_n + \tilde{g}_n}{2}\right\|_1\) no disminuye, contradiciendo la definición de convexidad uniforme.  
+    Por lo tanto, \(L^1\) no es uniformemente convexo.  
+\end{example}
+
+\begin{example}
+    Consideremos el espacio \(L^\infty([0,1], \lambda)\) y definamos:
+    \begin{equation}
+        f_n = \chi_{[0,1/2]}, \quad g_n = \chi_{[1/2 + 1/n,1]}.
+    \end{equation}
+    Entonces:
+    \begin{equation}
+        \|f_n\|_\infty = \|g_n\|_\infty = 1, \quad \|f_n - g_n\|_\infty = 1.
+    \end{equation}
+    Sin embargo:
+    \begin{equation}
+        \left\|\frac{f_n + g_n}{2}\right\|_\infty = \frac{1}{2}.
+    \end{equation}
+Dado que esta cota no mejora al aumentar \(n\), no es posible encontrar un \(\delta(\epsilon)\) que garantice la disminución necesaria para todo \(\epsilon\). Esto contradice la definición de convexidad uniforme.  
+Por lo tanto, \(L^\infty\) tampoco es uniformemente convexo.  
+\end{example}
+
+\subsection{Desigualdades de Clarkson}
 En 1936, el matemático americano James A. Clarkson generalizó la regla del paralelogramo para hacerla válida para todo $ 1 < p < \infty $ en forma de dos nuevas desigualdades, una para $ 2 \geq p < \infty $ y otra para $ 1 < p \leq 2 $, \cite{clarkson}. Si bien esto no permite definir un producto escalar sobre cualquier $ L^p $, si que permite comprobar que, como veremos, $ L^p $ es uniformemente convexo para $ 1 < p < \infty $.
 
 \begin{restatable}[Primera desigualdad de Clarkson]{theorem}{Clarksoni} \label{thm:clarkson-1}
